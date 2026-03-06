@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero';
 import AlternatingSection from '../components/AlternatingSection';
 
 export const metadata = {
-    title: "Commercial Real Estate SEO Company | Rank #1 on Google | CloudSocial",
+    title: "Commercial Real Estate SEO Company",
     description: "CloudSocial is a specialist commercial real estate SEO company. We rank CRE firms on Google for high-intent, capital-generating search terms that drive investor inquiries.",
 };
 

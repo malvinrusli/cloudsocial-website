@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero';
 import AlternatingSection from '../components/AlternatingSection';
 
 export const metadata = {
-    title: "Commercial Real Estate Website Design | Authority Web Architecture | CloudSocial",
+    title: "Commercial Real Estate Website Design",
     description: "CloudSocial builds authoritative commercial real estate websites engineered for institutional credibility, fast performance, and investor-grade conversion. Get a free site audit.",
 };
 

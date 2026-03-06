@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero';
 import AlternatingSection from '../components/AlternatingSection';
 
 export const metadata = {
-    title: "Commercial Real Estate Digital Marketing | LinkedIn Content Agency | CloudSocial",
+    title: "Commercial Real Estate Digital Marketing",
     description: "CloudSocial is a specialist commercial real estate digital marketing agency for LinkedIn. We publish market-moving content that builds your authority and drives deal flow every week.",
 };
 

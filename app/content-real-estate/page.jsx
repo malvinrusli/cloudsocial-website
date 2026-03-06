@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero';
 import AlternatingSection from '../components/AlternatingSection';
 
 export const metadata = {
-    title: "Real Estate Video Production Company for Commercial Firms | CloudSocial",
+    title: "Real Estate Video Production Company for Commercial Firms",
     description: "CloudSocial is a real estate video production company for commercial firms. We produce high-retention short-form content for LinkedIn, Instagram, and YouTube that builds authority and drives inbound.",
 };
 

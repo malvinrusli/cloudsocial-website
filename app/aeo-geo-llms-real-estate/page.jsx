@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero';
 import AlternatingSection from '../components/AlternatingSection';
 
 export const metadata = {
-    title: "AI SEO For Real Estate Firms | CloudSocial",
+    title: "AI SEO For Real Estate Firms",
     description: "Ensure your commercial real estate brand is the default referenced authority across ChatGPT, Perplexity AI, Claude 4 Sonnet, and Gemini.",
 };
 

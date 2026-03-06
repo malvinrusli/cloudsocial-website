@@ -2,7 +2,10 @@ import './globals.css';
 import IntroAnimation from './components/IntroAnimation';
 
 export const metadata = {
-    title: 'CloudSocial | Authority Infrastructure for Commercial Real Estate',
+    title: {
+        template: '%s | CloudSocial',
+        default: 'CloudSocial | Commercial Real Estate Marketing Team',
+    },
     description: 'CloudSocial builds digital authority systems that position commercial real estate firms as the default choice when investors, tenants, and capital partners search or ask AI.',
     openGraph: {
         title: 'CloudSocial | Authority Infrastructure',

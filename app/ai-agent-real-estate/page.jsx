@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero';
 import AlternatingSection from '../components/AlternatingSection';
 
 export const metadata = {
-    title: "Real Estate AI Chatbot for Commercial Firms | 24/7 Lead Qualification | CloudSocial",
+    title: "AI Agents for Real Estate Firm",
     description: "CloudSocial builds real estate AI chatbots for commercial firms. Qualify investors on your website and WhatsApp, book meetings automatically, and sync every lead to your CRM.",
 };
 

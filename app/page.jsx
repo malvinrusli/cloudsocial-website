@@ -8,7 +8,9 @@ import Outcomes from './components/Outcomes'
 import Footer from './components/Footer'
 
 export const metadata = {
-    title: "Commercial Real Estate Marketing | Scale Your AUM | CloudSocial",
+    title: {
+        absolute: "CloudSocial | Commercial Real Estate Marketing Team",
+    },
     description: "CloudSocial builds compounding digital authority infrastructure for commercial real estate firms operating at scale.",
 };
 

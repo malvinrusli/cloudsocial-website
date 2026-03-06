@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero';
 import AlternatingSection from '../components/AlternatingSection';
 
 export const metadata = {
-    title: "LinkedIn for Real Estate Firms | Generate Investor Leads on LinkedIn | CloudSocial",
+    title: "LinkedIn for Real Estate Firms",
     description: "CloudSocial builds LinkedIn authority systems for commercial real estate firms. Generate investor leads on LinkedIn by positioning your firm as the definitive market voice.",
 };
 
