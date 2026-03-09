@@ -4,6 +4,8 @@ import { useMutation, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { Upload, Trash2, Copy, Check } from "lucide-react";
 
+const ADMIN_SECRET = process.env.NEXT_PUBLIC_ADMIN_SECRET ?? "";
+
 export default function MediaUpload() {
     const generateUploadUrl = useMutation(api.media.generateUploadUrl);
     const saveMedia = useMutation(api.media.saveMedia);
@@ -21,7 +23,7 @@ export default function MediaUpload() {
         if (!file) return;
         setUploading(true);
         try {
-            const uploadUrl = await generateUploadUrl();
+            const uploadUrl = await generateUploadUrl({ adminSecret: ADMIN_SECRET });
             const res = await fetch(uploadUrl, {
                 method: "POST",
                 headers: { "Content-Type": file.type },
@@ -29,6 +31,7 @@ export default function MediaUpload() {
             });
             const { storageId } = await res.json();
             await saveMedia({
+                adminSecret: ADMIN_SECRET,
                 storageId,
                 filename: file.name,
                 contentType: file.type,
@@ -139,7 +142,7 @@ export default function MediaUpload() {
                                 )}
                                 {/* Delete */}
                                 <button
-                                    onClick={() => deleteMedia({ id: f._id, storageId: f.storageId })}
+                                    onClick={() => deleteMedia({ adminSecret: ADMIN_SECRET, id: f._id, storageId: f.storageId })}
                                     className="text-gray-300 hover:text-red-400 transition-colors"
                                     title="Delete"
                                 >

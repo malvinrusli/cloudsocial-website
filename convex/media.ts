@@ -1,10 +1,17 @@
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
+function requireAdmin(secret: string | undefined) {
+    if (!secret || secret !== process.env.ADMIN_SECRET) {
+        throw new Error("Unauthorized");
+    }
+}
+
 // Step 1: Get a short-lived upload URL from Convex storage
 export const generateUploadUrl = mutation({
-    args: {},
-    handler: async (ctx) => {
+    args: { adminSecret: v.string() },
+    handler: async (ctx, { adminSecret }) => {
+        requireAdmin(adminSecret);
         return await ctx.storage.generateUploadUrl();
     },
 });
@@ -12,13 +19,15 @@ export const generateUploadUrl = mutation({
 // Step 2: Save the storageId + metadata after upload completes
 export const saveMedia = mutation({
     args: {
+        adminSecret: v.string(),
         storageId: v.id("_storage"),
         filename: v.string(),
         contentType: v.string(),
         category: v.optional(v.string()),
         label: v.optional(v.string()),
     },
-    handler: async (ctx, args) => {
+    handler: async (ctx, { adminSecret, ...args }) => {
+        requireAdmin(adminSecret);
         return await ctx.db.insert("media", {
             ...args,
             uploadedAt: Date.now(),
@@ -26,7 +35,7 @@ export const saveMedia = mutation({
     },
 });
 
-// Get all media files with their serving URLs
+// Get all media files with their serving URLs (read-only, protected by page login)
 export const listMedia = query({
     args: {},
     handler: async (ctx) => {
@@ -50,8 +59,9 @@ export const getUrl = query({
 
 // Delete a media file
 export const deleteMedia = mutation({
-    args: { id: v.id("media"), storageId: v.id("_storage") },
-    handler: async (ctx, { id, storageId }) => {
+    args: { adminSecret: v.string(), id: v.id("media"), storageId: v.id("_storage") },
+    handler: async (ctx, { adminSecret, id, storageId }) => {
+        requireAdmin(adminSecret);
         await ctx.storage.delete(storageId);
         await ctx.db.delete(id);
     },
