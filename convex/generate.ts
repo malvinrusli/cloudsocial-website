@@ -34,7 +34,7 @@ export const generateNextPost = action({
 
             // 3. Generate article with Gemini 1.5 Pro
             const geminiResponse = await fetch(
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${googleKey}`,
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${googleKey}`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -82,7 +82,8 @@ Return ONLY valid JSON with these exact fields:
                         }],
                         generationConfig: {
                             temperature: 0.7,
-                            maxOutputTokens: 8192,
+                            maxOutputTokens: 16384,
+                            responseMimeType: "application/json",
                         },
                     }),
                 }
