@@ -1,317 +1,591 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Features = () => {
-    const containerRef = useRef(null);
+const SERVICES = [
+    {
+        id: 'video', num: '/001', label: 'Short Form Video',
+        category: 'Content Strategy',
+        title: 'Cinematic video that actually converts',
+        desc: 'Most CRE firms post property walkthroughs nobody watches. We produce high-retention short form content engineered for institutional audiences on LinkedIn and Instagram.',
+        points: ['84K+ views on a first property video', '62% watch time vs 8% industry average', '+12 qualified inquiries within 30 days'],
+        link: '/content-real-estate',
+        linkLabel: 'Explore Short Form Content',
+    },
+    {
+        id: 'seo', num: '/002', label: 'SEO & Search',
+        category: 'Organic Search',
+        title: '#1 rankings for every market you serve',
+        desc: 'Deep keyword architecture and 12 monthly SEO articles that position your firm as the authority for commercial real estate in your territory.',
+        points: ['Target bottom-of-funnel, buyer-intent keywords', 'Technical SEO for E-E-A-T authority signals', 'Clear monthly reporting with deal attribution'],
+        link: '/seo-real-estate',
+        linkLabel: 'Explore SEO',
+    },
+    {
+        id: 'aeo', num: '/003', label: 'AEO & AI Citations',
+        category: 'AI Search',
+        title: 'Cited by ChatGPT, Perplexity & Gemini',
+        desc: 'When investors ask AI "who are the top CRE brokers in [city]?" — your firm should be the answer. We engineer that outcome across 8 AI platforms.',
+        points: ['Structured data and entity authority building', 'Cited in AI-generated recommendation answers', 'Monthly citation audits and correction reports'],
+        link: '/aeo-geo-llms-real-estate',
+        linkLabel: 'Explore AEO & GEO',
+    },
+    {
+        id: 'linkedin', num: '/004', label: 'LinkedIn Authority',
+        category: 'Social Authority',
+        title: 'The voice institutional capital follows',
+        desc: 'We position your principals as thought leaders that LPs, family offices, and tenants actively follow — not just connect with.',
+        points: ['Profile optimisation for decision-maker discovery', 'High-engagement content calendar and writing', 'Network targeting by investor and tenant segment'],
+        link: '/linkedin-real-estate',
+        linkLabel: 'Explore LinkedIn',
+    },
+    {
+        id: 'website', num: '/005', label: 'Professional Website',
+        category: 'Digital Infrastructure',
+        title: 'Your website should close deals, not explain you',
+        desc: 'Most CRE websites are digital brochures. We rebuild them as authoritative platforms engineered to convert high-value inbound traffic.',
+        points: ['Sub-2s load time with 95+ Lighthouse score', 'Portfolio, case studies, and authority signals', 'Lead capture integrated with CRM routing'],
+        link: '/services',
+        linkLabel: 'Explore Professional Websites',
+    },
+    {
+        id: 'agent', num: '/006', label: 'AI Agent',
+        category: 'Automation',
+        title: 'Leads qualified. Tours booked. 24/7.',
+        desc: 'An AI agent on WhatsApp and email responds to inbound leads in under 5 minutes, qualifies intent, and routes serious buyers directly to your calendar — without your team lifting a finger.',
+        points: ['< 5 min response time across WhatsApp & email', 'Qualifier questions tuned to institutional buyer intent', 'Auto-books tours via Calendly or HubSpot — zero manual work'],
+        link: '/ai-agent-real-estate',
+        linkLabel: 'Explore AI Agent',
+    },
+];
 
-    useEffect(() => {
-        let ctx = gsap.context(() => {
-            gsap.fromTo('.natugreen-card',
-                { y: 40, opacity: 0 },
-                {
-                    y: 0, opacity: 1, duration: 1, stagger: 0.15,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: containerRef.current,
-                        start: 'top 75%',
-                    }
-                }
-            );
+// ─── Mockups ──────────────────────────────────────────────────────────────────
 
-            gsap.fromTo('.natugreen-header',
-                { y: 20, opacity: 0 },
-                {
-                    y: 0, opacity: 1, duration: 1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: containerRef.current,
-                        start: 'top 85%',
-                    }
-                }
-            );
-        }, containerRef);
-        return () => ctx.revert();
-    }, []);
-
-    // Mockup Components for the Cards
-    const BrowserMockup = () => (
-        <div className="w-full h-48 bg-[#1A1A1A] p-4 flex flex-col border-b border-white/5 relative overflow-hidden">
-            <div className="flex bg-[#232323] p-2 rounded-md items-center mb-4">
-                <div className="flex gap-1.5 mr-4">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
+const VideoCompareMockup = () => (
+    <div className="w-full h-full flex bg-[#080808]">
+        <div className="flex-1 flex flex-col border-r border-white/10 p-5 gap-3">
+            <div className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-red-500/50"></div>
+                <span className="text-[9px] font-semibold text-white/25 uppercase tracking-widest">Typical CRE</span>
+            </div>
+            <div className="flex-1 bg-[#0D0D0D] relative flex items-center justify-center overflow-hidden">
+                <img
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop"
+                    className="absolute inset-0 w-full h-full object-cover opacity-15"
+                    alt=""
+                />
+                <div className="relative z-10 w-12 h-12 border border-white/10 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white/15 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                 </div>
-                <div className="flex-1 bg-[#1A1A1A] rounded-md h-6 flex items-center justify-center text-[10px] text-white/50">
-                    <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
-                    google.com/search
+                <div className="absolute bottom-3 left-3 right-3">
+                    <div className="h-px bg-white/10 w-full relative">
+                        <div className="absolute top-0 left-0 h-full bg-white/20 w-[15%]"></div>
+                    </div>
+                    <div className="flex justify-between mt-1">
+                        <span className="text-[7px] text-white/20 font-mono">0:12</span>
+                        <span className="text-[7px] text-white/20 font-mono">1:54</span>
+                    </div>
                 </div>
             </div>
-            <div className="flex-1 bg-gradient-to-b from-[#232323] to-transparent opacity-50 relative mt-2">
-                <div className="absolute top-4 left-4 w-1/2 h-2 bg-white/10 rounded-full"></div>
-                <div className="absolute top-8 left-4 w-3/4 h-2 bg-white/5 rounded-full"></div>
-                <div className="absolute top-12 left-4 w-2/3 h-2 bg-white/5 rounded-full"></div>
-                <div className="absolute bottom-4 right-4 w-12 h-12 bg-white/5 rounded-md"></div>
+            <div className="space-y-1.5 pt-1 border-t border-white/5">
+                {[['Views', '320', ''], ['Watch time', '8%', 'red'], ['Inquiries', '0', '']].map(([k, v, accent]) => (
+                    <div key={k} className="flex justify-between">
+                        <span className="text-[9px] text-white/20">{k}</span>
+                        <span className={`text-[9px] font-mono font-semibold ${accent === 'red' ? 'text-red-400/60' : 'text-white/25'}`}>{v}</span>
+                    </div>
+                ))}
             </div>
         </div>
-    );
-
-    const ComparisonMockup = () => (
-        <div className="w-full h-48 bg-[#0A0A0A] border-b border-white/5 flex overflow-hidden">
-            {/* Typical side */}
-            <div className="flex-1 flex flex-col border-r border-white/10">
-                <div className="px-3 pt-2.5 pb-1 flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-red-500/60"></div>
-                    <span className="text-[9px] font-semibold text-white/30 uppercase tracking-wide">Typical CRE</span>
+        <div className="flex-1 flex flex-col p-5 gap-3">
+            <div className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                <span className="text-[9px] font-semibold text-white/60 uppercase tracking-widest">CloudSocial</span>
+                <span className="ml-auto text-[7px] border border-emerald-500/20 text-emerald-400/50 px-1.5 py-0.5">WISTIA</span>
+            </div>
+            {/* Replace this block with your Wistia embed when video is ready:
+                <div className="wistia_responsive_padding" style={{padding:'56.25% 0 0 0',position:'relative'}}>
+                  <div className="wistia_responsive_wrapper" style={{height:'100%',left:0,position:'absolute',top:0,width:'100%'}}>
+                    <div className="wistia_embed wistia_async_YOUR_VIDEO_ID" style={{height:'100%',position:'relative',width:'100%'}}></div>
+                  </div>
                 </div>
-                <div className="flex-1 bg-[#111] mx-3 mb-2 flex items-center justify-center relative">
-                    <div className="w-7 h-7 rounded bg-white/5 flex items-center justify-center">
-                        <svg className="w-3 h-3 text-white/15 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-                    </div>
-                    <div className="absolute bottom-1.5 left-2 right-2 h-1 bg-white/5 rounded-full"></div>
+            */}
+            <div className="flex-1 bg-[#0D0D0D] relative flex items-center justify-center overflow-hidden">
+                <img
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop"
+                    className="absolute inset-0 w-full h-full object-cover opacity-50"
+                    alt=""
+                />
+                <div className="absolute inset-0 bg-black/30"></div>
+                <div className="relative z-10 w-12 h-12 bg-white/15 border border-white/30 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                 </div>
-                <div className="px-3 pb-3 space-y-1.5">
-                    <div className="flex items-center justify-between">
-                        <span className="text-[9px] text-white/25">Views</span>
-                        <span className="text-[9px] font-semibold text-white/30">320</span>
+                <div className="absolute bottom-3 left-3 right-3">
+                    <div className="h-px bg-white/20 w-full relative">
+                        <div className="absolute top-0 left-0 h-full bg-white/80 w-[62%]"></div>
                     </div>
-                    <div className="flex items-center justify-between">
-                        <span className="text-[9px] text-white/25">Watch time</span>
-                        <span className="text-[9px] font-semibold text-red-400/70">8%</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <span className="text-[9px] text-white/25">Inquiries</span>
-                        <span className="text-[9px] font-semibold text-white/30">0</span>
+                    <div className="flex justify-between mt-1">
+                        <span className="text-[7px] text-white/40 font-mono">1:04</span>
+                        <span className="text-[7px] text-white/40 font-mono">1:44</span>
                     </div>
                 </div>
             </div>
-            {/* Ours side */}
-            <div className="flex-1 flex flex-col">
-                <div className="px-3 pt-2.5 pb-1 flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
-                    <span className="text-[9px] font-semibold text-white/60 uppercase tracking-wide">CloudSocial</span>
+            <div className="space-y-1.5 pt-1 border-t border-white/5">
+                {[['Views', '84.3K', ''], ['Watch time', '62%', 'emerald'], ['Inquiries', '+12 / mo', 'emerald']].map(([k, v, accent]) => (
+                    <div key={k} className="flex justify-between">
+                        <span className="text-[9px] text-white/40">{k}</span>
+                        <span className={`text-[9px] font-mono font-semibold ${accent === 'emerald' ? 'text-emerald-400' : 'text-white'}`}>{v}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+);
+
+const SERPMockup = () => (
+    <div className="w-full h-full bg-[#080808] p-6 flex flex-col gap-4 overflow-hidden">
+        <div className="flex items-center gap-3 border border-white/10 bg-[#111] px-4 py-2.5 max-w-sm">
+            <svg className="w-3.5 h-3.5 text-white/30 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path strokeLinecap="round" d="M21 21l-4.35-4.35"/></svg>
+            <span className="text-[11px] text-white/40 font-mono">commercial real estate broker dubai</span>
+        </div>
+        <div className="space-y-2 flex-1">
+            <div className="border border-emerald-500/25 bg-emerald-500/5 p-3 pl-5 relative">
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500/40"></div>
+                <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[7px] text-emerald-400 font-semibold border border-emerald-400/30 px-1 py-px">#1</span>
+                    <span className="text-[8px] text-emerald-600/60 font-mono">yourclient.com › commercial-real-estate-dubai</span>
                 </div>
-                <div className="flex-1 mx-3 mb-2 relative overflow-hidden rounded-sm">
-                    <img
-                        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=400&auto=format&fit=crop"
-                        className="w-full h-full object-cover opacity-50"
-                        alt=""
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-6 h-6 rounded bg-white/20 flex items-center justify-center">
-                            <svg className="w-2.5 h-2.5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                <div className="text-[11px] text-blue-300 mb-1 font-medium">Commercial Real Estate Dubai | #1 Broker for Institutional Deals</div>
+                <div className="text-[9px] text-white/35 leading-relaxed">Trusted by 40+ institutional clients. Specialising in office, industrial and mixed-use commercial real estate across Dubai.</div>
+            </div>
+            {['Savills Dubai — Commercial Property & Office Space', 'CBRE UAE | Commercial Real Estate Advisory Services', 'JLL Dubai — Commercial Property & Investment'].map((title, i) => (
+                <div key={i} className="p-3 pl-5 opacity-25 border border-white/5">
+                    <div className="text-[8px] text-green-600/50 font-mono mb-0.5">{['savills.ae', 'cbre.ae', 'jll.ae'][i]} › commercial</div>
+                    <div className="text-[11px] text-blue-300/60 mb-1">{title}</div>
+                    <div className="text-[9px] text-white/30">Commercial real estate services across the UAE. Office, retail, industrial and investment advisory...</div>
+                </div>
+            ))}
+        </div>
+        <div className="pt-3 border-t border-white/5 flex gap-6">
+            {[['340%', 'Organic traffic increase'], ['#1', 'Position for 12 keywords'], ['4.2mo', 'Avg. time to rank']].map(([v, l]) => (
+                <div key={l}>
+                    <div className="text-xs text-emerald-400 font-mono font-semibold">{v}</div>
+                    <div className="text-[8px] text-white/25">{l}</div>
+                </div>
+            ))}
+        </div>
+    </div>
+);
+
+const AICitationMockup = () => (
+    <div className="w-full h-full bg-[#080808] p-6 flex flex-col gap-4">
+        <div className="flex items-center gap-2 pb-3 border-b border-white/5">
+            <div className="w-5 h-5 bg-white/5 border border-white/10 flex items-center justify-center">
+                <svg className="w-3 h-3 text-white/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path strokeLinecap="round" d="M12 8v4l3 3"/></svg>
+            </div>
+            <span className="text-[9px] text-white/30 font-mono">Perplexity AI · Real-time web</span>
+            <div className="ml-auto flex items-center gap-1.5">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+                <span className="text-[8px] text-emerald-400/60">cited</span>
+            </div>
+        </div>
+        <div className="flex justify-end">
+            <div className="bg-[#1A1A1A] border border-white/10 px-3 py-2.5 max-w-[75%]">
+                <p className="text-[10px] text-white/60 leading-relaxed">"Who are the top commercial real estate brokers in Dubai for large office leasing?"</p>
+            </div>
+        </div>
+        <div className="flex-1 text-[10px] text-white/40 leading-relaxed space-y-2.5">
+            <p>Based on transaction volume and market presence, the leading commercial real estate brokers in Dubai for office leasing include:</p>
+            <p>
+                <span className="inline bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 px-1.5 py-px font-semibold">
+                    [Your Firm Name]
+                </span>
+                {' '}is consistently recognised as a primary authority for institutional office transactions, with a strong track record in DIFC, Business Bay, and emerging industrial corridors. Their published market research is frequently cited by institutional investors.
+            </p>
+            <p className="text-white/20">Savills and CBRE also maintain significant presence, particularly for multinational occupier requirements and investment-grade acquisitions...</p>
+        </div>
+        <div className="pt-3 border-t border-white/5">
+            <div className="flex gap-1 mb-2 flex-wrap">
+                {['ChatGPT', 'Perplexity', 'Gemini', 'Claude', 'Copilot'].map((ai, i) => (
+                    <span key={ai} className={`text-[7px] px-1.5 py-0.5 border ${i < 3 ? 'border-emerald-500/20 text-emerald-400/60 bg-emerald-500/5' : 'border-white/5 text-white/15'}`}>{ai}</span>
+                ))}
+            </div>
+            <span className="text-[8px] text-white/20">Cited in 3 of 5 monitored platforms · Updated this month</span>
+        </div>
+    </div>
+);
+
+const LinkedInMockup = () => (
+    <div className="w-full h-full bg-[#080808] p-6 flex flex-col gap-4">
+        <div className="flex items-center gap-3 pb-3 border-b border-white/5">
+            <div className="w-11 h-11 bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-white/30 text-xs font-semibold shrink-0">CF</div>
+            <div className="flex-1">
+                <div className="text-[11px] text-white font-medium">Managing Principal, CRE Firm</div>
+                <div className="text-[9px] text-white/30">Commercial Real Estate · Dubai, UAE</div>
+                <div className="flex items-center gap-3 mt-0.5">
+                    <span className="text-[8px] text-white/20">24,400 followers</span>
+                    <span className="text-[8px] text-emerald-400">+8,200 in 90 days</span>
+                </div>
+            </div>
+            <div className="border border-blue-400/20 px-2 py-1 text-[8px] text-blue-400/50 shrink-0">Following</div>
+        </div>
+        <div className="bg-[#111] border border-white/5 p-4 flex-1 flex flex-col">
+            <div className="text-[10px] text-white/50 leading-relaxed mb-3">
+                The industrial corridor between Al Quoz and JAFZA is being completely repriced. Here's what the absorption data shows — and what it means for yields heading into Q3 2026 🧵
+            </div>
+            <div className="w-full h-16 bg-[#1A1A1A] border border-white/5 mb-3 relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover opacity-30" alt="" />
+            </div>
+            <div className="flex gap-4 pt-3 border-t border-white/5 mt-auto">
+                {[['52,400', 'impressions', 'emerald'], ['847', 'reactions', ''], ['134', 'reposts', '']].map(([v, l, accent]) => (
+                    <div key={l}>
+                        <div className={`text-[10px] font-mono font-semibold ${accent === 'emerald' ? 'text-emerald-400' : 'text-white'}`}>{v}</div>
+                        <div className="text-[8px] text-white/25">{l}</div>
+                    </div>
+                ))}
+            </div>
+        </div>
+        <div className="flex gap-6 pt-1">
+            {[['3.2%', 'Engagement rate'], ['12', 'Inbound DMs / mo'], ['#1', 'Voice in market']].map(([v, l]) => (
+                <div key={l}>
+                    <div className="text-xs text-white font-mono font-semibold">{v}</div>
+                    <div className="text-[8px] text-white/25">{l}</div>
+                </div>
+            ))}
+        </div>
+    </div>
+);
+
+const WebsiteMockup = () => (
+    <div className="w-full h-full flex bg-[#080808]">
+        <div className="flex-1 border-r border-white/10 flex flex-col">
+            <div className="flex items-center gap-2 px-4 py-2 border-b border-white/5">
+                <div className="w-1.5 h-1.5 rounded-full bg-red-500/50"></div>
+                <span className="text-[8px] text-white/20 uppercase tracking-widest">Before</span>
+            </div>
+            <div className="flex-1 p-3 flex flex-col gap-2 opacity-35">
+                <div className="h-5 bg-[#1A1A1A] flex items-center px-2 gap-2">
+                    <div className="w-8 h-1.5 bg-white/20 rounded-sm"></div>
+                    <div className="flex gap-1.5 ml-auto">
+                        {[1,2,3,4].map(i => <div key={i} className="w-5 h-1 bg-white/10 rounded-sm"></div>)}
+                    </div>
+                </div>
+                <div className="h-20 bg-[#111] flex flex-col items-center justify-center gap-1.5">
+                    <div className="w-24 h-2 bg-white/10 rounded-sm"></div>
+                    <div className="w-36 h-1.5 bg-white/5 rounded-sm"></div>
+                    <div className="w-16 h-4 bg-white/10 mt-1 rounded-sm"></div>
+                </div>
+                <div className="grid grid-cols-3 gap-1 flex-1">
+                    {[1,2,3].map(i => <div key={i} className="bg-[#111] min-h-[24px]"></div>)}
+                </div>
+                <div className="text-[7px] text-red-400/50 font-mono">Perf: 34 · SEO: 51 · Mobile: 62</div>
+            </div>
+        </div>
+        <div className="flex-1 flex flex-col">
+            <div className="flex items-center gap-2 px-4 py-2 border-b border-white/5">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                <span className="text-[8px] text-white/50 uppercase tracking-widest">After</span>
+            </div>
+            <div className="flex-1 p-3 flex flex-col gap-2">
+                <div className="h-5 bg-[#1A1A1A] border border-white/5 flex items-center px-2 gap-2">
+                    <div className="w-10 h-1.5 bg-white/40 rounded-sm"></div>
+                    <div className="flex gap-1.5 ml-auto">
+                        {[1,2,3].map(i => <div key={i} className="w-5 h-1 bg-white/20 rounded-sm"></div>)}
+                        <div className="w-10 h-3 bg-white flex items-center justify-center rounded-sm">
+                            <div className="w-6 h-0.5 bg-black/70 rounded-sm"></div>
                         </div>
                     </div>
-                    <div className="absolute bottom-1.5 left-2 right-2 flex gap-1">
-                        <div className="h-1 w-2/3 bg-white/50 rounded-full"></div>
-                        <div className="h-1 flex-1 bg-white/10 rounded-full"></div>
-                    </div>
                 </div>
-                <div className="px-3 pb-3 space-y-1.5">
-                    <div className="flex items-center justify-between">
-                        <span className="text-[9px] text-white/50">Views</span>
-                        <span className="text-[9px] font-semibold text-white">84K</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <span className="text-[9px] text-white/50">Watch time</span>
-                        <span className="text-[9px] font-semibold text-emerald-400">62%</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <span className="text-[9px] text-white/50">Inquiries</span>
-                        <span className="text-[9px] font-semibold text-emerald-400">+12 this month</span>
-                    </div>
+                <div className="h-20 bg-[#0D0D0D] border border-white/5 relative overflow-hidden flex flex-col items-center justify-center gap-1">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=400" className="absolute inset-0 w-full h-full object-cover opacity-30" alt="" />
+                    <div className="relative text-[9px] text-white font-medium">Commercial Real Estate Dubai</div>
+                    <div className="relative text-[7px] text-white/40">Authority. Performance. Results.</div>
+                    <div className="relative mt-1 px-3 py-1 bg-white text-black text-[7px] font-semibold">Book Consultation</div>
                 </div>
+                <div className="grid grid-cols-3 gap-1 flex-1">
+                    {[1,2,3].map(i => <div key={i} className="bg-[#111] border border-white/5 min-h-[24px]"></div>)}
+                </div>
+                <div className="text-[7px] text-emerald-400 font-mono">Perf: 97 · SEO: 98 · Mobile: 100</div>
             </div>
         </div>
-    );
+    </div>
+);
 
-    const EditorMockup = () => (
-        <div className="w-full h-48 bg-[#1A1A1A] p-4 flex flex-col border-b border-white/5 relative overflow-hidden">
-            <div className="flex items-center gap-2 mb-4 opacity-70">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                <span className="text-[10px] text-white/70 font-mono">Short form video</span>
+const AIAgentMockup = () => (
+    <div className="w-full h-full bg-[#080808] flex flex-col">
+        {/* Header */}
+        <div className="flex items-center gap-3 px-5 py-3.5 border-b border-white/10 bg-[#0A0A0A] shrink-0">
+            <div className="w-9 h-9 bg-green-500/10 border border-green-500/20 flex items-center justify-center shrink-0">
+                <svg className="w-5 h-5 text-green-500" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                </svg>
             </div>
-            <div className="bg-[#232323] p-3 rounded-md flex-1 font-sans text-[10px] text-white/60 leading-relaxed border border-white/5 flex flex-col justify-end">
-                <div className="w-full h-1 bg-white/10 rounded-full mb-2">
-                    <div className="w-1/3 h-full bg-white rounded-full"></div>
-                </div>
-                <div className="flex justify-between items-center">
-                    <div className="w-4 h-4 bg-white/10 rounded-full"></div>
-                    <div className="w-4 h-4 bg-white/10 rounded-full"></div>
+            <div className="flex-1 min-w-0">
+                <div className="text-[11px] text-white font-medium">CloudSocial AI</div>
+                <div className="flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+                    <span className="text-[9px] text-emerald-400/70">Online · responds instantly</span>
                 </div>
             </div>
+            <span className="text-[7px] text-white/20 font-mono border border-white/10 px-1.5 py-0.5 shrink-0">WhatsApp</span>
         </div>
-    );
 
-    const OrbitMockup = () => (
-        <div className="w-full h-48 bg-[#1A1A1A] flex items-center justify-center border-b border-white/5 relative overflow-hidden">
-            <div className="absolute w-40 h-40 border border-white/5 rounded-full"></div>
-            <div className="absolute w-28 h-28 border border-white/10 rounded-full border-dashed animate-[spin_20s_linear_infinite]"></div>
-            <div className="w-10 h-10 bg-[#0077b5] rounded-full flex items-center justify-center z-10">
-                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
-            </div>
-            <div className="absolute w-6 h-6 bg-[#232323] border border-white/10 rounded-full p-1 top-6 right-12 flex items-center justify-center">
-                <div className="w-3 h-3 bg-white/20 rounded-full"></div>
-            </div>
-            <div className="absolute w-8 h-8 bg-[#232323] border border-white/10 rounded-full p-1 bottom-8 left-10 flex items-center justify-center">
-                <div className="w-4 h-4 bg-white/20 rounded-full"></div>
-            </div>
-        </div>
-    );
-
-    const CodeMockup = () => (
-        <div className="w-full h-48 bg-[#1A1A1A] p-4 flex flex-col border-b border-white/5 relative overflow-hidden font-mono text-[8px] text-white/40 leading-relaxed">
-            <div><span className="text-[#FF5F56]">import</span> React <span className="text-[#FF5F56]">from</span> 'react';</div>
-            <div><span className="text-[#FF5F56]">import</span> &#123; Architecture &#125; <span className="text-[#FF5F56]">from</span> './core';</div>
-            <div className="mt-2"><span className="text-[#FFBD2E]">const</span> Platform = () =&gt; &#123;</div>
-            <div className="ml-4"><span className="text-[#FF5F56]">return</span> (</div>
-            <div className="ml-8">&lt;<span className="text-[#27C93F]">Architecture</span></div>
-            <div className="ml-12 text-[#FFBD2E]">optimized=&#123;true&#125;</div>
-            <div className="ml-12 text-[#FFBD2E]">conversionRate="max"</div>
-            <div className="ml-8">/&gt;</div>
-            <div className="ml-4">);</div>
-            <div>&#125;;</div>
-        </div>
-    );
-
-    const ChatMockup = () => (
-        <div className="w-full h-48 bg-[#1A1A1A] p-4 flex flex-col border-b border-white/5 relative overflow-hidden justify-end">
-            <div className="w-full flex justify-end mb-2">
-                <div className="bg-[#25D366] text-black text-[9px] py-1.5 px-3 rounded-l-xl rounded-tr-xl">
-                    Can I schedule a tour for the 50k sqft property?
+        {/* Chat messages */}
+        <div className="flex-1 p-4 flex flex-col gap-3 overflow-hidden justify-end">
+            {/* Inbound */}
+            <div className="flex justify-end">
+                <div className="bg-[#1A2A1A] border border-green-500/10 px-3 py-2 max-w-[72%]">
+                    <p className="text-[10px] text-white/60 leading-relaxed">Hi, I'm looking at the DIFC Tower listing. We need ~2,000 sqm. Are you available this week?</p>
+                    <span className="text-[7px] text-white/20 mt-1 block text-right">09:41</span>
                 </div>
             </div>
-            <div className="w-full flex justify-start">
-                <div className="bg-[#232323] text-white/80 text-[9px] py-1.5 px-3 rounded-r-xl rounded-tl-xl border border-white/5">
-                    Yes, I can arrange that. What day works best?
+            {/* AI response 1 */}
+            <div className="flex gap-2 max-w-[80%]">
+                <div className="w-5 h-5 bg-[#1A1A1A] border border-white/10 shrink-0 flex items-center justify-center text-[7px] text-white/30 font-bold mt-0.5">AI</div>
+                <div className="bg-[#111] border border-white/8 px-3 py-2 flex-1">
+                    <p className="text-[10px] text-white/55 leading-relaxed">Hi! Thanks for reaching out. Quick question — is this for your own occupancy or an investment acquisition?</p>
+                    <span className="text-[7px] text-white/20 mt-1 block">09:41 · AI</span>
+                </div>
+            </div>
+            {/* Inbound 2 */}
+            <div className="flex justify-end">
+                <div className="bg-[#1A2A1A] border border-green-500/10 px-3 py-2 max-w-[72%]">
+                    <p className="text-[10px] text-white/60">Own occupancy. We're expanding from 600 sqm. Budget ~AED 600K/yr.</p>
+                    <span className="text-[7px] text-white/20 mt-1 block text-right">09:42</span>
+                </div>
+            </div>
+            {/* AI books tour */}
+            <div className="flex gap-2 max-w-[80%]">
+                <div className="w-5 h-5 bg-[#1A1A1A] border border-white/10 shrink-0 flex items-center justify-center text-[7px] text-white/30 font-bold mt-0.5">AI</div>
+                <div className="flex-1 space-y-1.5">
+                    <div className="bg-[#111] border border-white/8 px-3 py-2">
+                        <p className="text-[10px] text-white/55 leading-relaxed">Perfect fit. I've flagged you as a priority lead for our DIFC specialist.</p>
+                    </div>
+                    <div className="bg-[#0D1A0D] border border-emerald-500/20 px-3 py-2">
+                        <div className="flex items-center gap-2">
+                            <svg className="w-3 h-3 text-emerald-400 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            <span className="text-[9px] text-emerald-400">Book site tour → calendly.com/cre-firm</span>
+                        </div>
+                    </div>
+                    <span className="text-[7px] text-white/20 pl-0">09:42 · <span className="text-emerald-400/60">AI · 47s response</span></span>
                 </div>
             </div>
         </div>
-    );
+
+        {/* Stats footer */}
+        <div className="border-t border-white/10 px-5 py-3 flex gap-8 shrink-0">
+            {[['< 5 min', 'Response time'], ['84%', 'Qualify rate'], ['31', 'Tours / mo']].map(([v, l]) => (
+                <div key={l}>
+                    <div className="text-xs text-emerald-400 font-mono font-semibold">{v}</div>
+                    <div className="text-[8px] text-white/25">{l}</div>
+                </div>
+            ))}
+        </div>
+    </div>
+);
+
+// ─── Main Component ───────────────────────────────────────────────────────────
+
+const Features = () => {
+    const [active, setActive] = useState('video');
+    const containerRef = useRef(null);
+    const panelRef = useRef(null);
+    const activeIdxRef = useRef(0);
+    const isAnimatingRef = useRef(false);
+
+    useEffect(() => {
+        if (!containerRef.current) return;
+        const numTabs = SERVICES.length;
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo('.feat-header',
+                { y: 20, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+                  scrollTrigger: { trigger: containerRef.current, start: 'top 80%', once: true } }
+            );
+            gsap.fromTo('.feat-panel',
+                { y: 25, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.1,
+                  scrollTrigger: { trigger: containerRef.current, start: 'top 80%', once: true } }
+            );
+        }, containerRef);
+
+        // Scroll-driven tab pinning — desktop only
+        const mm = gsap.matchMedia();
+        mm.add('(min-width: 1024px)', () => {
+            const st = ScrollTrigger.create({
+                trigger: containerRef.current,
+                start: 'top top',
+                end: `+=${window.innerHeight * (numTabs - 1)}`,
+                pin: true,
+                anticipatePin: 1,
+                snap: {
+                    snapTo: 1 / (numTabs - 1),
+                    duration: { min: 0.2, max: 0.5 },
+                    ease: 'power2.inOut',
+                    delay: 0,
+                },
+                onUpdate: (self) => {
+                    const newIdx = Math.min(
+                        Math.round(self.progress * (numTabs - 1)),
+                        numTabs - 1
+                    );
+                    if (newIdx !== activeIdxRef.current && !isAnimatingRef.current) {
+                        activeIdxRef.current = newIdx;
+                        const newId = SERVICES[newIdx].id;
+                        isAnimatingRef.current = true;
+                        if (panelRef.current) {
+                            gsap.to(panelRef.current, {
+                                opacity: 0, y: 8, duration: 0.15, ease: 'power2.in', overwrite: true,
+                                onComplete: () => {
+                                    setActive(newId);
+                                    requestAnimationFrame(() => {
+                                        if (panelRef.current) {
+                                            gsap.fromTo(panelRef.current,
+                                                { opacity: 0, y: 8 },
+                                                { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out',
+                                                  onComplete: () => { isAnimatingRef.current = false; }
+                                                }
+                                            );
+                                        } else {
+                                            isAnimatingRef.current = false;
+                                        }
+                                    });
+                                }
+                            });
+                        } else {
+                            setActive(newId);
+                            isAnimatingRef.current = false;
+                        }
+                    }
+                },
+            });
+            return () => st.kill();
+        });
+
+        return () => {
+            ctx.revert();
+            mm.revert();
+        };
+    }, []);
+
+    const handleTab = (id) => {
+        if (id === active || isAnimatingRef.current) return;
+        const newIdx = SERVICES.findIndex(s => s.id === id);
+        activeIdxRef.current = newIdx;
+        isAnimatingRef.current = true;
+        if (panelRef.current) {
+            gsap.to(panelRef.current, {
+                opacity: 0, y: 6, duration: 0.18, ease: 'power2.in', overwrite: true,
+                onComplete: () => {
+                    setActive(id);
+                    requestAnimationFrame(() => {
+                        if (panelRef.current) {
+                            gsap.fromTo(panelRef.current,
+                                { opacity: 0, y: 6 },
+                                { opacity: 1, y: 0, duration: 0.28, ease: 'power2.out',
+                                  onComplete: () => { isAnimatingRef.current = false; }
+                                }
+                            );
+                        } else {
+                            isAnimatingRef.current = false;
+                        }
+                    });
+                }
+            });
+        } else {
+            setActive(id);
+            isAnimatingRef.current = false;
+        }
+    };
+
+    const service = SERVICES.find(s => s.id === active);
+    const VISUALS = {
+        video: <VideoCompareMockup />,
+        seo: <SERPMockup />,
+        aeo: <AICitationMockup />,
+        linkedin: <LinkedInMockup />,
+        website: <WebsiteMockup />,
+        agent: <AIAgentMockup />,
+    };
 
     return (
-        <section id="services" className="w-full py-24 md:py-32 px-8 bg-background relative z-10" ref={containerRef}>
-            <div className="max-w-7xl mx-auto">
+        <section
+            id="services"
+            ref={containerRef}
+            className="w-full bg-[#111111] relative z-10 overflow-hidden
+                       py-16 px-6 md:px-10
+                       lg:h-screen lg:py-0 lg:px-0 lg:flex lg:flex-col"
+        >
+            <div className="w-full flex flex-col lg:h-full lg:px-14 xl:px-20 lg:py-10 xl:py-12 max-w-[1800px] mx-auto">
 
-                {/* Section Header */}
-                <div className="mb-20 text-center max-w-3xl mx-auto natugreen-header flex flex-col items-center">
-                    <div className="flex items-center gap-2 bg-secondary text-primary px-4 py-1.5 rounded mb-6 text-xs font-semibold tracking-wide">
-                        <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" /></svg>
-                        Our Full Framework to build Authority in your area
+                {/* Header */}
+                <div className="feat-header mb-5 shrink-0 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
+                    <div>
+                        <span className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-2 block">Our Services</span>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-tight">
+                            The Digital Authority Ecosystem
+                        </h2>
                     </div>
-
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-medium text-secondary mb-6 tracking-tight leading-[1.1]">
-                        The Digital Authority Ecosystem
-                    </h2>
-
-                    <p className="text-sm md:text-base text-textDark font-medium max-w-md mx-auto mb-10 leading-relaxed">
-                        We deploy 5 core pillars of digital authority to dramatically scale your commercial real estate firm.
+                    <p className="text-sm lg:text-base text-white/50 lg:max-w-xs leading-relaxed lg:text-right">
+                        See exactly what we do — and the results each service delivers for CRE firms.
                     </p>
                 </div>
 
-                {/* Grid - 5 Cards (Top 3, Bottom 2 centered) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-8">
-
-                    {/* Card 1: SEO & AEO */}
-                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
-                        <BrowserMockup />
-                        <div className="p-8 flex flex-col flex-1">
-                            <h3 className="text-xl font-sans font-regular text-white mb-3 tracking-tight group-hover:text-gray-200 transition-colors">SEO, AEO & GEO</h3>
-                            <p className="text-xs text-[#A1A1AA] leading-relaxed mb-8 flex-1 pr-4">
-                                Up to 12 Monthly Blogs designed to rank on Google and become the default referenced authority across all major Large Language Models.
-                            </p>
-                            <div className="flex flex-col gap-2">
-                                <a href="/seo-real-estate" className="w-full py-3 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-colors flex justify-center items-center gap-1">
-                                    Explore Traditional SEO <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
-                                </a>
-                                <a href="/aeo-geo-llms-real-estate" className="w-full py-3 bg-[#222222] border border-white/10 text-white font-sans font-semibold text-xs text-center rounded hover:bg-[#333333] transition-colors flex justify-center items-center gap-1">
-                                    Explore AEO & GEO <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Card 2: Short Form Content */}
-                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
-                        <ComparisonMockup />
-                        <div className="p-8 flex flex-col flex-1">
-                            <h3 className="text-xl font-sans font-regular text-white mb-3 tracking-tight group-hover:text-gray-200 transition-colors">Short Form Content</h3>
-                            <p className="text-xs text-[#A1A1AA] leading-relaxed mb-8 flex-1 pr-4">
-                                High-retention cinematic video content engineered to capture attention and build authority.
-                            </p>
-                            <a href="/content-real-estate" className="w-full py-4 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-colors flex justify-center items-center gap-1">
-                                Explore Content <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    {/* Card 3: LinkedIn Growth */}
-                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
-                        <OrbitMockup />
-                        <div className="p-8 flex flex-col flex-1">
-                            <h3 className="text-xl font-sans font-regular text-white mb-3 tracking-tight group-hover:text-gray-200 transition-colors">LinkedIn Growth</h3>
-                            <p className="text-xs text-[#A1A1AA] leading-relaxed mb-8 flex-1 pr-4">
-                                High-impact positioning to establish you as the voice of authority among institutional investors.
-                            </p>
-                            <a href="/linkedin-real-estate" className="w-full py-4 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-colors flex justify-center items-center gap-1">
-                                Explore Growth <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
-                            </a>
-                        </div>
-                    </div>
-
+                {/* Tab Bar */}
+                <div className="flex border-b border-white/20 overflow-x-auto shrink-0">
+                    {SERVICES.map(s => (
+                        <button
+                            key={s.id}
+                            onClick={() => handleTab(s.id)}
+                            className={`flex flex-col items-start px-5 py-4 shrink-0 border-b-2 transition-all duration-200 text-left ${
+                                active === s.id
+                                    ? 'border-white text-white'
+                                    : 'border-transparent text-white/50 hover:text-white/80 hover:border-white/30'
+                            }`}
+                        >
+                            <span className={`text-xs font-mono mb-1 ${active === s.id ? 'text-white/50' : 'text-white/25'}`}>{s.num}</span>
+                            <span className="text-base font-medium whitespace-nowrap">{s.label}</span>
+                        </button>
+                    ))}
                 </div>
 
-                {/* Add-ons Header */}
-                <div className="mt-16 mb-12 text-center max-w-2xl mx-auto natugreen-header flex flex-col items-center">
-                    <div className="flex items-center gap-2 bg-gray-100 text-gray-500 px-3 py-1 rounded mb-3 text-[10px] font-semibold tracking-wide uppercase">
-                        Free Included in Our Bundle
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-sans font-medium text-secondary tracking-tight">
-                        Ecosystem Add-ons
-                    </h3>
-                </div>
-
-                {/* Bottom 2 Cards (Centered Add-ons) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 lg:max-w-4xl lg:mx-auto">
-
-                    {/* Card 4: Website */}
-                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
-                        <CodeMockup />
-                        <div className="p-8 flex flex-col flex-1">
-                            <h3 className="text-xl font-sans font-regular text-white mb-3 tracking-tight group-hover:text-gray-200 transition-colors">Professional Website</h3>
-                            <p className="text-xs text-[#A1A1AA] leading-relaxed mb-8 flex-1 pr-4">
-                                Transform underperforming sites into authoritative digital infrastructure engineered purely for conversion.
-                            </p>
-                            <a href="/services" className="w-full py-4 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-colors flex justify-center items-center gap-1">
-                                Explore Tech <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
-                            </a>
+                {/* Panel */}
+                <div
+                    ref={panelRef}
+                    className="feat-panel flex flex-col lg:flex-row border border-white/10 border-t-0 flex-1 min-h-0 overflow-hidden"
+                    style={{ minHeight: '480px' }}
+                >
+                    {/* Left Info */}
+                    <div className="lg:w-[380px] xl:w-[420px] shrink-0 border-b lg:border-b-0 lg:border-r border-white/10 p-7 lg:p-8 xl:p-10 flex flex-col gap-5 bg-[#0D0D0D] overflow-y-auto">
+                        <div>
+                            <span className="text-xs font-semibold uppercase tracking-widest text-white/35 mb-2.5 block">{service.category}</span>
+                            <h3 className="text-xl lg:text-2xl font-medium text-white leading-snug">{service.title}</h3>
                         </div>
+                        <p className="text-base text-white/50 leading-relaxed flex-1">{service.desc}</p>
+                        <ul className="space-y-3">
+                            {service.points.map((pt, i) => (
+                                <li key={i} className="flex items-start gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 shrink-0"></div>
+                                    <span className="text-sm text-white/60 leading-relaxed">{pt}</span>
+                                </li>
+                            ))}
+                        </ul>
+                        <a
+                            href={service.link}
+                            className="flex items-center gap-2 text-sm font-semibold text-white/50 hover:text-white transition-colors group mt-auto"
+                        >
+                            {service.linkLabel}
+                            <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
+                        </a>
                     </div>
 
-                    {/* Card 5: AI Agents */}
-                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
-                        <ChatMockup />
-                        <div className="p-8 flex flex-col flex-1">
-                            <h3 className="text-xl font-sans font-regular text-white mb-3 tracking-tight group-hover:text-gray-200 transition-colors flex items-center justify-between">
-                                <span>AI Agent</span>
-                                <div className="flex gap-2">
-                                    <svg className="w-5 h-5 text-green-500" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" /></svg>
-                                    <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                </div>
-                            </h3>
-                            <p className="text-xs text-[#A1A1AA] leading-relaxed mb-8 flex-1 pr-4">
-                                AI Agent that responses to your leads in under 5 minutes. Qualify leads instantly 24/7 across WhatsApp and Email.
-                            </p>
-                            <a href="/ai-agent-real-estate" className="w-full py-4 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-colors flex justify-center items-center gap-1">
-                                Explore AI Agents <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
-                            </a>
-                        </div>
+                    {/* Right Visual */}
+                    <div className="flex-1 min-h-[400px] lg:min-h-0 overflow-hidden">
+                        {VISUALS[active]}
                     </div>
-
                 </div>
 
             </div>
