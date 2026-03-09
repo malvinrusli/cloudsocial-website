@@ -82,6 +82,10 @@ Follow these core principles. For detailed editing checks and word-by-word polis
 
 6. **Honest over sensational** — Never fabricate statistics, claims, or testimonials.
 
+7. **No em-dashes** — Never use em-dashes (—). Replace with a period, comma, or colon. "We do X. We do Y." not "We do X — and Y."
+
+8. **No forced negatives** — Never lead with what something isn't. Write what it IS directly. ❌ "It's not an agency, it's a growth partner." ✅ "We're your dedicated growth partner." Patterns to avoid: "It's not X, it's Y" / "Not A, not B, not C, but D."
+
 ### Quick Quality Check
 
 Before finalizing, scan for:
@@ -90,6 +94,8 @@ Before finalizing, scan for:
 - Passive voice constructions
 - Exclamation points (remove them)
 - Marketing buzzwords without substance
+- Em-dashes (—) — never use. Rewrite as two sentences or use a comma/colon.
+- Forced negatives — never use "It's not X, it's Y" or "Not A, not B, not C, but D" constructions. State what it IS directly.
 
 For a thorough line-by-line review, run the copy through the **copy-editing** skill's Seven Sweeps framework.
 

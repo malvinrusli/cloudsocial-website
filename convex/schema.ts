@@ -20,4 +20,97 @@ export default defineSchema({
         label: v.optional(v.string()),    // human-readable name
         uploadedAt: v.number(),
     }),
+
+    keyword_queue: defineTable({
+        target_keyword: v.string(),
+        secondary_keywords: v.optional(v.array(v.string())),
+        monthly_volume: v.optional(v.number()),
+        keyword_difficulty: v.optional(v.number()),
+        word_count_target: v.optional(v.number()),
+        funnel_stage: v.optional(v.string()), // "TOFU" | "MOFU" | "BOFU"
+        cluster: v.optional(v.string()),
+        pillar: v.optional(v.string()),
+        featured_image_prompt: v.optional(v.string()),
+        status: v.string(), // "pending" | "generating" | "published" | "failed"
+        error_message: v.optional(v.string()),
+        createdAt: v.number(),
+        processedAt: v.optional(v.number()),
+        postId: v.optional(v.id("posts")),
+    }),
+
+    posts: defineTable({
+        title: v.string(),
+        slug: v.string(),
+        content: v.string(), // HTML
+        excerpt: v.optional(v.string()),
+        status: v.string(), // "draft" | "published"
+        author: v.string(), // e.g. "CloudSocial Team"
+        funnel_stage: v.optional(v.string()),
+        cluster: v.optional(v.string()),
+        pillar: v.optional(v.string()),
+        target_keyword: v.optional(v.string()),
+        secondary_keywords: v.optional(v.array(v.string())),
+        monthly_volume: v.optional(v.number()),
+        keyword_difficulty: v.optional(v.number()),
+        word_count_target: v.optional(v.number()),
+        seo_title: v.optional(v.string()),
+        meta_description: v.optional(v.string()),
+        og_title: v.optional(v.string()),
+        og_description: v.optional(v.string()),
+        featured_image_storageId: v.optional(v.id("_storage")),
+        featured_image_alt: v.optional(v.string()),
+        featured_image_prompt: v.optional(v.string()),
+        json_ld: v.optional(v.string()), // JSON string
+        ai_generated: v.optional(v.boolean()),
+        queueItemId: v.optional(v.id("keyword_queue")),
+        publishedAt: v.optional(v.number()),
+        createdAt: v.number(),
+        updatedAt: v.number(),
+    }).index("by_slug", ["slug"])
+      .index("by_status", ["status"]),
+
+    bofu_pages: defineTable({
+        title: v.string(),
+        slug: v.string(),
+        status: v.string(), // "draft" | "published"
+        page_type: v.optional(v.string()), // "location" | "comparison" | "campaign" | etc.
+        target_keyword: v.optional(v.string()),
+        secondary_keywords: v.optional(v.array(v.string())),
+        monthly_volume: v.optional(v.number()),
+        keyword_difficulty: v.optional(v.number()),
+        // PageHero props
+        hero_badge: v.optional(v.string()),
+        hero_title: v.optional(v.string()),
+        hero_subtitle: v.optional(v.string()),
+        // AlternatingSection blocks as JSON array string
+        blocks: v.optional(v.string()),
+        seo_title: v.optional(v.string()),
+        meta_description: v.optional(v.string()),
+        og_title: v.optional(v.string()),
+        og_description: v.optional(v.string()),
+        json_ld: v.optional(v.string()),
+        publishedAt: v.optional(v.number()),
+        createdAt: v.number(),
+        updatedAt: v.number(),
+    }).index("by_slug", ["slug"])
+      .index("by_status", ["status"]),
+
+    case_studies: defineTable({
+        title: v.string(),
+        slug: v.string(),
+        client_name: v.optional(v.string()),
+        industry: v.optional(v.string()),
+        services: v.optional(v.array(v.string())),
+        content: v.string(), // HTML
+        status: v.string(), // "draft" | "published"
+        featured_image_storageId: v.optional(v.id("_storage")),
+        featured_image_alt: v.optional(v.string()),
+        seo_title: v.optional(v.string()),
+        meta_description: v.optional(v.string()),
+        json_ld: v.optional(v.string()),
+        publishedAt: v.optional(v.number()),
+        createdAt: v.number(),
+        updatedAt: v.number(),
+    }).index("by_slug", ["slug"])
+      .index("by_status", ["status"]),
 });
