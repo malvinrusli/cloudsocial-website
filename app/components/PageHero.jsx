@@ -35,7 +35,7 @@ const PageHero = ({
                     {badges && badges.length > 0 && (
                         <div className="flex flex-wrap gap-2 mb-8">
                             {badges.map((badge, idx) => (
-                                <div key={idx} className="page-hero-anim inline-flex items-center gap-2 bg-stone-50 px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase text-stone-600 border border-stone-200">
+                                <div key={idx} className="page-hero-anim inline-flex items-center gap-2 bg-stone-50 px-3 py-1.5 rounded text-xs font-semibold tracking-widest uppercase text-stone-600 border border-stone-200">
                                     <span className="w-1.5 h-1.5 rounded-full bg-stone-800"></span>
                                     {badge}
                                 </div>
@@ -79,7 +79,7 @@ const PageHero = ({
 
                 {/* Right Image Side */}
                 <div className="flex-1 w-full relative page-hero-anim">
-                    <div className="w-full aspect-[4/3] relative rounded-2xl overflow-hidden border border-stone-200 shadow-[0_8px_30px_rgb(0,0,0,0.06)] bg-stone-50">
+                    <div className="w-full aspect-[4/3] relative rounded-lg overflow-hidden border border-stone-200 bg-stone-50">
                         {/* Browser Top Chrome Mockup */}
                         <div className="w-full h-8 bg-stone-100 border-b border-stone-200 flex items-center px-4 gap-2 absolute top-0 left-0 z-10">
                             <div className="w-2.5 h-2.5 rounded-full bg-stone-300"></div>

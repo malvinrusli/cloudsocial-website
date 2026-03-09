@@ -9,14 +9,14 @@ const SmoothAccordionItem = ({ faq }) => {
     const [isOpen, setIsOpen] = React.useState(false);
 
     return (
-        <div className="border border-stone-200 rounded-xl overflow-hidden bg-white transition-colors duration-300">
+        <div className="border border-stone-200 rounded-md overflow-hidden bg-white transition-colors duration-200">
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full text-left cursor-pointer flex items-center justify-between p-5 hover:bg-stone-50 transition-colors focus:outline-none"
             >
                 <span className="text-sm font-medium text-stone-800 pr-4 leading-snug">{faq.q}</span>
                 <svg
-                    className={`w-4 h-4 flex-shrink-0 text-stone-400 transition-transform duration-500 ease-[cubic-bezier(0.87,0,0.13,1)] ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+                    className={`w-4 h-4 flex-shrink-0 text-stone-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -25,10 +25,10 @@ const SmoothAccordionItem = ({ faq }) => {
                 </svg>
             </button>
             <div
-                className={`grid transition-all duration-500 ease-[cubic-bezier(0.87,0,0.13,1)] ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                className={`grid transition-all duration-300 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
             >
                 <div className="overflow-hidden">
-                    <div className="px-5 pb-5 pt-1 bg-stone-50 text-stone-500 font-light text-sm leading-relaxed border-t border-stone-100/50">
+                    <div className="px-5 pb-5 pt-1 bg-stone-50 text-stone-500 font-light text-sm leading-relaxed border-t border-stone-100">
                         {faq.a}
                     </div>
                 </div>
@@ -67,11 +67,11 @@ const AlternatingSection = ({ blocks = [] }) => {
                     if (block.type === 'centered') {
                         return (
                             <div key={idx} className="w-full max-w-4xl mx-auto px-6 text-center block-anim">
-                                <h2 className="text-2xl md:text-3xl font-sans font-normal text-secondary mb-6 tracking-tight uppercase tracking-wider text-stone-500 text-sm">
+                                <h2 className="text-2xl md:text-3xl font-sans font-normal text-stone-800 mb-6 tracking-tight">
                                     {block.title}
                                 </h2>
                                 {block.text && (
-                                    <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-3xl mx-auto">
+                                    <p className="text-lg md:text-xl text-stone-500 font-light leading-relaxed max-w-3xl mx-auto">
                                         {block.text}
                                     </p>
                                 )}
@@ -87,7 +87,7 @@ const AlternatingSection = ({ blocks = [] }) => {
                             <div key={idx} className={`w-full max-w-6xl mx-auto px-6 flex flex-col ${layoutClass} items-center gap-16 lg:gap-24 block-anim`}>
                                 {/* Text Side */}
                                 <div className="flex-1 w-full text-left">
-                                    <h3 className="text-2xl md:text-3xl font-sans font-normal text-secondary mb-6 tracking-tight">
+                                    <h3 className="text-2xl md:text-3xl font-sans font-normal text-stone-800 mb-6 tracking-tight">
                                         {block.title}
                                     </h3>
                                     <p className="text-stone-500 leading-relaxed font-light text-lg mb-6">
@@ -107,9 +107,9 @@ const AlternatingSection = ({ blocks = [] }) => {
 
                                 {/* Image Mockup Side */}
                                 <div className="flex-1 w-full">
-                                    <div className={`w-full ${block.aspect || 'aspect-[4/3]'} relative rounded-2xl overflow-hidden border border-stone-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-stone-50 group`}>
+                                    <div className={`w-full ${block.aspect || 'aspect-[4/3]'} relative rounded-lg overflow-hidden border border-stone-200 bg-stone-50 group`}>
                                         {/* Browser Top Chrome Mockup */}
-                                        <div className="w-full h-8 bg-stone-100 border-b border-stone-200 flex items-center px-4 gap-2 absolute top-0 left-0 z-10 transition-colors duration-500 group-hover:bg-stone-200">
+                                        <div className="w-full h-8 bg-stone-100 border-b border-stone-200 flex items-center px-4 gap-2 absolute top-0 left-0 z-10 transition-colors duration-200 group-hover:bg-stone-150">
                                             <div className="w-2.5 h-2.5 rounded-full bg-stone-300"></div>
                                             <div className="w-2.5 h-2.5 rounded-full bg-stone-300"></div>
                                             <div className="w-2.5 h-2.5 rounded-full bg-stone-300"></div>
@@ -120,11 +120,11 @@ const AlternatingSection = ({ blocks = [] }) => {
                                             <img
                                                 src={block.imageSrc}
                                                 alt={block.title}
-                                                className="w-full h-full object-cover object-center pt-8 transition-transform duration-[10s] group-hover:scale-105"
+                                                className="w-full h-full object-cover object-center pt-8"
                                             />
                                         ) : (
                                             <div className="w-full h-full flex items-center justify-center pt-8">
-                                                <svg className="w-12 h-12 text-stone-300 group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                                <svg className="w-12 h-12 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                             </div>
                                         )}
                                     </div>
@@ -137,12 +137,11 @@ const AlternatingSection = ({ blocks = [] }) => {
                         return (
                             <div key={idx} className="w-full max-w-3xl mx-auto px-6 block-anim">
                                 <div className="text-center mb-10">
-                                    <p className="uppercase text-[10px] tracking-widest text-stone-400 font-medium mb-3">Common Questions</p>
-                                    <h2 className="text-2xl md:text-3xl font-sans font-normal text-secondary tracking-tight">
+                                    <h2 className="text-2xl md:text-3xl font-sans font-normal text-stone-800 tracking-tight">
                                         {block.title || 'Frequently Asked Questions'}
                                     </h2>
                                 </div>
-                                <div className="space-y-3">
+                                <div className="space-y-2">
                                     {(block.faqs || []).map((faq, i) => (
                                         <SmoothAccordionItem key={i} faq={faq} />
                                     ))}
@@ -155,8 +154,7 @@ const AlternatingSection = ({ blocks = [] }) => {
                         return (
                             <div key={idx} className="w-full max-w-6xl mx-auto px-6 block-anim">
                                 <div className="text-center mb-10">
-                                    <p className="uppercase text-[10px] tracking-widest text-stone-400 font-medium mb-3">Our Full Ecosystem</p>
-                                    <h2 className="text-2xl md:text-3xl font-sans font-normal text-secondary tracking-tight">
+                                    <h2 className="text-2xl md:text-3xl font-sans font-normal text-stone-800 tracking-tight">
                                         {block.title || 'Connected Services'}
                                     </h2>
                                     {block.text && (
@@ -165,13 +163,13 @@ const AlternatingSection = ({ blocks = [] }) => {
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     {(block.links || []).map((link, i) => (
-                                        <a key={i} href={link.path} className="group p-6 bg-white border border-stone-200 rounded-2xl hover:border-stone-400 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 flex flex-col">
+                                        <a key={i} href={link.path} className="group p-6 bg-white border border-stone-200 rounded-lg hover:border-stone-400 transition-colors duration-200 flex flex-col">
                                             <span className="text-[10px] font-semibold uppercase tracking-widest text-stone-400 mb-2">{link.label}</span>
                                             <h3 className="text-base font-medium text-stone-800 mb-2 group-hover:text-secondary transition-colors leading-snug">{link.name}</h3>
                                             <p className="text-sm text-stone-500 font-light flex-1 leading-relaxed">{link.desc}</p>
                                             <span className="mt-5 text-xs font-semibold text-stone-400 group-hover:text-secondary transition-colors flex items-center gap-1">
                                                 Explore
-                                                <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7"></path></svg>
+                                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7"></path></svg>
                                             </span>
                                         </a>
                                     ))}
@@ -182,9 +180,9 @@ const AlternatingSection = ({ blocks = [] }) => {
 
                     if (block.type === 'cta') {
                         return (
-                            <div key={idx} className="w-full bg-gradient-to-tr from-stone-100 to-amber-900/5 py-32 px-6 border-t border-stone-200 block-anim mt-12 mb-0">
+                            <div key={idx} className="w-full bg-stone-50 py-24 px-6 border-t border-stone-200 block-anim mt-12 mb-0">
                                 <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-                                    <h2 className="text-3xl md:text-5xl font-normal text-secondary mb-6 leading-tight max-w-2xl mx-auto">
+                                    <h2 className="text-3xl md:text-5xl font-normal text-stone-800 mb-6 leading-tight max-w-2xl mx-auto">
                                         {block.title}
                                     </h2>
                                     {block.text && (
@@ -192,9 +190,9 @@ const AlternatingSection = ({ blocks = [] }) => {
                                             {block.text}
                                         </p>
                                     )}
-                                    <button className="relative overflow-hidden px-10 py-5 rounded-md font-medium tracking-wide bg-secondary text-primary transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group shadow-xl">
+                                    <button className="relative overflow-hidden px-10 py-4 rounded-md font-medium tracking-wide bg-secondary text-primary transition-colors duration-200 group">
                                         <span className="relative z-10">{block.buttonText || 'Book Free Audit'}</span>
-                                        <span className="absolute inset-0 bg-stone-800 translate-y-full transition-transform duration-300 group-hover:translate-y-0 text-white z-0 rounded-md"></span>
+                                        <span className="absolute inset-0 bg-stone-800 translate-y-full transition-transform duration-200 group-hover:translate-y-0 text-white z-0 rounded-md"></span>
                                     </button>
                                 </div>
                             </div>

@@ -17,15 +17,15 @@ const LightDashboardMockup = () => (
                 <h3 className="text-sm font-semibold text-stone-800 tracking-tight">AI Visibility Sentiment</h3>
                 <p className="text-xs text-stone-500 mt-0.5">Brand mentions across top LLMs</p>
             </div>
-            <span className="text-[10px] font-medium bg-stone-50 text-stone-600 px-2.5 py-1 d border border-stone-200">Last 30 Days</span>
+            <span className="text-[10px] font-medium bg-stone-50 text-stone-600 px-2.5 py-1 border border-stone-200">Last 30 Days</span>
         </div>
 
         <div className="space-y-5">
             {/* ChatGPT */}
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 full bg-emerald-50 flex items-center justify-center border border-emerald-100">
-                        <div className="w-3.5 h-3.5 bg-emerald-500 sm rotate-45"></div>
+                    <div className="w-8 h-8 rounded-md bg-emerald-50 flex items-center justify-center border border-emerald-100">
+                        <div className="w-3.5 h-3.5 bg-emerald-500 rounded-sm rotate-45"></div>
                     </div>
                     <div>
                         <p className="text-sm font-medium text-stone-800">ChatGPT</p>
@@ -34,8 +34,8 @@ const LightDashboardMockup = () => (
                 </div>
                 <div className="text-right">
                     <p className="text-xs font-semibold text-emerald-600">+42% Positive</p>
-                    <div className="w-20 h-1.5 bg-stone-100 full mt-1.5 overflow-hidden">
-                        <div className="h-full bg-emerald-500 w-[85%] full"></div>
+                    <div className="w-20 h-1.5 bg-stone-100 rounded-full mt-1.5 overflow-hidden">
+                        <div className="h-full bg-emerald-500 w-[85%] rounded-full"></div>
                     </div>
                 </div>
             </div>
@@ -43,8 +43,8 @@ const LightDashboardMockup = () => (
             {/* Perplexity */}
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 full bg-blue-50 flex items-center justify-center border border-blue-100">
-                        <div className="w-3.5 h-3.5 full border-2 border-blue-500 border-t-transparent"></div>
+                    <div className="w-8 h-8 rounded-md bg-blue-50 flex items-center justify-center border border-blue-100">
+                        <div className="w-3.5 h-3.5 rounded-full border-2 border-blue-500 border-t-transparent"></div>
                     </div>
                     <div>
                         <p className="text-sm font-medium text-stone-800">Perplexity AI</p>
@@ -53,8 +53,8 @@ const LightDashboardMockup = () => (
                 </div>
                 <div className="text-right">
                     <p className="text-xs font-semibold text-blue-600">+28% Neutral</p>
-                    <div className="w-20 h-1.5 bg-stone-100 full mt-1.5 overflow-hidden">
-                        <div className="h-full bg-blue-500 w-[70%] full"></div>
+                    <div className="w-20 h-1.5 bg-stone-100 rounded-full mt-1.5 overflow-hidden">
+                        <div className="h-full bg-blue-500 w-[70%] rounded-full"></div>
                     </div>
                 </div>
             </div>
@@ -62,8 +62,8 @@ const LightDashboardMockup = () => (
             {/* Claude */}
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 full bg-amber-50 flex items-center justify-center border border-amber-100">
-                        <div className="w-3.5 h-3.5 bg-amber-500 sm"></div>
+                    <div className="w-8 h-8 rounded-md bg-amber-50 flex items-center justify-center border border-amber-100">
+                        <div className="w-3.5 h-3.5 bg-amber-500 rounded-sm"></div>
                     </div>
                     <div>
                         <p className="text-sm font-medium text-stone-800">Claude 4 Sonnet</p>
@@ -72,8 +72,8 @@ const LightDashboardMockup = () => (
                 </div>
                 <div className="text-right">
                     <p className="text-xs font-semibold text-amber-600">Improving</p>
-                    <div className="w-20 h-1.5 bg-stone-100 full mt-1.5 overflow-hidden">
-                        <div className="h-full bg-amber-500 w-[95%] full"></div>
+                    <div className="w-20 h-1.5 bg-stone-100 rounded-full mt-1.5 overflow-hidden">
+                        <div className="h-full bg-amber-500 w-[95%] rounded-full"></div>
                     </div>
                 </div>
             </div>
@@ -81,8 +81,8 @@ const LightDashboardMockup = () => (
             {/* Gemini */}
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 full bg-purple-50 flex items-center justify-center border border-purple-100">
-                        <div className="w-3.5 h-3.5 bg-purple-500 full"></div>
+                    <div className="w-8 h-8 rounded-md bg-purple-50 flex items-center justify-center border border-purple-100">
+                        <div className="w-3.5 h-3.5 bg-purple-500 rounded-sm"></div>
                     </div>
                     <div>
                         <p className="text-sm font-medium text-stone-800">Gemini</p>
@@ -91,8 +91,8 @@ const LightDashboardMockup = () => (
                 </div>
                 <div className="text-right">
                     <p className="text-xs font-semibold text-purple-600">+15% Positive</p>
-                    <div className="w-20 h-1.5 bg-stone-100 full mt-1.5 overflow-hidden">
-                        <div className="h-full bg-purple-500 w-[60%] full"></div>
+                    <div className="w-20 h-1.5 bg-stone-100 rounded-full mt-1.5 overflow-hidden">
+                        <div className="h-full bg-purple-500 w-[60%] rounded-full"></div>
                     </div>
                 </div>
             </div>
@@ -105,21 +105,21 @@ const MentionsFeedMockup = () => (
     <div className="w-full bg-white  border border-stone-200 p-5 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
         <div className="flex items-center justify-between mb-5 pb-4 border-b border-stone-100">
             <h3 className="text-sm font-semibold text-stone-800 tracking-tight">Recent AI Mentions</h3>
-            <span className="text-[10px] font-medium bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded border border-emerald-100">Live Tracker</span>
+            <span className="text-[10px] font-medium bg-emerald-50 text-emerald-700 px-2 py-0.5 border border-emerald-100">Live</span>
         </div>
 
         <div className="space-y-4">
-            <div className="p-3 bg-stone-50 g border border-stone-100">
+            <div className="p-3 bg-stone-50 rounded border border-stone-100">
                 <div className="flex items-center gap-2 mb-2">
-                    <div className="w-4 h-4 sm bg-emerald-500 rotate-45 flex-shrink-0"></div>
+                    <div className="w-4 h-4 rounded-sm bg-emerald-500 rotate-45 flex-shrink-0"></div>
                     <span className="text-xs font-medium text-stone-700">ChatGPT Query: "Who are the top tier industrial brokers in Dallas?"</span>
                 </div>
                 <p className="text-xs text-stone-600 leading-relaxed border-l-2 border-emerald-200 pl-3">"...For large-scale industrial portfolios, <strong className="text-stone-900 bg-yellow-100 px-1 rounded">Gulfalts</strong> is frequently cited as a leading authority in the Dallas-Fort Worth metroplex..."</p>
             </div>
 
-            <div className="p-3 bg-stone-50 g border border-stone-100">
+            <div className="p-3 bg-stone-50 rounded border border-stone-100">
                 <div className="flex items-center gap-2 mb-2">
-                    <div className="w-4 h-4 full border-2 border-blue-500 border-t-transparent flex-shrink-0"></div>
+                    <div className="w-4 h-4 rounded-full border-2 border-blue-500 border-t-transparent flex-shrink-0"></div>
                     <span className="text-xs font-medium text-stone-700">Perplexity AI: "Recent major leasing deals in Manhattan"</span>
                 </div>
                 <p className="text-xs text-stone-600 leading-relaxed border-l-2 border-blue-200 pl-3">"A notable recent transaction was the 50,000 sqft lease signed at the Zenith tower, brokered by <strong className="text-stone-900 bg-yellow-100 px-1 rounded">Gulfalts Insights</strong>."</p>
