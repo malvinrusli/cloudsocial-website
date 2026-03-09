@@ -68,16 +68,16 @@ const Hero = () => {
                 </p>
 
                 <div className="hero-anim mb-16">
-                    <button className="group relative px-8 py-4 bg-secondary text-primary font-sans font-medium rounded-md overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                    <button className="group relative px-8 py-4 bg-secondary text-primary font-sans font-medium rounded-md overflow-hidden transition-colors duration-200">
                         <span className="relative z-10">Book Free Audit</span>
-                        <span className="absolute inset-0 bg-textDark translate-y-full transition-transform duration-300 group-hover:translate-y-0 rounded-md"></span>
+                        <span className="absolute inset-0 bg-textDark translate-y-full transition-transform duration-200 group-hover:translate-y-0 rounded-md"></span>
                     </button>
                 </div>
             </div>
 
             {/* Cinematic Architectural Image Block (Bottom Section) */}
             <div className="w-full h-[60vh] mt-auto relative overflow-hidden hero-anim px-4 md:px-8 pb-8">
-                <div className="w-full h-full rounded-2xl md:rounded-[3rem] overflow-hidden relative shadow-2xl">
+                <div className="w-full h-full rounded-lg overflow-hidden relative">
                     <img
                         src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"
                         alt="Modern Minimalist Architecture under Blue Sky"

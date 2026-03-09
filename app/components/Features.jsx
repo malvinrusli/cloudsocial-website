@@ -82,7 +82,7 @@ const Features = () => {
         <div className="w-full h-48 bg-[#1A1A1A] flex items-center justify-center border-b border-white/5 relative overflow-hidden">
             <div className="absolute w-40 h-40 border border-white/5 rounded-full"></div>
             <div className="absolute w-28 h-28 border border-white/10 rounded-full border-dashed animate-[spin_20s_linear_infinite]"></div>
-            <div className="w-10 h-10 bg-[#0077b5] rounded-full flex items-center justify-center z-10 shadow-[0_0_20px_rgba(0,119,181,0.4)]">
+            <div className="w-10 h-10 bg-[#0077b5] rounded-full flex items-center justify-center z-10">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
             </div>
             <div className="absolute w-6 h-6 bg-[#232323] border border-white/10 rounded-full p-1 top-6 right-12 flex items-center justify-center">
@@ -112,12 +112,12 @@ const Features = () => {
     const ChatMockup = () => (
         <div className="w-full h-48 bg-[#1A1A1A] p-4 flex flex-col border-b border-white/5 relative overflow-hidden justify-end">
             <div className="w-full flex justify-end mb-2">
-                <div className="bg-[#25D366] text-black text-[9px] py-1.5 px-3 rounded-l-xl rounded-tr-xl shadow-lg">
+                <div className="bg-[#25D366] text-black text-[9px] py-1.5 px-3 rounded-l-xl rounded-tr-xl">
                     Can I schedule a tour for the 50k sqft property?
                 </div>
             </div>
             <div className="w-full flex justify-start">
-                <div className="bg-[#232323] text-white/80 text-[9px] py-1.5 px-3 rounded-r-xl rounded-tl-xl border border-white/5 shadow-lg">
+                <div className="bg-[#232323] text-white/80 text-[9px] py-1.5 px-3 rounded-r-xl rounded-tl-xl border border-white/5">
                     Yes, I can arrange that. What day works best?
                 </div>
             </div>
@@ -128,9 +128,9 @@ const Features = () => {
         <section id="services" className="w-full py-24 md:py-32 px-8 bg-background relative z-10" ref={containerRef}>
             <div className="max-w-7xl mx-auto">
 
-                {/* Section Header (Reverted to white background style, but applying Natugreen elegance) */}
+                {/* Section Header */}
                 <div className="mb-20 text-center max-w-3xl mx-auto natugreen-header flex flex-col items-center">
-                    <div className="flex items-center gap-2 bg-secondary text-primary px-4 py-1.5 rounded-full mb-6 text-xs font-semibold tracking-wide">
+                    <div className="flex items-center gap-2 bg-secondary text-primary px-4 py-1.5 rounded mb-6 text-xs font-semibold tracking-wide">
                         <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" /></svg>
                         Our Full Framework to build Authority in your area
                     </div>
@@ -148,7 +148,7 @@ const Features = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-8">
 
                     {/* Card 1: SEO & AEO */}
-                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-xl flex flex-col hover:border-white/20 transition-all duration-500 overflow-hidden shadow-2xl group">
+                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
                         <BrowserMockup />
                         <div className="p-8 flex flex-col flex-1">
                             <h3 className="text-xl font-sans font-regular text-white mb-3 tracking-tight group-hover:text-gray-200 transition-colors">SEO, AEO & GEO</h3>
@@ -156,10 +156,10 @@ const Features = () => {
                                 Up to 12 Monthly Blogs designed to rank on Google and become the default referenced authority across all major Large Language Models.
                             </p>
                             <div className="flex flex-col gap-2">
-                                <a href="/seo-real-estate" className="w-full py-3 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-all flex justify-center items-center gap-1 active:scale-95">
+                                <a href="/seo-real-estate" className="w-full py-3 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-colors flex justify-center items-center gap-1">
                                     Explore Traditional SEO <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
                                 </a>
-                                <a href="/aeo-geo-llms-real-estate" className="w-full py-3 bg-[#222222] border border-white/10 text-white font-sans font-semibold text-xs text-center rounded hover:bg-[#333333] transition-all flex justify-center items-center gap-1 active:scale-95">
+                                <a href="/aeo-geo-llms-real-estate" className="w-full py-3 bg-[#222222] border border-white/10 text-white font-sans font-semibold text-xs text-center rounded hover:bg-[#333333] transition-colors flex justify-center items-center gap-1">
                                     Explore AEO & GEO <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
                                 </a>
                             </div>
@@ -167,7 +167,7 @@ const Features = () => {
                     </div>
 
                     {/* Card 2: Short Form Content */}
-                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-xl flex flex-col hover:border-white/20 transition-all duration-500 overflow-hidden shadow-2xl group">
+                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
                         <div className="w-full aspect-[16/9] bg-[#050505] relative flex items-center justify-center overflow-hidden">
                             <video
                                 src="https://www.w3schools.com/html/mov_bbb.mp4"
@@ -179,7 +179,7 @@ const Features = () => {
                             />
                             {/* Play icon overlay */}
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                                <div className="w-12 h-12 rounded-md bg-white/10 border border-white/20 flex items-center justify-center">
                                     <svg className="w-4 h-4 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                                 </div>
                             </div>
@@ -189,21 +189,21 @@ const Features = () => {
                             <p className="text-xs text-[#A1A1AA] leading-relaxed mb-8 flex-1 pr-4">
                                 High-retention cinematic video content engineered to capture attention and build authority.
                             </p>
-                            <a href="/content-real-estate" className="w-full py-4 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-all flex justify-center items-center gap-1 active:scale-95">
+                            <a href="/content-real-estate" className="w-full py-4 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-colors flex justify-center items-center gap-1">
                                 Explore Content <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
                             </a>
                         </div>
                     </div>
 
                     {/* Card 3: LinkedIn Growth */}
-                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-xl flex flex-col hover:border-white/20 transition-all duration-500 overflow-hidden shadow-2xl group">
+                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
                         <OrbitMockup />
                         <div className="p-8 flex flex-col flex-1">
                             <h3 className="text-xl font-sans font-regular text-white mb-3 tracking-tight group-hover:text-gray-200 transition-colors">LinkedIn Growth</h3>
                             <p className="text-xs text-[#A1A1AA] leading-relaxed mb-8 flex-1 pr-4">
                                 High-impact positioning to establish you as the voice of authority among institutional investors.
                             </p>
-                            <a href="/linkedin-real-estate" className="w-full py-4 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-all flex justify-center items-center gap-1 active:scale-95">
+                            <a href="/linkedin-real-estate" className="w-full py-4 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-colors flex justify-center items-center gap-1">
                                 Explore Growth <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
                             </a>
                         </div>
@@ -213,7 +213,7 @@ const Features = () => {
 
                 {/* Add-ons Header */}
                 <div className="mt-16 mb-12 text-center max-w-2xl mx-auto natugreen-header flex flex-col items-center">
-                    <div className="flex items-center gap-2 bg-gray-100 text-gray-500 px-3 py-1 rounded-full mb-3 text-[10px] font-semibold tracking-wide uppercase">
+                    <div className="flex items-center gap-2 bg-gray-100 text-gray-500 px-3 py-1 rounded mb-3 text-[10px] font-semibold tracking-wide uppercase">
                         Free Included in Our Bundle
                     </div>
                     <h3 className="text-2xl md:text-3xl font-sans font-medium text-secondary tracking-tight">
@@ -225,21 +225,21 @@ const Features = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 lg:max-w-4xl lg:mx-auto">
 
                     {/* Card 4: Website */}
-                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-xl flex flex-col hover:border-white/20 transition-all duration-500 overflow-hidden shadow-2xl group">
+                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
                         <CodeMockup />
                         <div className="p-8 flex flex-col flex-1">
                             <h3 className="text-xl font-sans font-regular text-white mb-3 tracking-tight group-hover:text-gray-200 transition-colors">Website</h3>
                             <p className="text-xs text-[#A1A1AA] leading-relaxed mb-8 flex-1 pr-4">
                                 Transform underperforming sites into authoritative digital infrastructure engineered purely for conversion.
                             </p>
-                            <a href="/services" className="w-full py-4 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-all flex justify-center items-center gap-1 active:scale-95">
+                            <a href="/services" className="w-full py-4 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-colors flex justify-center items-center gap-1">
                                 Explore Tech <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
                             </a>
                         </div>
                     </div>
 
                     {/* Card 5: AI Agents */}
-                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-xl flex flex-col hover:border-white/20 transition-all duration-500 overflow-hidden shadow-2xl group">
+                    <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
                         <ChatMockup />
                         <div className="p-8 flex flex-col flex-1">
                             <h3 className="text-xl font-sans font-regular text-white mb-3 tracking-tight group-hover:text-gray-200 transition-colors flex items-center justify-between">
@@ -252,7 +252,7 @@ const Features = () => {
                             <p className="text-xs text-[#A1A1AA] leading-relaxed mb-8 flex-1 pr-4">
                                 AI Agent that responses to your leads in under 5 minutes. Qualify leads instantly 24/7 across WhatsApp and Email.
                             </p>
-                            <a href="/ai-agent-real-estate" className="w-full py-4 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-all flex justify-center items-center gap-1 active:scale-95">
+                            <a href="/ai-agent-real-estate" className="w-full py-4 bg-white text-black font-sans font-semibold text-xs text-center rounded hover:bg-gray-200 transition-colors flex justify-center items-center gap-1">
                                 Explore AI Agents <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
                             </a>
                         </div>

@@ -51,7 +51,7 @@ const CinematicVideo = () => {
                 </div>
 
                 {/* Video Player Container */}
-                <div className={`video-wrapper relative w-full  overflow-hidden shadow-2xl transition-all duration-700 ease-in-out bg-[#0D0D12] ${isExpanded ? 'max-w-full aspect-[21/9]' : 'max-w-5xl aspect-video'}`}>
+                <div className={`video-wrapper relative w-full overflow-hidden transition-all duration-700 ease-in-out bg-[#0D0D12] ${isExpanded ? 'max-w-full aspect-[21/9]' : 'max-w-5xl aspect-video'}`}>
 
                     {/* Mock Video Thumbnail / Background */}
                     <div className="absolute inset-0">
@@ -68,9 +68,9 @@ const CinematicVideo = () => {
                         <div className="absolute inset-0 flex items-center justify-center">
                             <button
                                 onClick={handlePlay}
-                                className="w-24 h-24 bg-white/10 backdrop-blur-md full border border-white/20 flex items-center justify-center group hover:bg-white/20 transition-all duration-300 hover:scale-105"
+                                className="w-24 h-24 rounded-md bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors duration-200"
                             >
-                                <Play className="w-10 h-10 text-white fill-white ml-2 opacity-90 group-hover:opacity-100" />
+                                <Play className="w-10 h-10 text-white fill-white ml-2 opacity-90" />
                             </button>
                         </div>
                     )}
@@ -78,7 +78,7 @@ const CinematicVideo = () => {
                     {/* Playing State Mock UI */}
                     {isPlaying && (
                         <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="font-mono text-white/50 text-sm tracking-widest animate-pulse border border-white/20 px-4 py-2 d bg-black/40">
+                            <span className="font-mono text-white/50 text-sm tracking-widest animate-pulse border border-white/20 px-4 py-2 bg-black/40">
                                 [ VIDEO PLAYING ]
                             </span>
                         </div>
@@ -91,7 +91,7 @@ const CinematicVideo = () => {
                                 {isPlaying ? 'Pause' : 'Play'}
                             </button>
                         </div>
-                        <button onClick={handleExpand} className="text-white bg-white/10 p-2 g hover:bg-white/20 backdrop-blur-sm transition-all">
+                        <button onClick={handleExpand} className="text-white bg-white/10 p-2 rounded hover:bg-white/20 backdrop-blur-sm transition-colors duration-200">
                             {isExpanded ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
                         </button>
                     </div>

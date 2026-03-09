@@ -106,7 +106,7 @@ const Protocol = () => {
                         <div
                             key={index}
                             ref={el => cardsRef.current[index] = el}
-                            className="w-full h-[60vh] min-h-[400px] bg-white border border-gray-200 rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row shadow-[0_20px_60px_rgba(0,0,0,0.06)] origin-top mb-12 last:mb-0 relative overflow-hidden"
+                            className="w-full h-[60vh] min-h-[400px] bg-white border border-gray-200 rounded-lg p-10 md:p-16 flex flex-col md:flex-row origin-top mb-12 last:mb-0 relative overflow-hidden"
                             style={{ zIndex: index }}
                         >
                             <div className="absolute right-0 top-0 w-1/2 h-full hidden md:block border-l border-gray-100 bg-[#FAFAFA]">
@@ -114,8 +114,8 @@ const Protocol = () => {
                             </div>
 
                             <div className="relative z-10 w-full md:w-1/2 flex flex-col justify-center pr-8">
-                                <div className="font-sans font-semibold text-textDark text-lg mb-6 flex items-center bg-gray-50 border border-gray-200 w-max px-4 py-1.5 rounded-full shadow-sm">
-                                    <span className="w-2 h-2 rounded-full bg-secondary mr-3 animate-pulse"></span>
+                                <div className="font-sans font-semibold text-textDark text-lg mb-6 flex items-center bg-gray-50 border border-gray-200 w-max px-4 py-1.5 rounded">
+                                    <span className="w-2 h-2 rounded-full bg-secondary mr-3"></span>
                                     Phase {phase.step}
                                 </div>
                                 <h3 className="text-3xl md:text-4xl font-sans font-medium text-secondary mb-6 relative z-10 tracking-tight">

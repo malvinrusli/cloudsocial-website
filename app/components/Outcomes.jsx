@@ -42,18 +42,18 @@ const Outcomes = () => {
             {/* Content Container */}
             <div className="relative z-20 max-w-5xl mx-auto flex justify-center">
 
-                {/* Frosted Glass Card */}
-                <div className="natugreen-cta relative w-full backdrop-blur-3xl bg-white/[0.05] border border-white/20 rounded-[2rem] md:rounded-[3rem] p-10 md:p-20 text-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                {/* Card */}
+                <div className="natugreen-cta relative w-full backdrop-blur-sm bg-white/[0.08] border border-white/10 rounded-lg p-10 md:p-20 text-center">
 
                     {/* Top Badges */}
                     <div className="flex justify-center flex-wrap gap-4 mb-8">
-                        <div className="flex items-center gap-2 bg-white flex-shrink-0 px-3 py-1.5 rounded-sm text-[10px] md:text-xs font-sans font-semibold tracking-wide text-black shadow-md">
+                        <div className="flex items-center gap-2 bg-white flex-shrink-0 px-3 py-1.5 rounded-sm text-[10px] md:text-xs font-sans font-semibold tracking-wide text-black">
                             <div className="bg-black text-white w-3 h-3 rounded-[2px] flex items-center justify-center">
                                 <svg className="w-2 h-2" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path></svg>
                             </div>
                             No Sales Pitch
                         </div>
-                        <div className="flex items-center gap-2 bg-white flex-shrink-0 px-3 py-1.5 rounded-sm text-[10px] md:text-xs font-sans font-semibold tracking-wide text-black shadow-md">
+                        <div className="flex items-center gap-2 bg-white flex-shrink-0 px-3 py-1.5 rounded-sm text-[10px] md:text-xs font-sans font-semibold tracking-wide text-black">
                             <div className="bg-black text-white w-3 h-3 rounded-[2px] flex items-center justify-center">
                                 <svg className="w-2 h-2" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path></svg>
                             </div>
@@ -72,9 +72,9 @@ const Outcomes = () => {
                     </p>
 
                     {/* CTA Button */}
-                    <button className="px-8 py-4 bg-white text-black font-sans font-bold text-sm rounded-md hover:bg-gray-200 transition-all duration-300 flex items-center gap-2 mx-auto mt-4 shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+                    <button className="px-8 py-4 bg-white text-black font-sans font-bold text-sm rounded-md hover:bg-gray-200 transition-colors duration-200 flex items-center gap-2 mx-auto mt-4">
                         Schedule My Tour
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinelinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
                     </button>
 
                 </div>
