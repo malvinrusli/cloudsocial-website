@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import ContactModal from './ContactModal';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -39,6 +40,8 @@ const SmoothAccordionItem = ({ faq }) => {
 
 const AlternatingSection = ({ blocks = [] }) => {
     const containerRef = useRef(null);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalSource, setModalSource] = useState("");
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -58,6 +61,7 @@ const AlternatingSection = ({ blocks = [] }) => {
     }, [blocks]);
 
     return (
+        <>
         <div ref={containerRef} className="w-full bg-white pb-24">
 
             {/* Render blocks sequentially */}
@@ -190,7 +194,10 @@ const AlternatingSection = ({ blocks = [] }) => {
                                             {block.text}
                                         </p>
                                     )}
-                                    <button className="relative overflow-hidden px-10 py-4 rounded-md font-medium tracking-wide bg-secondary text-primary transition-colors duration-200 group">
+                                    <button
+                                        onClick={() => { setModalSource(block.buttonText || "CTA"); setModalOpen(true); }}
+                                        className="relative overflow-hidden px-10 py-4 rounded-md font-medium tracking-wide bg-secondary text-primary transition-colors duration-200 group"
+                                    >
                                         <span className="relative z-10">{block.buttonText || 'Book Free Audit'}</span>
                                         <span className="absolute inset-0 bg-stone-800 translate-y-full transition-transform duration-200 group-hover:translate-y-0 text-white z-0 rounded-md"></span>
                                     </button>
@@ -203,6 +210,8 @@ const AlternatingSection = ({ blocks = [] }) => {
                 })}
             </div>
         </div>
+        <ContactModal isOpen={modalOpen} onClose={() => setModalOpen(false)} source={modalSource} />
+        </>
     );
 };
 

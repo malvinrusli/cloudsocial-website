@@ -1,5 +1,6 @@
 import './globals.css';
 import IntroAnimation from './components/IntroAnimation';
+import Providers from './components/Providers';
 
 export const metadata = {
     title: {
@@ -34,7 +35,7 @@ export default function RootLayout({ children }) {
                     <rect width="100%" height="100%" filter="url(#noiseFilter)" />
                 </svg>
                 <IntroAnimation />
-                {children}
+                <Providers>{children}</Providers>
             </body>
         </html>
     );

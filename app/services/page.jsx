@@ -4,9 +4,11 @@ import gsap from 'gsap';
 import { ChevronRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import ContactModal from '../components/ContactModal';
 
 export default function ServicesHubPage() {
     const containerRef = useRef(null);
+    const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -185,9 +187,13 @@ export default function ServicesHubPage() {
                         We make you the <span className="font-serif text-gray-300">default choice</span> in your market.
                     </h2>
 
-                    <button className="px-8 py-4 rounded-md font-sans text-sm font-semibold bg-white text-secondary hover:bg-gray-100 transition-colors duration-200 mt-6">
+                    <button
+                        onClick={() => setModalOpen(true)}
+                        className="px-8 py-4 rounded-md font-sans text-sm font-semibold bg-white text-secondary hover:bg-gray-100 transition-colors duration-200 mt-6"
+                    >
                         Request a Free Strategy Audit
                     </button>
+                    <ContactModal isOpen={modalOpen} onClose={() => setModalOpen(false)} source="Services Hub" />
                 </div>
             </section>
 

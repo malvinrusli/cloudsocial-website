@@ -1,6 +1,7 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import ContactModal from './ContactModal';
 
 const PageHero = ({
     title1,
@@ -12,6 +13,7 @@ const PageHero = ({
     imageSrc = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
 }) => {
     const containerRef = useRef(null);
+    const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -24,6 +26,7 @@ const PageHero = ({
     }, []);
 
     return (
+        <>
         <section
             ref={containerRef}
             className="relative w-full min-h-[70dvh] bg-white flex flex-col pt-32 pb-16"
@@ -70,7 +73,10 @@ const PageHero = ({
                     )}
 
                     <div className="page-hero-anim mb-8 lg:mb-0">
-                        <button className="group relative px-8 py-4 bg-secondary text-primary font-sans font-medium rounded-md overflow-hidden transition-all duration-300 shadow-md">
+                        <button
+                            onClick={() => setModalOpen(true)}
+                            className="group relative px-8 py-4 bg-secondary text-primary font-sans font-medium rounded-md overflow-hidden transition-all duration-300 shadow-md"
+                        >
                             <span className="relative z-10">{buttonText}</span>
                             <span className="absolute inset-0 bg-stone-800 translate-y-full transition-transform duration-300 group-hover:translate-y-0 rounded-md"></span>
                         </button>
@@ -95,6 +101,8 @@ const PageHero = ({
                 </div>
             </div>
         </section>
+        <ContactModal isOpen={modalOpen} onClose={() => setModalOpen(false)} source={buttonText} />
+        </>
     );
 };
 
