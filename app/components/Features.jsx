@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -390,102 +390,33 @@ const AIAgentMockup = () => (
 
 const Features = () => {
     const [active, setActive] = useState('video');
+    const scrollWrapperRef = useRef(null);
     const containerRef = useRef(null);
     const panelRef = useRef(null);
     const activeIdxRef = useRef(0);
     const isAnimatingRef = useRef(false);
 
-    useEffect(() => {
-        if (!containerRef.current) return;
-        const numTabs = SERVICES.length;
+    const changeTab = useCallback((id, idx) => {
+        if (idx === activeIdxRef.current) return;
+        activeIdxRef.current = idx;
 
-        const ctx = gsap.context(() => {
-            gsap.fromTo('.feat-header',
-                { y: 20, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
-                  scrollTrigger: { trigger: containerRef.current, start: 'top 80%', once: true } }
-            );
-            gsap.fromTo('.feat-panel',
-                { y: 25, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.1,
-                  scrollTrigger: { trigger: containerRef.current, start: 'top 80%', once: true } }
-            );
-        }, containerRef);
-
-        // Scroll-driven tab pinning — desktop only
-        const mm = gsap.matchMedia();
-        mm.add('(min-width: 1024px)', () => {
-            const st = ScrollTrigger.create({
-                trigger: containerRef.current,
-                start: 'top top',
-                end: `+=${window.innerHeight * (numTabs - 1)}`,
-                pin: true,
-                anticipatePin: 1,
-                snap: {
-                    snapTo: 1 / (numTabs - 1),
-                    duration: { min: 0.2, max: 0.5 },
-                    ease: 'power2.inOut',
-                    delay: 0,
-                },
-                onUpdate: (self) => {
-                    const newIdx = Math.min(
-                        Math.round(self.progress * (numTabs - 1)),
-                        numTabs - 1
-                    );
-                    if (newIdx !== activeIdxRef.current && !isAnimatingRef.current) {
-                        activeIdxRef.current = newIdx;
-                        const newId = SERVICES[newIdx].id;
-                        isAnimatingRef.current = true;
-                        if (panelRef.current) {
-                            gsap.to(panelRef.current, {
-                                opacity: 0, y: 8, duration: 0.15, ease: 'power2.in', overwrite: true,
-                                onComplete: () => {
-                                    setActive(newId);
-                                    requestAnimationFrame(() => {
-                                        if (panelRef.current) {
-                                            gsap.fromTo(panelRef.current,
-                                                { opacity: 0, y: 8 },
-                                                { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out',
-                                                  onComplete: () => { isAnimatingRef.current = false; }
-                                                }
-                                            );
-                                        } else {
-                                            isAnimatingRef.current = false;
-                                        }
-                                    });
-                                }
-                            });
-                        } else {
-                            setActive(newId);
-                            isAnimatingRef.current = false;
-                        }
-                    }
-                },
-            });
-            return () => st.kill();
-        });
-
-        return () => {
-            ctx.revert();
-            mm.revert();
-        };
-    }, []);
-
-    const handleTab = (id) => {
-        if (id === active || isAnimatingRef.current) return;
-        const newIdx = SERVICES.findIndex(s => s.id === id);
-        activeIdxRef.current = newIdx;
+        if (isAnimatingRef.current) {
+            // Skip animation mid-flight — just swap
+            setActive(id);
+            return;
+        }
         isAnimatingRef.current = true;
+
         if (panelRef.current) {
             gsap.to(panelRef.current, {
-                opacity: 0, y: 6, duration: 0.18, ease: 'power2.in', overwrite: true,
+                opacity: 0, y: 8, duration: 0.15, ease: 'power2.in', overwrite: true,
                 onComplete: () => {
                     setActive(id);
                     requestAnimationFrame(() => {
                         if (panelRef.current) {
                             gsap.fromTo(panelRef.current,
-                                { opacity: 0, y: 6 },
-                                { opacity: 1, y: 0, duration: 0.28, ease: 'power2.out',
+                                { opacity: 0, y: 8 },
+                                { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out',
                                   onComplete: () => { isAnimatingRef.current = false; }
                                 }
                             );
@@ -499,7 +430,58 @@ const Features = () => {
             setActive(id);
             isAnimatingRef.current = false;
         }
+    }, []);
+
+    const handleTab = (id) => {
+        const idx = SERVICES.findIndex(s => s.id === id);
+        changeTab(id, idx);
     };
+
+    useEffect(() => {
+        if (!containerRef.current || !scrollWrapperRef.current) return;
+
+        const mm = gsap.matchMedia();
+        mm.add('(min-width: 1024px)', () => {
+            const numTabs = SERVICES.length;
+
+            // Make wrapper tall so section can stick while user scrolls through tabs
+            scrollWrapperRef.current.style.height = `${numTabs * 100}vh`;
+
+            // Header entry animation
+            gsap.fromTo('.feat-header',
+                { y: 20, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+                  scrollTrigger: { trigger: containerRef.current, start: 'top 75%', once: true } }
+            );
+
+            // One ScrollTrigger per tab — fires only on discrete enter/leave, no auto-scroll
+            const triggers = SERVICES.map((service, i) => {
+                const frac = 1 / numTabs;
+                return ScrollTrigger.create({
+                    trigger: scrollWrapperRef.current,
+                    start: () => {
+                        const range = scrollWrapperRef.current.offsetHeight - window.innerHeight;
+                        return `top+=${i * frac * range} top`;
+                    },
+                    end: () => {
+                        const range = scrollWrapperRef.current.offsetHeight - window.innerHeight;
+                        return `top+=${(i + 1) * frac * range} top`;
+                    },
+                    onEnter: () => changeTab(service.id, i),
+                    onEnterBack: () => changeTab(service.id, i),
+                });
+            });
+
+            return () => {
+                triggers.forEach(t => t.kill());
+                if (scrollWrapperRef.current) {
+                    scrollWrapperRef.current.style.height = '';
+                }
+            };
+        });
+
+        return () => mm.revert();
+    }, [changeTab]);
 
     const service = SERVICES.find(s => s.id === active);
     const VISUALS = {
@@ -512,84 +494,86 @@ const Features = () => {
     };
 
     return (
-        <section
-            id="services"
-            ref={containerRef}
-            className="w-full bg-[#111111] relative z-10 overflow-hidden
-                       py-16 px-6 md:px-10
-                       lg:h-screen lg:py-0 lg:px-0 lg:flex lg:flex-col"
-        >
-            <div className="w-full flex flex-col lg:h-full lg:px-14 xl:px-20 lg:py-10 xl:py-12 max-w-[1800px] mx-auto">
+        <div ref={scrollWrapperRef} className="bg-[#111111] relative">
+            <section
+                id="services"
+                ref={containerRef}
+                className="w-full bg-[#111111] relative z-10 overflow-hidden
+                           py-16 px-6 md:px-10
+                           lg:sticky lg:top-0 lg:h-screen lg:py-0 lg:px-0 lg:flex lg:flex-col"
+            >
+                <div className="w-full flex flex-col lg:h-full lg:px-14 xl:px-20 lg:py-10 xl:py-12 max-w-[1800px] mx-auto">
 
-                {/* Header */}
-                <div className="feat-header mb-5 shrink-0 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
-                    <div>
-                        <span className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-2 block">Our Services</span>
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-tight">
-                            The Digital Authority Ecosystem
-                        </h2>
-                    </div>
-                    <p className="text-sm lg:text-base text-white/50 lg:max-w-xs leading-relaxed lg:text-right">
-                        See exactly what we do — and the results each service delivers for CRE firms.
-                    </p>
-                </div>
-
-                {/* Tab Bar */}
-                <div className="flex border-b border-white/20 overflow-x-auto shrink-0">
-                    {SERVICES.map(s => (
-                        <button
-                            key={s.id}
-                            onClick={() => handleTab(s.id)}
-                            className={`flex flex-col items-start px-5 py-4 shrink-0 border-b-2 transition-all duration-200 text-left ${
-                                active === s.id
-                                    ? 'border-white text-white'
-                                    : 'border-transparent text-white/50 hover:text-white/80 hover:border-white/30'
-                            }`}
-                        >
-                            <span className={`text-xs font-mono mb-1 ${active === s.id ? 'text-white/50' : 'text-white/25'}`}>{s.num}</span>
-                            <span className="text-base font-medium whitespace-nowrap">{s.label}</span>
-                        </button>
-                    ))}
-                </div>
-
-                {/* Panel */}
-                <div
-                    ref={panelRef}
-                    className="feat-panel flex flex-col lg:flex-row border border-white/10 border-t-0 flex-1 min-h-0 overflow-hidden"
-                    style={{ minHeight: '480px' }}
-                >
-                    {/* Left Info */}
-                    <div className="lg:w-[380px] xl:w-[420px] shrink-0 border-b lg:border-b-0 lg:border-r border-white/10 p-7 lg:p-8 xl:p-10 flex flex-col gap-5 bg-[#0D0D0D] overflow-y-auto">
+                    {/* Header */}
+                    <div className="feat-header mb-5 shrink-0 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
                         <div>
-                            <span className="text-xs font-semibold uppercase tracking-widest text-white/35 mb-2.5 block">{service.category}</span>
-                            <h3 className="text-xl lg:text-2xl font-medium text-white leading-snug">{service.title}</h3>
+                            <span className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-2 block">Our Services</span>
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-tight">
+                                The Digital Authority Ecosystem
+                            </h2>
                         </div>
-                        <p className="text-base text-white/50 leading-relaxed flex-1">{service.desc}</p>
-                        <ul className="space-y-3">
-                            {service.points.map((pt, i) => (
-                                <li key={i} className="flex items-start gap-3">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 shrink-0"></div>
-                                    <span className="text-sm text-white/60 leading-relaxed">{pt}</span>
-                                </li>
-                            ))}
-                        </ul>
-                        <a
-                            href={service.link}
-                            className="flex items-center gap-2 text-sm font-semibold text-white/50 hover:text-white transition-colors group mt-auto"
-                        >
-                            {service.linkLabel}
-                            <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
-                        </a>
+                        <p className="text-sm lg:text-base text-white/50 lg:max-w-xs leading-relaxed lg:text-right">
+                            See exactly what we do — and the results each service delivers for CRE firms.
+                        </p>
                     </div>
 
-                    {/* Right Visual */}
-                    <div className="flex-1 min-h-[400px] lg:min-h-0 overflow-hidden">
-                        {VISUALS[active]}
+                    {/* Tab Bar */}
+                    <div className="flex border-b border-white/20 overflow-x-auto shrink-0">
+                        {SERVICES.map(s => (
+                            <button
+                                key={s.id}
+                                onClick={() => handleTab(s.id)}
+                                className={`flex flex-col items-start px-5 py-4 shrink-0 border-b-2 transition-all duration-200 text-left ${
+                                    active === s.id
+                                        ? 'border-white text-white'
+                                        : 'border-transparent text-white/50 hover:text-white/80 hover:border-white/30'
+                                }`}
+                            >
+                                <span className={`text-xs font-mono mb-1 ${active === s.id ? 'text-white/50' : 'text-white/25'}`}>{s.num}</span>
+                                <span className="text-base font-medium whitespace-nowrap">{s.label}</span>
+                            </button>
+                        ))}
                     </div>
+
+                    {/* Panel */}
+                    <div
+                        ref={panelRef}
+                        className="feat-panel flex flex-col lg:flex-row border border-white/10 border-t-0 flex-1 min-h-0 overflow-hidden"
+                        style={{ minHeight: '480px' }}
+                    >
+                        {/* Left Info */}
+                        <div className="lg:w-[380px] xl:w-[420px] shrink-0 border-b lg:border-b-0 lg:border-r border-white/10 p-7 lg:p-8 xl:p-10 flex flex-col gap-5 bg-[#0D0D0D] overflow-y-auto">
+                            <div>
+                                <span className="text-xs font-semibold uppercase tracking-widest text-white/35 mb-2.5 block">{service.category}</span>
+                                <h3 className="text-xl lg:text-2xl font-medium text-white leading-snug">{service.title}</h3>
+                            </div>
+                            <p className="text-base text-white/50 leading-relaxed flex-1">{service.desc}</p>
+                            <ul className="space-y-3">
+                                {service.points.map((pt, i) => (
+                                    <li key={i} className="flex items-start gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 shrink-0"></div>
+                                        <span className="text-sm text-white/60 leading-relaxed">{pt}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <a
+                                href={service.link}
+                                className="flex items-center gap-2 text-sm font-semibold text-white/50 hover:text-white transition-colors group mt-auto"
+                            >
+                                {service.linkLabel}
+                                <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M19 5H9M19 5v10" /></svg>
+                            </a>
+                        </div>
+
+                        {/* Right Visual */}
+                        <div className="flex-1 min-h-[400px] lg:min-h-0 overflow-hidden">
+                            {VISUALS[active]}
+                        </div>
+                    </div>
+
                 </div>
-
-            </div>
-        </section>
+            </section>
+        </div>
     );
 };
 
