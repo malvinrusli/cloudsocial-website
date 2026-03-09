@@ -15,7 +15,7 @@ const PostPerformanceMockup = () => (
         {/* Post Preview */}
         <div className="p-4 border-b border-stone-100">
             <div className="flex items-center gap-2 mb-3">
-                <div className="w-8 h-8 full bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">JC</div>
+                <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">JC</div>
                 <div>
                     <p className="text-xs font-semibold text-stone-800">James Chen</p>
                     <p className="text-[10px] text-stone-400">Principal · Meridian Capital Group · 1d</p>
@@ -47,7 +47,7 @@ const PostPerformanceMockup = () => (
                 { name: 'Sarah K.', role: 'CIO · Mesa Capital', text: 'Exactly what we needed. What submarkets are you bullish on?' },
                 { name: 'Michael T.', role: 'MD · Brookfield RE', text: 'Great analysis James. Are you advising on acquisitions?' }
             ].map((c, i) => (
-                <div key={i} className="bg-white g p-2.5 border border-stone-100">
+                <div key={i} className="bg-white p-2.5 border border-stone-100">
                     <p className="text-[10px] font-semibold text-stone-700">{c.name} <span className="font-normal text-stone-400">· {c.role}</span></p>
                     <p className="text-[10px] text-stone-600 mt-0.5">{c.text}</p>
                 </div>
@@ -64,7 +64,7 @@ const ContentCalendarMockup = () => (
                 <h3 className="text-sm font-semibold text-stone-800 tracking-tight">Content Calendar — March</h3>
                 <p className="text-xs text-stone-500 mt-0.5">Managed by CloudSocial</p>
             </div>
-            <span className="text-[10px] font-medium bg-stone-100 text-stone-600 px-2.5 py-1 d border border-stone-200">12 posts scheduled</span>
+            <span className="text-[10px] font-medium bg-stone-100 text-stone-600 px-2.5 py-1 border border-stone-200">12 posts scheduled</span>
         </div>
         <div className="space-y-2">
             {[
@@ -73,7 +73,7 @@ const ContentCalendarMockup = () => (
                 { date: 'Fri Mar 7', title: 'Why Multifamily Yields Are Compressing in Sunbelt', type: 'Opinion', status: 'Scheduled' },
                 { date: 'Mon Mar 10', title: 'Q1 2026 Industrial Absorption Data [Infographic]', type: 'Visual Asset', status: 'In Draft' },
             ].map((post, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 bg-stone-50 g border border-stone-100">
+                <div key={i} className="flex items-center gap-3 p-3 bg-stone-50 border border-stone-100">
                     <div className="text-center flex-shrink-0">
                         <p className="text-[9px] text-stone-400 font-medium">{post.date}</p>
                     </div>
@@ -81,7 +81,7 @@ const ContentCalendarMockup = () => (
                         <p className="text-[11px] font-medium text-stone-800 truncate">{post.title}</p>
                         <span className="text-[9px] text-stone-500">{post.type}</span>
                     </div>
-                    <span className={`text-[9px] font-semibold px-2 py-0.5 full flex-shrink-0 ${post.status === 'Published' ? 'bg-emerald-50 text-emerald-600' : post.status === 'Scheduled' ? 'bg-blue-50 text-blue-600' : 'bg-amber-50 text-amber-600'}`}>
+                    <span className={`text-[9px] font-semibold px-2 py-0.5 rounded flex-shrink-0 ${post.status === 'Published' ? 'bg-emerald-50 text-emerald-600' : post.status === 'Scheduled' ? 'bg-blue-50 text-blue-600' : 'bg-amber-50 text-amber-600'}`}>
                         {post.status}
                     </span>
                 </div>
@@ -132,7 +132,7 @@ export default function LinkedInContentRealEstatePage() {
             imagePosition: 'right',
             title: '2. Data-Led Visual Content',
             text: "The highest-performing commercial real estate content on LinkedIn pairs original market data with custom-designed visual assets. We produce infographics, market trend carousels, and cap rate visualizations that institutional audiences share, extending your reach far beyond your existing network.",
-            imageSrc: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop'
+            imageSrc: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop'
         },
         {
             type: 'split',

@@ -13,7 +13,7 @@ export const metadata = {
 const LinkedInProfileMockup = () => (
     <div className="w-full bg-white  border border-stone-200 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
         {/* Banner */}
-        <div className="h-20 bg-gradient-to-r from-slate-800 to-slate-600 relative">
+        <div className="h-20 bg-slate-800 relative">
             <div className="absolute bottom-0 right-4 top-0 flex items-center">
                 <div className="text-right">
                     <p className="text-white/80 text-[9px] font-semibold uppercase tracking-widest">$2.4B</p>
@@ -24,10 +24,10 @@ const LinkedInProfileMockup = () => (
         {/* Profile Info */}
         <div className="px-4 pb-4">
             <div className="flex items-end justify-between -mt-5 mb-3">
-                <div className="w-12 h-12 full bg-stone-200 border-2 border-white shadow flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-stone-200 border-2 border-white flex items-center justify-center">
                     <span className="text-sm font-semibold text-stone-600">JC</span>
                 </div>
-                <span className="text-[10px] font-semibold bg-blue-600 text-white px-3 py-1 full">Connect</span>
+                <span className="text-[10px] font-semibold bg-blue-600 text-white px-3 py-1 rounded-sm">Connect</span>
             </div>
             <p className="text-xs font-bold text-stone-800 leading-tight">James Chen · Principal, Meridian Capital Group</p>
             <p className="text-[10px] text-stone-500 mt-0.5">Industrial & Logistics CRE · Dallas-Fort Worth</p>
@@ -58,7 +58,7 @@ const NetworkGrowthMockup = () => (
                 <h3 className="text-sm font-semibold text-stone-800 tracking-tight">New Connections This Month</h3>
                 <p className="text-xs text-stone-500 mt-0.5">Target audience only</p>
             </div>
-            <span className="text-[10px] font-medium bg-blue-50 text-blue-600 px-2.5 py-1 d border border-blue-100">+182 this month</span>
+            <span className="text-[10px] font-medium bg-blue-50 text-blue-600 px-2.5 py-1 border border-blue-100">+182 this month</span>
         </div>
         <div className="space-y-3">
             {[
@@ -69,7 +69,7 @@ const NetworkGrowthMockup = () => (
             ].map((c, i) => (
                 <div key={i} className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center text-[10px] font-bold text-blue-600 flex-shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-[10px] font-bold text-blue-600 flex-shrink-0">
                             {c.name.split(' ').map(n => n[0]).join('')}
                         </div>
                         <div>
@@ -77,7 +77,7 @@ const NetworkGrowthMockup = () => (
                             <p className="text-[10px] text-stone-500 leading-tight">{c.role}</p>
                         </div>
                     </div>
-                    <span className="text-[9px] font-semibold bg-stone-100 text-stone-600 px-2 py-0.5 full flex-shrink-0">{c.tag}</span>
+                    <span className="text-[9px] font-semibold bg-stone-100 text-stone-600 px-2 py-0.5 rounded flex-shrink-0">{c.tag}</span>
                 </div>
             ))}
         </div>

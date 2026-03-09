@@ -171,14 +171,14 @@ export default function AISeoPage() {
                 "Structuring your data for optimal RAG pipeline extraction.",
                 "Feeding the LLM training sets with positive market sentiment."
             ],
-            imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop'
+            imageSrc: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop'
         },
         {
             type: 'split',
             imagePosition: 'left',
             title: '3. Monitoring and Correction',
             text: "AI models update constantly. We track your brand mentions and visibility across all major LLMs. If a model hallucinates or drops your rankings, we identify the content gap and correct it.",
-            imageSrc: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop'
+            imageSrc: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2070&auto=format&fit=crop'
         },
         {
             type: 'faq',

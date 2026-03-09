@@ -73,7 +73,7 @@ export default function ServicesHubPage() {
             {/* Header Layer */}
             <section className="pt-40 pb-20 px-8 max-w-7xl mx-auto text-center">
                 <div className="inline-block bg-white rounded-sm px-4 py-2 border border-gray-200 mb-6 hub-anim">
-                    <span className="text-xs font-bold tracking-widest text-secondary uppercase">Our Ecosystem</span>
+                    <span className="text-xs font-semibold text-secondary">Our Ecosystem</span>
                 </div>
                 <h1 className="text-4xl md:text-6xl font-sans font-medium text-secondary tracking-tight mb-8 hub-anim max-w-4xl mx-auto">
                     Compounding digital <span className="font-serif italic text-textDark">infrastructure</span> for commercial real estate.
@@ -90,7 +90,7 @@ export default function ServicesHubPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
                     {categories.map((cat, i) => (
-                        <div key={i} className="hub-anim bg-white rounded-md p-8 border border-transparent shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-500 h-full flex flex-col">
+                        <div key={i} className="hub-anim bg-white rounded-md p-8 border border-gray-100 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:border-gray-200 transition-colors duration-200 h-full flex flex-col">
                             <h2 className="text-2xl font-sans font-semibold text-secondary mb-3">{cat.title}</h2>
                             <p className="text-sm text-textDark/70 mb-8 border-b border-gray-100 pb-6">{cat.desc}</p>
 
@@ -99,7 +99,7 @@ export default function ServicesHubPage() {
                                     <li key={j}>
                                         <a href={link.path} className="group flex items-center justify-between font-sans text-sm font-medium text-textDark hover:text-secondary transition-colors">
                                             <span>{link.name}</span>
-                                            <ChevronRight size={16} className="text-gray-300 group-hover:text-secondary transform group-hover:translate-x-1 transition-all" />
+                                            <ChevronRight size={16} className="text-gray-300 group-hover:text-secondary transition-colors" />
                                         </a>
                                     </li>
                                 ))}
@@ -179,17 +179,14 @@ export default function ServicesHubPage() {
 
             {/* Bottom CTA Section */}
             <section className="py-24 px-8 bg-secondary text-white border-t border-white/5 text-center relative overflow-hidden z-10 hub-anim">
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_0%,transparent_100%)]"></div>
 
                 <div className="max-w-3xl mx-auto relative z-20">
-                    <p className="font-mono text-xs font-semibold tracking-widest text-white/50 uppercase mb-6">Our Mission</p>
                     <h2 className="text-3xl md:text-5xl font-sans font-medium text-white mb-8 tracking-tight">
                         We make you the <span className="font-serif text-gray-300">default choice</span> in your market.
                     </h2>
 
-                    <button className="relative overflow-hidden px-8 py-4 rounded-md font-sans text-sm font-semibold tracking-wide bg-white text-secondary transition-all duration-300 group hover:shadow-lg mt-6">
-                        <span className="relative z-10 transition-colors duration-300 group-hover:text-primary">Request a Free Strategy Audit</span>
-                        <span className="absolute inset-0 bg-textDark translate-y-full transition-transform duration-300 group-hover:translate-y-0 z-0 rounded-md"></span>
+                    <button className="px-8 py-4 rounded-md font-sans text-sm font-semibold bg-white text-secondary hover:bg-gray-100 transition-colors duration-200 mt-6">
+                        Request a Free Strategy Audit
                     </button>
                 </div>
             </section>

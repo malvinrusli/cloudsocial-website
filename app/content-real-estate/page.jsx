@@ -28,7 +28,7 @@ const VideoMetricsMockup = () => (
                 { platform: 'Instagram Reels', views: '142,800', watch: '71%', icon: '📱', color: 'pink' },
                 { platform: 'YouTube Shorts', views: '38,400', watch: '58%', icon: '▶', color: 'red' },
             ].map((p, i) => (
-                <div key={i} className="flex items-center justify-between p-3 bg-stone-50 g border border-stone-100">
+                <div key={i} className="flex items-center justify-between p-3 bg-stone-50 border border-stone-100">
                     <div className="flex items-center gap-3">
                         <span className="text-base">{p.icon}</span>
                         <div>
@@ -38,9 +38,9 @@ const VideoMetricsMockup = () => (
                     </div>
                     <div className="text-right">
                         <p className="text-[10px] font-semibold text-stone-700">Avg watch: {p.watch}</p>
-                        <div className="w-16 h-1.5 bg-stone-200 full mt-1.5 overflow-hidden">
+                        <div className="w-16 h-1.5 bg-stone-200 rounded-full mt-1.5 overflow-hidden">
                             <div
-                                className="h-full full bg-stone-600"
+                                className="h-full rounded-full bg-stone-600"
                                 style={{ width: p.watch }}
                             ></div>
                         </div>
@@ -71,7 +71,7 @@ const VideoTypeMockup = () => (
             ].map((v, i) => (
                 <div key={i} className="bg-stone-50  p-3 border border-stone-100">
                     <div className="flex items-center justify-between mb-2">
-                        <div className="w-8 h-8 g bg-stone-800 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded bg-stone-800 flex items-center justify-center">
                             <div className="w-0 h-0 border-t-4 border-b-4 border-l-6 border-transparent border-l-white ml-0.5"></div>
                         </div>
                         <span className="text-[9px] font-semibold bg-white text-stone-600 border border-stone-200 px-1.5 py-0.5 rounded">{v.tag}</span>
@@ -119,7 +119,7 @@ export default function ContentRealEstatePage() {
                 'Deal anatomy content that builds operational credibility.',
                 'Contrarian market takes engineered to drive shares from peers.'
             ],
-            imageSrc: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop'
+            imageSrc: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2070&auto=format&fit=crop'
         },
         {
             type: 'split',
@@ -134,7 +134,7 @@ export default function ContentRealEstatePage() {
             imagePosition: 'left',
             title: '3. Multi-Platform Distribution',
             text: "A single piece of content becomes four to six different assets across LinkedIn, Instagram Reels, YouTube Shorts, and your website. We handle all formatting, captioning, and platform-specific optimization so you get maximum reach from every hour of your time.",
-            imageSrc: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop'
+            imageSrc: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=2070&auto=format&fit=crop'
         },
         {
             type: 'faq',

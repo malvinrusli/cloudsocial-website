@@ -169,18 +169,23 @@ const Features = () => {
                     {/* Card 2: Short Form Content */}
                     <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
                         <div className="w-full aspect-[16/9] bg-[#050505] relative flex items-center justify-center overflow-hidden">
-                            <video
-                                src="https://www.w3schools.com/html/mov_bbb.mp4"
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-700"
+                            <img
+                                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                                alt="Commercial real estate building"
+                                className="w-full h-full object-cover opacity-40"
                             />
-                            {/* Play icon overlay */}
-                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            {/* Play button overlay */}
+                            <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="w-12 h-12 rounded-md bg-white/10 border border-white/20 flex items-center justify-center">
                                     <svg className="w-4 h-4 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                                </div>
+                            </div>
+                            {/* Stats bar */}
+                            <div className="absolute bottom-0 left-0 right-0 px-4 py-2.5 bg-black/60 flex items-center justify-between">
+                                <span className="text-[10px] text-white/60 font-sans">LinkedIn · Meridian Capital</span>
+                                <div className="flex items-center gap-3">
+                                    <span className="text-[10px] text-white font-semibold">84K views</span>
+                                    <span className="text-[10px] text-white/60">62% watch time</span>
                                 </div>
                             </div>
                         </div>

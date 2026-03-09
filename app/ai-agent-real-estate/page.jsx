@@ -14,41 +14,41 @@ const WhatsAppMockup = () => (
     <div className="w-full bg-white  border border-stone-200 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
         {/* WhatsApp Header */}
         <div className="bg-[#075E54] px-4 py-3 flex items-center gap-3">
-            <div className="w-8 h-8 full bg-white/20 flex items-center justify-center">
-                <div className="w-4 h-4 full bg-white/60"></div>
+            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                <div className="w-4 h-4 rounded-full bg-white/60"></div>
             </div>
             <div>
                 <p className="text-white text-xs font-semibold">CloudSocial AI Agent</p>
                 <p className="text-white/60 text-[10px]">Online · Responds instantly</p>
             </div>
-            <div className="ml-auto w-2 h-2 full bg-emerald-400 animate-pulse"></div>
+            <div className="ml-auto w-2 h-2 rounded-full bg-emerald-400"></div>
         </div>
         {/* Chat Body */}
         <div className="bg-[#ECE5DD] p-4 space-y-3 min-h-[280px]">
             {/* Agent message */}
             <div className="flex justify-start">
-                <div className="bg-white  tl-none px-4 py-2.5 max-w-[75%] shadow-sm">
+                <div className="bg-white px-4 py-2.5 max-w-[75%] shadow-sm">
                     <p className="text-[11px] text-stone-800 leading-relaxed">Hi, I'm the Meridian Capital AI assistant. Are you looking to invest, lease, or sell a commercial property today?</p>
                     <p className="text-[9px] text-stone-400 mt-1 text-right">09:32 ✓✓</p>
                 </div>
             </div>
             {/* User message */}
             <div className="flex justify-end">
-                <div className="bg-[#DCF8C6]  tr-none px-4 py-2.5 max-w-[75%] shadow-sm">
+                <div className="bg-[#DCF8C6] px-4 py-2.5 max-w-[75%] shadow-sm">
                     <p className="text-[11px] text-stone-800 leading-relaxed">Looking to invest — multifamily in Texas, around $5M</p>
                     <p className="text-[9px] text-stone-400 mt-1 text-right">09:33 ✓✓</p>
                 </div>
             </div>
             {/* Agent follow-up */}
             <div className="flex justify-start">
-                <div className="bg-white  tl-none px-4 py-2.5 max-w-[75%] shadow-sm">
+                <div className="bg-white px-4 py-2.5 max-w-[75%] shadow-sm">
                     <p className="text-[11px] text-stone-800 leading-relaxed">Excellent. Are you targeting a specific market — DFW, Austin, Houston, or San Antonio? And what's your preferred minimum yield?</p>
                     <p className="text-[9px] text-stone-400 mt-1 text-right">09:33 ✓✓</p>
                 </div>
             </div>
             {/* Qualified badge */}
             <div className="flex justify-center">
-                <span className="text-[10px] bg-emerald-100 text-emerald-700 font-semibold px-3 py-1 full border border-emerald-200">Lead Qualified · Routing to Calendar</span>
+                <span className="text-[10px] bg-emerald-100 text-emerald-700 font-semibold px-3 py-1 rounded border border-emerald-200">Lead Qualified · Routing to Calendar</span>
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@ const CRMSyncMockup = () => (
                 <h3 className="text-sm font-semibold text-stone-800 tracking-tight">Lead Pipeline — Today</h3>
                 <p className="text-xs text-stone-500 mt-0.5">Auto-synced from AI Agent</p>
             </div>
-            <span className="text-[10px] font-medium bg-blue-50 text-blue-600 px-2.5 py-1 d border border-blue-100">CRM Live</span>
+            <span className="text-[10px] font-medium bg-blue-50 text-blue-600 px-2.5 py-1 border border-blue-100">CRM Live</span>
         </div>
         <div className="space-y-3">
             {[
@@ -71,9 +71,9 @@ const CRMSyncMockup = () => (
                 { name: 'Raj M.', status: 'Nurturing', intent: 'Office Investment · NYC', time: '1h ago', color: 'amber' },
                 { name: 'Lin C.', status: 'Qualified', intent: '$12M Retail · LA', time: '2h ago', color: 'emerald' },
             ].map((lead, i) => (
-                <div key={i} className="flex items-center justify-between p-3 bg-stone-50 g border border-stone-100">
+                <div key={i} className="flex items-center justify-between p-3 bg-stone-50 border border-stone-100">
                     <div className="flex items-center gap-3">
-                        <div className="w-7 h-7 full bg-stone-200 flex items-center justify-center text-[10px] font-semibold text-stone-600 flex-shrink-0">
+                        <div className="w-7 h-7 rounded-full bg-stone-200 flex items-center justify-center text-[10px] font-semibold text-stone-600 flex-shrink-0">
                             {lead.name[0]}
                         </div>
                         <div>
@@ -82,7 +82,7 @@ const CRMSyncMockup = () => (
                         </div>
                     </div>
                     <div className="text-right">
-                        <span className={`text-[10px] font-semibold px-2 py-0.5 full ${lead.color === 'emerald' ? 'bg-emerald-50 text-emerald-600' : lead.color === 'blue' ? 'bg-blue-50 text-blue-600' : 'bg-amber-50 text-amber-600'}`}>
+                        <span className={`text-[10px] font-semibold px-2 py-0.5 rounded ${lead.color === 'emerald' ? 'bg-emerald-50 text-emerald-600' : lead.color === 'blue' ? 'bg-blue-50 text-blue-600' : 'bg-amber-50 text-amber-600'}`}>
                             {lead.status}
                         </span>
                         <p className="text-[9px] text-stone-400 mt-1">{lead.time}</p>
@@ -128,14 +128,14 @@ export default function AIAgentRealEstatePage() {
                 'Asset class, submarket, and return threshold discovery.',
                 'Timeline and decision-making authority verification.'
             ],
-            imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop'
+            imageSrc: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop'
         },
         {
             type: 'split',
             imagePosition: 'right',
             title: '2. Instant Calendar Routing',
             text: 'The moment a lead meets your qualification criteria, the agent books a meeting directly onto your calendar using Calendly or your preferred booking tool. No back-and-forth emails, no dropped balls. The lead goes from inquiry to confirmed meeting without human intervention.',
-            imageSrc: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop'
+            imageSrc: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=2070&auto=format&fit=crop'
         },
         {
             type: 'split',
