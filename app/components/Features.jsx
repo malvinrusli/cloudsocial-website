@@ -60,6 +60,75 @@ const Features = () => {
         </div>
     );
 
+    const ComparisonMockup = () => (
+        <div className="w-full h-48 bg-[#0A0A0A] border-b border-white/5 flex overflow-hidden">
+            {/* Typical side */}
+            <div className="flex-1 flex flex-col border-r border-white/10">
+                <div className="px-3 pt-2.5 pb-1 flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-red-500/60"></div>
+                    <span className="text-[9px] font-semibold text-white/30 uppercase tracking-wide">Typical CRE</span>
+                </div>
+                <div className="flex-1 bg-[#111] mx-3 mb-2 flex items-center justify-center relative">
+                    <div className="w-7 h-7 rounded bg-white/5 flex items-center justify-center">
+                        <svg className="w-3 h-3 text-white/15 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                    </div>
+                    <div className="absolute bottom-1.5 left-2 right-2 h-1 bg-white/5 rounded-full"></div>
+                </div>
+                <div className="px-3 pb-3 space-y-1.5">
+                    <div className="flex items-center justify-between">
+                        <span className="text-[9px] text-white/25">Views</span>
+                        <span className="text-[9px] font-semibold text-white/30">320</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                        <span className="text-[9px] text-white/25">Watch time</span>
+                        <span className="text-[9px] font-semibold text-red-400/70">8%</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                        <span className="text-[9px] text-white/25">Inquiries</span>
+                        <span className="text-[9px] font-semibold text-white/30">0</span>
+                    </div>
+                </div>
+            </div>
+            {/* Ours side */}
+            <div className="flex-1 flex flex-col">
+                <div className="px-3 pt-2.5 pb-1 flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                    <span className="text-[9px] font-semibold text-white/60 uppercase tracking-wide">CloudSocial</span>
+                </div>
+                <div className="flex-1 mx-3 mb-2 relative overflow-hidden rounded-sm">
+                    <img
+                        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=400&auto=format&fit=crop"
+                        className="w-full h-full object-cover opacity-50"
+                        alt=""
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-6 h-6 rounded bg-white/20 flex items-center justify-center">
+                            <svg className="w-2.5 h-2.5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                        </div>
+                    </div>
+                    <div className="absolute bottom-1.5 left-2 right-2 flex gap-1">
+                        <div className="h-1 w-2/3 bg-white/50 rounded-full"></div>
+                        <div className="h-1 flex-1 bg-white/10 rounded-full"></div>
+                    </div>
+                </div>
+                <div className="px-3 pb-3 space-y-1.5">
+                    <div className="flex items-center justify-between">
+                        <span className="text-[9px] text-white/50">Views</span>
+                        <span className="text-[9px] font-semibold text-white">84K</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                        <span className="text-[9px] text-white/50">Watch time</span>
+                        <span className="text-[9px] font-semibold text-emerald-400">62%</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                        <span className="text-[9px] text-white/50">Inquiries</span>
+                        <span className="text-[9px] font-semibold text-emerald-400">+12 this month</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+
     const EditorMockup = () => (
         <div className="w-full h-48 bg-[#1A1A1A] p-4 flex flex-col border-b border-white/5 relative overflow-hidden">
             <div className="flex items-center gap-2 mb-4 opacity-70">
@@ -168,27 +237,7 @@ const Features = () => {
 
                     {/* Card 2: Short Form Content */}
                     <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
-                        <div className="w-full aspect-[16/9] bg-[#050505] relative flex items-center justify-center overflow-hidden">
-                            <img
-                                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
-                                alt="Commercial real estate building"
-                                className="w-full h-full object-cover opacity-40"
-                            />
-                            {/* Play button overlay */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="w-12 h-12 rounded-md bg-white/10 border border-white/20 flex items-center justify-center">
-                                    <svg className="w-4 h-4 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-                                </div>
-                            </div>
-                            {/* Stats bar */}
-                            <div className="absolute bottom-0 left-0 right-0 px-4 py-2.5 bg-black/60 flex items-center justify-between">
-                                <span className="text-[10px] text-white/60 font-sans">LinkedIn · Meridian Capital</span>
-                                <div className="flex items-center gap-3">
-                                    <span className="text-[10px] text-white font-semibold">84K views</span>
-                                    <span className="text-[10px] text-white/60">62% watch time</span>
-                                </div>
-                            </div>
-                        </div>
+                        <ComparisonMockup />
                         <div className="p-8 flex flex-col flex-1">
                             <h3 className="text-xl font-sans font-regular text-white mb-3 tracking-tight group-hover:text-gray-200 transition-colors">Short Form Content</h3>
                             <p className="text-xs text-[#A1A1AA] leading-relaxed mb-8 flex-1 pr-4">
@@ -233,7 +282,7 @@ const Features = () => {
                     <div className="natugreen-card bg-[#111111] border border-[#222222] rounded-lg flex flex-col hover:border-white/20 transition-colors duration-300 overflow-hidden group">
                         <CodeMockup />
                         <div className="p-8 flex flex-col flex-1">
-                            <h3 className="text-xl font-sans font-regular text-white mb-3 tracking-tight group-hover:text-gray-200 transition-colors">Website</h3>
+                            <h3 className="text-xl font-sans font-regular text-white mb-3 tracking-tight group-hover:text-gray-200 transition-colors">Professional Website</h3>
                             <p className="text-xs text-[#A1A1AA] leading-relaxed mb-8 flex-1 pr-4">
                                 Transform underperforming sites into authoritative digital infrastructure engineered purely for conversion.
                             </p>
