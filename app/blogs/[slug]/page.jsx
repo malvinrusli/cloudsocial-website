@@ -119,20 +119,35 @@ export default async function BlogPostPage({ params }) {
                     <div className="lg:col-span-8">
                         {/* Article body with responsive wrapper */}
                         <div className="overflow-x-visible">
+                            {/* In-body Key Takeaways for redundancy and emphasis */}
+                            {post.key_takeaways?.length > 0 && (
+                                <div className="mb-16 bg-stone-50 border-l-4 border-stone-900 p-8 rounded-r-2xl shadow-sm">
+                                    <h2 className="text-xs font-black tracking-widest uppercase text-stone-400 mb-6 mt-0">Executive Summary</h2>
+                                    <ul className="space-y-4 m-0 p-0">
+                                        {post.key_takeaways.map((item, i) => (
+                                            <li key={i} className="list-none flex items-start gap-3 p-0 m-0">
+                                                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-stone-900 shrink-0" />
+                                                <p className="text-stone-800 text-base font-bold m-0 leading-relaxed">{item}</p>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
                             <div
                                 className="prose prose-stone prose-lg max-w-none
                                     prose-headings:text-stone-900 prose-headings:tracking-tight prose-headings:font-black
-                                    prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b prose-h2:border-stone-100
-                                    prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-6
-                                    prose-p:text-stone-600 prose-p:leading-[1.9] prose-p:mb-8
+                                    prose-h2:text-3xl prose-h2:mt-24 prose-h2:mb-10 prose-h2:pb-4 prose-h2:border-b prose-h2:border-stone-100
+                                    prose-h3:text-2xl prose-h3:mt-16 prose-h3:mb-8
+                                    prose-p:text-stone-600 prose-p:leading-[2] prose-p:mb-10 prose-p:text-[17px]
                                     prose-a:text-stone-900 prose-a:font-bold prose-a:underline prose-a:decoration-stone-300 hover:prose-a:decoration-stone-900 prose-a:transition-all
                                     prose-strong:text-stone-900 prose-strong:font-black
-                                    prose-ul:text-stone-600 prose-ol:text-stone-600 prose-li:my-4 prose-li:pl-2
+                                    prose-ul:text-stone-600 prose-ol:text-stone-600 prose-li:my-6 prose-li:pl-2
                                     /* Fixed table layout for responsiveness */
-                                    prose-table:block prose-table:overflow-x-auto prose-table:whitespace-nowrap prose-table:border-stone-200 prose-table:border prose-table:rounded-3xl prose-table:my-14 prose-table:shadow-[0_10px_40px_rgba(0,0,0,0.03)]
+                                    prose-table:block prose-table:overflow-x-auto prose-table:whitespace-nowrap prose-table:border-stone-200 prose-table:border prose-table:rounded-3xl prose-table:my-16 prose-table:shadow-[0_10px_40px_rgba(0,0,0,0.03)]
                                     prose-thead:bg-stone-50/80 prose-thead:border-b prose-thead:border-stone-200
-                                    prose-th:px-8 prose-th:py-5 prose-th:text-[10px] prose-th:font-black prose-th:uppercase prose-th:tracking-[0.2em] prose-th:text-stone-400
-                                    prose-td:px-8 prose-td:py-5 prose-td:text-[14px] prose-td:text-stone-600 prose-td:border-b prose-td:border-stone-50"
+                                    prose-th:px-8 prose-th:py-6 prose-th:text-[10px] prose-th:font-black prose-th:uppercase prose-th:tracking-[0.2em] prose-th:text-stone-400
+                                    prose-td:px-8 prose-td:py-6 prose-td:text-[15px] prose-td:text-stone-600 prose-td:border-b prose-td:border-stone-50"
                                 dangerouslySetInnerHTML={{ __html: post.content.replace(/^<h1[^>]*>.*?<\/h1>\s*/i, "") }}
                             />
                         </div>

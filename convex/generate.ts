@@ -237,7 +237,7 @@ export const generateNextPost = action({
             const cluster: string = queueItem.cluster || "commercial real estate";
             const pillar: string = queueItem.pillar || "";
             const secondaryKeywords: string[] = queueItem.secondary_keywords || [];
-            const wordCountTarget: number = queueItem.word_count_target || 1000;
+            const wordCountTarget: number = queueItem.word_count_target || 800;
             const author: string = pickAuthor();
 
             const imagePrompt = queueItem.featured_image_prompt ||
