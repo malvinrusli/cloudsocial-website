@@ -81,32 +81,53 @@ export default async function BlogPostPage({ params }) {
 
                 {/* Title and Metadata */}
                 <div className="mb-12">
-                    <h1 className="text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.15] mb-8 tracking-tight">
+                    <h1 className="text-4xl lg:text-6xl font-black text-stone-900 leading-[1.1] mb-10 tracking-tight">
                         {post.title}
                     </h1>
 
-                    <div className="flex items-center gap-4 py-6 border-y border-stone-100">
-                        <div className="w-10 h-10 rounded-full bg-stone-900 flex items-center justify-center text-white text-sm font-bold shadow-sm">
+                    <div className="flex items-center gap-6 py-8 border-y border-stone-100 mb-12">
+                        <div className="w-12 h-12 rounded-full bg-stone-900 flex items-center justify-center text-white text-lg font-black shadow-lg">
                             {post.author?.charAt(0) || "C"}
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-sm font-bold text-stone-900">{post.author}</span>
-                            <span className="text-[11px] font-bold text-stone-400 uppercase tracking-widest">
+                            <span className="text-base font-black text-stone-900">{post.author}</span>
+                            <span className="text-[11px] font-black text-stone-400 uppercase tracking-[0.2em]">
                                 {post.publishedAt
                                     ? new Date(post.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
                                     : "Draft"}
                             </span>
                         </div>
                     </div>
+
+                    {/* Highly Prominent "Deep Insights" - The User's Main Ask */}
+                    {post.key_takeaways?.length > 0 && (
+                        <div className="mb-16 bg-white border border-stone-200 rounded-[2.5rem] p-10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] relative overflow-hidden ring-1 ring-stone-900/5">
+                            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-stone-200 via-stone-900 to-stone-200"></div>
+                            <h2 className="text-[11px] font-black tracking-[0.4em] uppercase text-stone-900 mb-12 flex items-center gap-4">
+                                <span className="w-8 h-[2px] bg-stone-900"></span>
+                                Deep Insights
+                            </h2>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                                {post.key_takeaways.slice(0, 3).map((item, i) => (
+                                    <div key={i} className="group">
+                                        <div className="text-[10px] font-black text-stone-300 mb-4 font-mono tracking-widest">INSIGHT.0{i + 1}</div>
+                                        <p className="text-stone-900 text-[17px] font-bold leading-relaxed tracking-tight">
+                                            {item}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
 
                 {/* Featured image */}
-                <div className="aspect-[21/9] bg-stone-100 rounded-2xl mb-12 overflow-hidden shadow-sm">
+                <div className="aspect-[21/9] bg-stone-100 rounded-[2rem] mb-20 overflow-hidden shadow-2xl">
                     {post.featured_image_storageId ? (
                         <img
                             src={`/api/image/${post.featured_image_storageId}`}
                             alt={post.featured_image_alt || post.title}
-                            className="w-full h-full object-cover shadow-inner"
+                            className="w-full h-full object-cover"
                         />
                     ) : (
                         <div className="w-full h-full bg-stone-50 flex items-center justify-center">
@@ -115,39 +136,24 @@ export default async function BlogPostPage({ params }) {
                     )}
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
                     <div className="lg:col-span-8">
                         {/* Article body with responsive wrapper */}
                         <div className="overflow-x-visible">
-                            {/* In-body Key Takeaways for redundancy and emphasis */}
-                            {post.key_takeaways?.length > 0 && (
-                                <div className="mb-16 bg-stone-50 border-l-4 border-stone-900 p-8 rounded-r-2xl shadow-sm">
-                                    <h2 className="text-xs font-black tracking-widest uppercase text-stone-400 mb-6 mt-0">Executive Summary</h2>
-                                    <ul className="space-y-4 m-0 p-0">
-                                        {post.key_takeaways.map((item, i) => (
-                                            <li key={i} className="list-none flex items-start gap-3 p-0 m-0">
-                                                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-stone-900 shrink-0" />
-                                                <p className="text-stone-800 text-base font-bold m-0 leading-relaxed">{item}</p>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-
                             <div
-                                className="prose prose-stone prose-lg max-w-none
+                                className="prose prose-stone prose-xl max-w-none
                                     prose-headings:text-stone-900 prose-headings:tracking-tight prose-headings:font-black
-                                    prose-h2:text-3xl prose-h2:mt-24 prose-h2:mb-10 prose-h2:pb-4 prose-h2:border-b prose-h2:border-stone-100
-                                    prose-h3:text-2xl prose-h3:mt-16 prose-h3:mb-8
-                                    prose-p:text-stone-600 prose-p:leading-[2] prose-p:mb-10 prose-p:text-[17px]
-                                    prose-a:text-stone-900 prose-a:font-bold prose-a:underline prose-a:decoration-stone-300 hover:prose-a:decoration-stone-900 prose-a:transition-all
+                                    prose-h2:text-4xl prose-h2:mt-32 prose-h2:mb-12 prose-h2:pb-6 prose-h2:border-b-2 prose-h2:border-stone-900
+                                    prose-h3:text-2xl prose-h3:mt-20 prose-h3:mb-10
+                                    prose-p:text-stone-700 prose-p:leading-[2.1] prose-p:mb-16 prose-p:text-[19px] prose-p:font-medium
+                                    prose-a:text-stone-900 prose-a:font-black prose-a:underline prose-a:decoration-stone-300 hover:prose-a:decoration-stone-900 prose-a:transition-all
                                     prose-strong:text-stone-900 prose-strong:font-black
-                                    prose-ul:text-stone-600 prose-ol:text-stone-600 prose-li:my-6 prose-li:pl-2
+                                    prose-ul:text-stone-700 prose-ol:text-stone-700 prose-li:my-8 prose-li:pl-4
                                     /* Fixed table layout for responsiveness */
-                                    prose-table:block prose-table:overflow-x-auto prose-table:whitespace-nowrap prose-table:border-stone-200 prose-table:border prose-table:rounded-3xl prose-table:my-16 prose-table:shadow-[0_10px_40px_rgba(0,0,0,0.03)]
+                                    prose-table:block prose-table:overflow-x-auto prose-table:whitespace-nowrap prose-table:border-stone-200 prose-table:border prose-table:rounded-[2rem] prose-table:my-20 prose-table:shadow-[0_20px_50px_rgba(0,0,0,0.05)]
                                     prose-thead:bg-stone-50/80 prose-thead:border-b prose-thead:border-stone-200
-                                    prose-th:px-8 prose-th:py-6 prose-th:text-[10px] prose-th:font-black prose-th:uppercase prose-th:tracking-[0.2em] prose-th:text-stone-400
-                                    prose-td:px-8 prose-td:py-6 prose-td:text-[15px] prose-td:text-stone-600 prose-td:border-b prose-td:border-stone-50"
+                                    prose-th:px-10 prose-th:py-8 prose-th:text-[11px] prose-th:font-black prose-th:uppercase prose-th:tracking-[0.3em] prose-th:text-stone-500
+                                    prose-td:px-10 prose-td:py-8 prose-td:text-[16px] prose-td:text-stone-700 prose-td:border-b prose-td:border-stone-50"
                                 dangerouslySetInnerHTML={{ __html: post.content.replace(/^<h1[^>]*>.*?<\/h1>\s*/i, "") }}
                             />
                         </div>
