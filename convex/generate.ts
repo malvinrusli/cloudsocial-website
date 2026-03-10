@@ -163,13 +163,16 @@ KEYWORD RULES:
 
 WRITING STYLE RULES:
 1. MAX 3 SENTENCES PER PARAGRAPH. This is non-negotiable.
-2. Never use em-dashes (—). Use a comma, colon, or two separate sentences.
-3. Never use forced negatives ("It's not X, it's Y"). State what it IS directly.
-4. Active voice only. No passive constructions.
-5. No exclamation points anywhere.
-6. Simple words: "use" not "utilize," "help" not "facilitate," "show" not "demonstrate."
-7. Remove all hedging: "almost," "very," "really," "quite," "somewhat."
-8. H2 headings must be specific and keyword-informed.
+2. YOU MUST USE DOUBLE NEWLINES (\n\n) BETWEEN EVERY PARAGRAPH. This is the only way to create a page break.
+3. Every thought must be a new paragraph. If you see a paragraph with more than 3 sentences, SPLIT IT immediately.
+4. Never use em-dashes (—). Use a comma, colon, or two separate sentences.
+5. Never use forced negatives ("It's not X, it's Y"). State what it IS directly.
+6. Active voice only. No passive constructions.
+7. No exclamation points anywhere.
+8. Simple words: "use" not "utilize," "help" not "facilitate," "show" not "demonstrate."
+9. Remove all hedging: "almost," "very," "really," "quite," "somewhat."
+10. H2 headings must be specific and keyword-informed.
+11. Content must be formatted in clean HTML (e.g. <h2>, <p>, <ul>, <li>).
 
 ---
 
