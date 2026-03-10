@@ -6,7 +6,8 @@ import Footer from "../../components/Footer";
 import Link from "next/link";
 
 export async function generateMetadata({ params }) {
-    const item = await fetchQuery(api.caseStudies.getBySlug, { slug: params.slug });
+    const { slug } = await params;
+    const item = await fetchQuery(api.caseStudies.getBySlug, { slug });
     if (!item) return {};
     return {
         title: item.seo_title || item.title,
@@ -24,7 +25,8 @@ export async function generateStaticParams() {
 }
 
 export default async function CaseStudyPage({ params }) {
-    const item = await fetchQuery(api.caseStudies.getBySlug, { slug: params.slug });
+    const { slug } = await params;
+    const item = await fetchQuery(api.caseStudies.getBySlug, { slug });
 
     if (!item || item.status !== "published") {
         notFound();

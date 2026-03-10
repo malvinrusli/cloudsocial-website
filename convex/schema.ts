@@ -61,6 +61,8 @@ export default defineSchema({
         featured_image_alt: v.optional(v.string()),
         featured_image_prompt: v.optional(v.string()),
         json_ld: v.optional(v.string()), // JSON string
+        key_takeaways: v.optional(v.array(v.string())),
+        faqs: v.optional(v.array(v.object({ question: v.string(), answer: v.string() }))),
         ai_generated: v.optional(v.boolean()),
         queueItemId: v.optional(v.id("keyword_queue")),
         publishedAt: v.optional(v.number()),

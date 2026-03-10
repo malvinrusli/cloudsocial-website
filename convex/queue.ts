@@ -60,3 +60,13 @@ export const listQueue = query({
         return await ctx.db.query("keyword_queue").order("desc").collect();
     },
 });
+
+export const getByKeyword = query({
+    args: { keyword: v.string() },
+    handler: async (ctx, { keyword }) => {
+        return await ctx.db
+            .query("keyword_queue")
+            .filter(q => q.eq(q.field("target_keyword"), keyword))
+            .first();
+    },
+});

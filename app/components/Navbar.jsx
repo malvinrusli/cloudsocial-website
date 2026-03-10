@@ -137,7 +137,7 @@ const Navbar = () => {
 
                         <NavLink href="#how">How it Works</NavLink>
                         <NavLink href="#case">Case Studies</NavLink>
-                        <NavLink href="#blog">Blog</NavLink>
+                        <NavLink href="/blogs">Blog</NavLink>
                     </div>
 
                     <button className="relative overflow-hidden px-8 py-3 rounded-md font-sans text-sm font-semibold tracking-wide bg-secondary text-primary transition-all duration-300 group hover:shadow-lg">
@@ -162,7 +162,7 @@ const Navbar = () => {
                         <a href="/services" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-700 transition-colors duration-300">Services</a>
                         <a href="#how" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-700 transition-colors duration-300">How it Works</a>
                         <a href="#case" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-700 transition-colors duration-300">Case Studies</a>
-                        <a href="#blog" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-700 transition-colors duration-300">Blog</a>
+                        <a href="/blogs" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-amber-700 transition-colors duration-300">Blog</a>
 
                         <button className="mt-8 px-8 py-4 rounded-md font-sans text-sm font-semibold tracking-wide bg-secondary text-primary transition-all duration-300 shadow-xl">
                             Book Free Audit

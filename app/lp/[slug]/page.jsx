@@ -7,7 +7,8 @@ import PageHero from "../../components/PageHero";
 import AlternatingSection from "../../components/AlternatingSection";
 
 export async function generateMetadata({ params }) {
-    const page = await fetchQuery(api.bofuPages.getBySlug, { slug: params.slug });
+    const { slug } = await params;
+    const page = await fetchQuery(api.bofuPages.getBySlug, { slug });
     if (!page) return {};
     return {
         title: page.seo_title || page.title,
@@ -29,7 +30,8 @@ export async function generateStaticParams() {
 }
 
 export default async function BofuLandingPage({ params }) {
-    const page = await fetchQuery(api.bofuPages.getBySlug, { slug: params.slug });
+    const { slug } = await params;
+    const page = await fetchQuery(api.bofuPages.getBySlug, { slug });
 
     if (!page || page.status !== "published") {
         notFound();

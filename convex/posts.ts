@@ -25,6 +25,8 @@ export const create = mutation({
         featured_image_alt: v.optional(v.string()),
         featured_image_prompt: v.optional(v.string()),
         json_ld: v.optional(v.string()),
+        key_takeaways: v.optional(v.array(v.string())),
+        faqs: v.optional(v.array(v.object({ question: v.string(), answer: v.string() }))),
         ai_generated: v.optional(v.boolean()),
         queueItemId: v.optional(v.id("keyword_queue")),
         publishedAt: v.optional(v.number()),
@@ -64,6 +66,8 @@ export const update = mutation({
         featured_image_alt: v.optional(v.string()),
         featured_image_prompt: v.optional(v.string()),
         json_ld: v.optional(v.string()),
+        key_takeaways: v.optional(v.array(v.string())),
+        faqs: v.optional(v.array(v.object({ question: v.string(), answer: v.string() }))),
         ai_generated: v.optional(v.boolean()),
         publishedAt: v.optional(v.number()),
     },
@@ -112,6 +116,16 @@ export const listAll = query({
     args: {},
     handler: async (ctx) => {
         return await ctx.db.query("posts").order("desc").collect();
+    },
+});
+
+export const getByKeyword = query({
+    args: { keyword: v.string() },
+    handler: async (ctx, { keyword }) => {
+        return await ctx.db
+            .query("posts")
+            .filter(q => q.eq(q.field("target_keyword"), keyword))
+            .first();
     },
 });
 
