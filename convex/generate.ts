@@ -139,15 +139,16 @@ TARGET WORD COUNT: ${wordCountTarget} words
 
 CLOUDSOCIAL BRAND VOICE:
 - We are practitioners, not commentators. Write from experience, not from theory.
-- Authoritative and direct. CRE professionals close deals for a living — they have no patience for filler.
-- Every claim needs a number, outcome, or concrete example behind it.
+- "ANTI-BLOB" WRITING: Paragraphs must be 1-3 sentences maximum. Use spaces to let the content breathe. 
+- EMPATHETIC & DIRECT: Use "you" and "your". Acknowledge the reader's pain (e.g., losing listings, empty pipeline).
+- DEFINE JARGON: If you use a technical CRE or marketing term (e.g., "Cap Rate" or "AEO"), follow it with a simple definition in parentheses.
+- STRATEGIC BOLDING: Bold the most important sentence in each section for scannability.
 - Never use: "leverage," "synergy," "holistic," "innovative," "streamline," "game-changing," "utilize," "facilitate."
-- Always name the reader's real pain: losing listings to competitors, empty pipeline, invisible on Google, chasing unqualified leads.
 
 ---
 
 TECHNICAL RULE — TABLES:
-You MUST include at least ONE well-formatted HTML table (<table>) in every article as specified in the structure below. Use semantic tags (<thead>, <tbody>, <th>, <td>). Do NOT include borders or styles in the HTML — use clean semantic tags.
+You MUST include at least ONE well-formatted HTML table (<table>) in every article. Use semantic tags (<thead>, <tbody>, <th>, <td>). Keep it simple and focused on data.
 
 ---
 ${formatInstructions}
@@ -160,23 +161,23 @@ KEYWORD RULES:
 
 ---
 
-WRITING RULES:
-1. Never use em-dashes (—). Use a comma, colon, or two separate sentences.
-2. Never use forced negatives ("It's not X, it's Y"). State what it IS directly.
-3. Active voice only. No passive constructions.
-4. No exclamation points anywhere.
-5. Simple words: "use" not "utilize," "help" not "facilitate," "show" not "demonstrate."
-6. Remove all hedging: "almost," "very," "really," "quite," "somewhat."
-7. H2 headings must be specific and keyword-informed.
-8. Do NOT include an author sign-off line like "By ${author}" at the end.
+WRITING STYLE RULES:
+1. MAX 3 SENTENCES PER PARAGRAPH. This is non-negotiable.
+2. Never use em-dashes (—). Use a comma, colon, or two separate sentences.
+3. Never use forced negatives ("It's not X, it's Y"). State what it IS directly.
+4. Active voice only. No passive constructions.
+5. No exclamation points anywhere.
+6. Simple words: "use" not "utilize," "help" not "facilitate," "show" not "demonstrate."
+7. Remove all hedging: "almost," "very," "really," "quite," "somewhat."
+8. H2 headings must be specific and keyword-informed.
 
 ---
 
-KEY TAKEAWAYS:
+THE BOTTOM LINE (KEY TAKEAWAYS):
 - Generate 3 high-authority, actionable takeaway bullet points.
+- FORMAT: **Bold Heading**: One clear, punchy sentence explaining the benefit.
 - CRITICAL: These MUST be strictly derived from the article's specific content and the target keyword "${keyword}". 
-- Do NOT provide generic agency marketing advice unless it is the core topic of the article.
-- These should be the "deep insights" a practitioner would find valuable after reading.
+- Do NOT provide generic agency marketing advice.
 
 FAQ:
 Generate 3-5 frequently asked questions related to "${keyword}". Answers should be 2-3 sentences.
