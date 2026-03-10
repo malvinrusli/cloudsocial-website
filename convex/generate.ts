@@ -173,7 +173,10 @@ WRITING RULES:
 ---
 
 KEY TAKEAWAYS:
-Generate 3 actionable takeaway bullet points that summarize the core insights.
+- Generate 3 high-authority, actionable takeaway bullet points.
+- CRITICAL: These MUST be strictly derived from the article's specific content and the target keyword "${keyword}". 
+- Do NOT provide generic agency marketing advice unless it is the core topic of the article.
+- These should be the "deep insights" a practitioner would find valuable after reading.
 
 FAQ:
 Generate 3-5 frequently asked questions related to "${keyword}". Answers should be 2-3 sentences.
