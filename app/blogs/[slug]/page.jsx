@@ -5,18 +5,59 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 
+const SITE_URL = "https://www.cloudsocial.io";
+
+// Parse **bold** markdown syntax in Key Takeaways text
+function parseMarkdownBold(text) {
+    if (!text) return text;
+    return text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+
 export async function generateMetadata({ params }) {
     const { slug } = await params;
     const post = await fetchQuery(api.posts.getBySlug, { slug });
     if (!post) return {};
+
+    const title = (post.seo_title || post.title || "").slice(0, 60);
+    const description = post.meta_description || post.excerpt || "";
+    const url = `${SITE_URL}/blogs/${slug}`;
+    const ogImage = post.featured_image_storageId
+        ? `${SITE_URL}/api/image/${post.featured_image_storageId}`
+        : `${SITE_URL}/og-default.png`;
+
     return {
-        title: post.seo_title || post.title,
-        description: post.meta_description || post.excerpt,
+        title,
+        description,
+        alternates: {
+            canonical: url,
+        },
+        robots: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+        },
         openGraph: {
-            title: post.og_title || post.seo_title || post.title,
-            description: post.og_description || post.meta_description || post.excerpt,
+            title: (post.og_title || title).slice(0, 60),
+            description: post.og_description || description,
             type: "article",
+            url,
+            siteName: "CloudSocial",
             publishedTime: post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined,
+            modifiedTime: post._creationTime ? new Date(post._creationTime).toISOString() : undefined,
+            images: [{
+                url: ogImage,
+                width: 1200,
+                height: 630,
+                alt: post.featured_image_alt || post.title,
+            }],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: (post.og_title || title).slice(0, 60),
+            description: post.og_description || description,
+            images: [ogImage],
         },
     };
 }
@@ -134,9 +175,9 @@ export default async function BlogPostPage({ params }) {
                             {post.key_takeaways.slice(0, 3).map((item, i) => (
                                 <li key={i} className="list-none flex items-start gap-4 p-0 m-0">
                                     <span className="mt-2 w-1.5 h-1.5 rounded-full bg-stone-400 shrink-0" />
-                                    <p className="text-stone-700 text-base font-medium m-0 leading-relaxed">
-                                        {item}
-                                    </p>
+                                    <p className="text-stone-700 text-base font-medium m-0 leading-relaxed"
+                                        dangerouslySetInnerHTML={{ __html: parseMarkdownBold(item) }}
+                                    />
                                 </li>
                             ))}
                         </ul>

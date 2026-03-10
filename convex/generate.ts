@@ -52,7 +52,7 @@ This reader is evaluating options. They are close to a decision. Write to help t
 5. H2: Who This Is For (and Who It Isn't)
    Be direct. Ideal reader: CRE brokers, owners, or investors with X. Not ideal: residential agents, anyone wanting overnight results.
 
-6. CONCLUSION — 60-80 words
+6. CLOSING H2: Write a unique, keyword-relevant closing heading (NOT "Conclusion"). Examples: "Your Next Move on [Topic]" or "Making [Topic] Work for Your Portfolio" — 60-80 words
    Restate the single most important criterion. Include one natural mention of CloudSocial with a link to the most relevant service page.`;
     } else if (funnelStage === "MOFU") {
         formatInstructions = `
@@ -78,7 +78,7 @@ This reader knows the problem exists. They want a real strategy. Write for someo
 6. H2: Next Steps — ordered list of 4-5 concrete actions
    Each step: action verb + specific outcome.
 
-7. CONCLUSION — 60-80 words
+7. CLOSING H2: Write a unique, keyword-relevant closing heading (NOT "Conclusion"). Examples: "Where to Go From Here" or "Putting [Topic] Into Practice" — 60-80 words
    Recap the one insight that changes how they think about this. Include one natural mention of CloudSocial with a link to the most relevant service page.`;
     } else {
         // TOFU default
@@ -107,11 +107,13 @@ This reader is early in their awareness. They found you through a search. Write 
 6. H2: How to Start — ordered list of 4-5 concrete steps
    Each step: action verb + specific outcome. Make it immediately usable.
 
-7. CONCLUSION — 60-80 words
+7. CLOSING H2: Write a unique, keyword-relevant closing heading (NOT "Conclusion"). Examples: "Your First Week With [Topic]" or "The One Thing That Changes Everything" — 60-80 words
    Recap the single most important insight. Include one natural mention of CloudSocial with a link to the most relevant service page.`;
     }
 
     return `You are a senior content strategist writing for the commercial real estate industry. You write authoritative, experience-backed blog articles that rank on Google and genuinely help CRE professionals.
+
+CURRENT YEAR: 2026. All data, trends, and references must reflect 2026 market conditions. Never reference 2024 or older years as current.
 
 TARGET KEYWORD: "${keyword}"
 ${secondaryKwLine}
@@ -150,10 +152,23 @@ WRITING STYLE:
 4. No exclamation points.
 5. Simple words: "use" not "utilize," "help" not "facilitate," "show" not "demonstrate."
 6. Remove all hedging: "almost," "very," "really," "quite," "somewhat."
-7. Never use: "leverage," "synergy," "holistic," "innovative," "streamline," "game-changing."
+7. Never use: "leverage," "synergy," "holistic," "innovative," "streamline," "game-changing," "fluff," "scripts," "authentic," "resonate," "journey," "unlock."
 8. Bold the most important sentence in each H2 section for scannability.
 9. H2 headings must be specific and keyword-informed. Never generic.
 10. Content must be formatted in clean HTML (<h2>, <p>, <ul>, <ol>, <li>, <a>, <strong>).
+11. When listing 3+ items, ALWAYS use bullet points or numbered lists. Never bury lists in paragraph prose.
+12. Bold the lead-in phrase of each list item when it has an explanation.
+13. Aim for at least one list per H2 section to break up dense text.
+
+ANTI-AI WRITING RULES (CRITICAL):
+- NEVER use the pattern "The kicker? [Statement]." Write: "The kicker is that [statement]."
+- NEVER use "It's not X, it's Y." State what it IS directly.
+- NEVER use "No X. No Y. Just Z." patterns.
+- NEVER write "X matters." as a standalone sentence. Be specific about WHY.
+- Be specific over vague: name the thing, give the number, cite the example.
+- Earn your punchline: build to a point instead of teasing it.
+- Vary sentence structure naturally.
+- Write from a point of view. Take a stance.
 
 TABLES:
 - Include an HTML table ONLY if the content genuinely benefits from structured comparison data (metrics, timelines, feature comparison).
@@ -182,12 +197,12 @@ Generate 3-5 frequently asked questions related to "${keyword}". Answers should 
 
 Return ONLY valid JSON with these exact fields:
 {
-  "title": "string (H1, includes primary keyword, max 65 chars)",
+  "title": "string (H1, includes primary keyword, MAX 60 CHARACTERS. Do not include year or brand name in title.)",
   "slug": "string (URL-safe, hyphen-separated)",
   "excerpt": "string (2 sentences, under 160 chars)",
   "author": "${author}",
-  "content": "string (complete HTML body — DO NOT include H1, use <p>, <h2>, <h3>, <ul>, <ol>, <li>, <a>, <strong> tags. Only use <table> if genuinely needed.)",
-  "seo_title": "string",
+  "content": "string (complete HTML body — DO NOT include H1. Use <p>, <h2>, <h3>, <ul>, <ol>, <li>, <a>, <strong> tags. Only use <table> if genuinely needed. Do NOT use the word 'Conclusion' as an H2 heading.)",
+  "seo_title": "string (max 60 chars, do NOT include brand name — it is appended automatically)",
   "meta_description": "string",
   "og_title": "string",
   "og_description": "string",
