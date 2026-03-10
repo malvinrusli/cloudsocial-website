@@ -31,101 +31,87 @@ function buildPrompt(
 
     if (funnelStage === "BOFU") {
         formatInstructions = `
-E-E-A-T ARTICLE STRUCTURE — BOFU (Decision-Stage / Conversion):
-This reader is evaluating vendors. They are close to making a buying decision. Write to help them choose.
+ARTICLE STRUCTURE — BOFU (Decision-Stage):
+This reader is evaluating options. They are close to a decision. Write to help them choose confidently.
 
 1. HOOK — 60-80 words
-   Open with the cost of choosing the wrong agency or the cost of inaction. Use a specific number.
+   Open with the cost of choosing the wrong partner or the cost of inaction. Use a specific number or stat.
 
 2. H2: What to Look for in a [Service Type]
    3-4 concrete criteria a CRE professional should use when evaluating options.
-   Each criterion needs a reason: why does it matter for their business?
+   Each criterion needs a reason: why does it matter for their bottom line?
 
-3. COMPARISON TABLE: [Service Type] Comparison
-   Include a table comparing "CloudSocial Approach" vs "Generalist Agency Approach" across 3-4 rows (e.g., Specialization, Content Depth, Distribution).
+3. H2: The Specialist vs. Generalist Problem
+   Explain why CRE-specific expertise matters. Use concrete examples of what generalist agencies miss.
+   Do NOT name any specific company. Keep it about the category.
 
-4. H2: What CloudSocial Does Differently
-   Specific approaches, not generic claims. Mention: our specialization in CRE, the tactics we use, why generalist agencies fail CRE clients.
+4. H2: Results You Should Expect (With Realistic Timeframes)
+   Concrete, realistic outcomes. Examples: "Within 90 days, expect X."
+   Be honest. Overpromising destroys trust.
 
-5. H2: Results You Should Expect
-   Concrete, realistic outcomes with timeframes. Examples: "Within 90 days, expect X."
-   Be honest — don't overpromise.
+5. H2: Who This Is For (and Who It Isn't)
+   Be direct. Ideal reader: CRE brokers, owners, or investors with X. Not ideal: residential agents, anyone wanting overnight results.
 
-6. H2: Who This Is For (and Who It Isn't)
-   Be direct. Ideal client: CRE brokers, owners, or investors with X. Not ideal: residential agents, anyone wanting overnight results.
-
-7. CONCLUSION — 60-80 words
-   Restate the single most important criterion. Link to the relevant CloudSocial service page.`;
+6. CONCLUSION — 60-80 words
+   Restate the single most important criterion. Include one natural mention of CloudSocial with a link to the most relevant service page.`;
     } else if (funnelStage === "MOFU") {
         formatInstructions = `
-E-E-A-T ARTICLE STRUCTURE — MOFU (Strategy / Deep Dive):
-This reader knows the problem exists. They want a real strategy, not an intro. Write for someone mid-way through their research.
+ARTICLE STRUCTURE — MOFU (Strategy / Deep Dive):
+This reader knows the problem exists. They want a real strategy. Write for someone mid-way through their research.
 
 1. HOOK — 60-80 words
-   Open with what "doing this wrong" looks like in CRE. Be specific — name the mistake or outcome.
+   Open with what "doing this wrong" looks like in CRE. Name the mistake or the outcome.
 
-2. H2: The Full Picture — What [Topic] Actually Requires
-   Set realistic expectations. Name what people overlook. Use first-person: "In our work with CRE clients..."
+2. H2: What [Topic] Actually Requires
+   Set realistic expectations. Name what people overlook.
    ${secondaryKwInstruction}
 
-3. DATA TABLE: [Topic] Performance Metrics or Benchmarks
-   Include a table showing 3-5 rows of relevant metrics, benchmarks, or timeframes associated with this strategy.
+3. H2: [Core Strategy 1 — write a specific, keyword-rich H2]
+   Deep dive into the first approach. Include data, timeframes, or real-world examples.
 
-4. H2: [Core Strategy 1 — write a specific, keyword-rich H2 title]
-   Deep dive into the first approach. Include data, timeframes, or real examples.
+4. H2: [Core Strategy 2 — write a specific, keyword-rich H2]
+   Second angle. Different tactic or complementary approach.
 
-5. H2: [Core Strategy 2 — write a specific, keyword-rich H2 title]
-   Second angle. Different tactic or complementary approach. Include another secondary keyword naturally.
+5. H2: What Strong Execution Looks Like vs. What Fails
+   Contrast. Be concrete about both sides. Frame it as patterns you see in the industry.
 
-6. H2: What Strong Execution Looks Like vs. What Fails
-   Contrast. Be concrete about both sides. Frame it as patterns you see in the field.
-
-7. H2: Next Steps — ordered list of 4-5 concrete actions
+6. H2: Next Steps — ordered list of 4-5 concrete actions
    Each step: action verb + specific outcome.
 
-8. CONCLUSION — 60-80 words
-   Recap the one insight that changes how they think about this. Mention CloudSocial. Link to the relevant service page.`;
+7. CONCLUSION — 60-80 words
+   Recap the one insight that changes how they think about this. Include one natural mention of CloudSocial with a link to the most relevant service page.`;
     } else {
         // TOFU default
         formatInstructions = `
-E-E-A-T ARTICLE STRUCTURE — TOFU (Educational / How-To):
-This reader is early in their awareness. They found you through a search. Write to educate and build trust.
+ARTICLE STRUCTURE — TOFU (Educational / How-To):
+This reader is early in their awareness. They found you through a search. Write to educate, not sell.
 
 1. HOOK — 60-80 words
    Open with a specific, uncomfortable fact or industry number about the problem.
    No "In today's digital landscape" openers. Ever.
 
 2. H2: Why [This Problem] Is Bigger Than Most CRE Pros Realize
-   Name the underlying cause, not just the symptom. Show industry knowledge.
-   Use first-person: "In our work with CRE clients across multiple markets..."
+   Name the underlying cause, not just the symptom. Show deep industry knowledge.
    ${secondaryKwInstruction}
 
-3. COMPARISON TABLE: [Topic] Quick-Start Guide or Comparison
-   Include a small table summarizing 3-5 key points or a decision matrix related to this topic.
-
-4. H2: [Tactic 1 — write a specific, keyword-rich H2 title]
+3. H2: [Tactic 1 — write a specific, keyword-rich H2]
    Specific tactic with concrete outcomes: timeframes, percentages, deal examples.
    No vague advice. "Publish consistently" means "2 posts per week for 90 days."
 
-5. H2: [Tactic 2 — write a specific, keyword-rich H2 title]
+4. H2: [Tactic 2 — write a specific, keyword-rich H2]
    Second angle on the solution. A different tactic or a deeper layer of the first.
 
-6. H2: [The Shortcut or Misconception — write a specific H2 title]
-   One insight that separates brokers who get results from those who don't. Could be a common mistake, a counterintuitive truth, or an overlooked tactic.
+5. H2: [The Shortcut or Misconception — write a specific H2]
+   One insight that separates brokers who get results from those who don't.
 
-7. H2: How to Start — ordered list of 4-5 concrete steps
+6. H2: How to Start — ordered list of 4-5 concrete steps
    Each step: action verb + specific outcome. Make it immediately usable.
 
-8. CONCLUSION — 60-80 words
-   Recap the single most important insight. Mention CloudSocial. Link to the most relevant service page.`;
+7. CONCLUSION — 60-80 words
+   Recap the single most important insight. Include one natural mention of CloudSocial with a link to the most relevant service page.`;
     }
 
-    return `You are a content strategist at CloudSocial, a digital marketing agency for commercial real estate. You write authoritative, E-E-A-T optimized blog articles that rank on Google and convert CRE professionals.
-
-CLOUDSOCIAL BRAND IDENTITY:
-CloudSocial is an Agency that specializes in helping Real Estate Firms or Agents make better content, SEO, AEO, GEO, Authority, LinkedIn, Automations, and AI. We specialize in Inbound marketing for the Real Estate niche.
-
-CRITICAL: This entire article MUST be written specifically about the topic: "${keyword}". Every section, every example, every H2 heading must be directly relevant to "${keyword}". Do not drift to other topics.
+    return `You are a senior content strategist writing for the commercial real estate industry. You write authoritative, experience-backed blog articles that rank on Google and genuinely help CRE professionals.
 
 TARGET KEYWORD: "${keyword}"
 ${secondaryKwLine}
@@ -135,65 +121,62 @@ ${pillar ? `PILLAR TOPIC: ${pillar}` : ""}
 AUTHOR: ${author}
 TARGET WORD COUNT: ${wordCountTarget} words
 
----
-
-CLOUDSOCIAL BRAND VOICE:
-- We are practitioners, not commentators. Write from experience, not from theory.
-- "ANTI-BLOB" WRITING: Paragraphs must be 1-3 sentences maximum. Use spaces to let the content breathe. 
-- EMPATHETIC & DIRECT: Use "you" and "your". Acknowledge the reader's pain (e.g., losing listings, empty pipeline).
-- DEFINE JARGON: If you use a technical CRE or marketing term (e.g., "Cap Rate" or "AEO"), follow it with a simple definition in parentheses.
-- STRATEGIC BOLDING: Bold the most important sentence in each section for scannability.
-- Never use: "leverage," "synergy," "holistic," "innovative," "streamline," "game-changing," "utilize," "facilitate."
+CRITICAL: This entire article MUST be about "${keyword}". Every section, every example, every H2 must be directly relevant.
 
 ---
 
-TECHNICAL RULE — TABLES:
-You MUST include at least ONE well-formatted HTML table (<table>) in every article. Use semantic tags (<thead>, <tbody>, <th>, <td>). Keep it simple and focused on data.
+VOICE & TONE:
+- Write like a senior industry expert talking to a peer. Direct, specific, no fluff.
+- Use "you" and "your". Acknowledge the reader's real challenges (losing listings, empty pipeline, wasted ad spend).
+- First-person experience is fine: "In practice..." or "What we see in the field..."
+- If you use a technical CRE or marketing term (e.g., "Cap Rate" or "AEO"), follow it with a brief definition in parentheses.
+
+BRANDING RULES:
+- Do NOT mention "CloudSocial" anywhere in the article body.
+- The ONLY place CloudSocial should appear is in the CONCLUSION — one natural sentence with a link to a relevant service page.
+- Include 1-2 anchor links to these pages, woven naturally into the text:
+  /seo-real-estate, /aeo-geo-llms-real-estate, /linkedin-real-estate, /content-real-estate, /ai-agent-real-estate
 
 ---
+
 ${formatInstructions}
 
 ---
 
+WRITING STYLE:
+1. Paragraphs should be 1-4 sentences. Vary length for natural rhythm. Short paragraphs (1-2 sentences) create impact. Longer ones (3-4) are fine for explanations.
+2. Never use em-dashes (—). Use a comma, colon, or two separate sentences.
+3. Active voice only. No passive constructions.
+4. No exclamation points.
+5. Simple words: "use" not "utilize," "help" not "facilitate," "show" not "demonstrate."
+6. Remove all hedging: "almost," "very," "really," "quite," "somewhat."
+7. Never use: "leverage," "synergy," "holistic," "innovative," "streamline," "game-changing."
+8. Bold the most important sentence in each H2 section for scannability.
+9. H2 headings must be specific and keyword-informed. Never generic.
+10. Content must be formatted in clean HTML (<h2>, <p>, <ul>, <ol>, <li>, <a>, <strong>).
+
+TABLES:
+- Include an HTML table ONLY if the content genuinely benefits from structured comparison data (metrics, timelines, feature comparison).
+- If you include one, use semantic tags (<thead>, <tbody>, <th>, <td>). Keep it simple and focused.
+- Do NOT force a table. If a bulleted list conveys the information better, use a list.
+
+---
+
 KEYWORD RULES:
-- Primary keyword "${keyword}": use in title, first paragraph, one H2 heading, and conclusion. 4-5 occurrences max. 
-- Do not keyword stuff. If it sounds unnatural, cut it and rephrase.
+- Primary keyword "${keyword}": use in title, first paragraph, one H2 heading, and conclusion. 4-5 occurrences max.
+- Do not keyword stuff. If it sounds unnatural, rephrase.
+- Use semantic synonyms and related terms throughout for LSI coverage.
 
 ---
 
-WRITING STYLE RULES:
-1. MAX 3 SENTENCES PER PARAGRAPH. This is non-negotiable.
-2. YOU MUST USE DOUBLE NEWLINES (\n\n) BETWEEN EVERY PARAGRAPH. This is the only way to create a page break.
-3. Every thought must be a new paragraph. If you see a paragraph with more than 3 sentences, SPLIT IT immediately.
-4. Never use em-dashes (—). Use a comma, colon, or two separate sentences.
-5. Never use forced negatives ("It's not X, it's Y"). State what it IS directly.
-6. Active voice only. No passive constructions.
-7. No exclamation points anywhere.
-8. Simple words: "use" not "utilize," "help" not "facilitate," "show" not "demonstrate."
-9. Remove all hedging: "almost," "very," "really," "quite," "somewhat."
-10. H2 headings must be specific and keyword-informed.
-11. Content must be formatted in clean HTML (e.g. <h2>, <p>, <ul>, <li>).
-
----
-
-THE BOTTOM LINE (KEY TAKEAWAYS):
-- Generate 3 high-authority, actionable takeaway bullet points.
-- FORMAT: **Bold Heading**: One clear, punchy sentence explaining the benefit.
-- CRITICAL: These MUST be strictly derived from the article's specific content and the target keyword "${keyword}". 
-- Do NOT provide generic agency marketing advice.
+KEY TAKEAWAYS:
+- Generate exactly 3 actionable takeaway bullet points.
+- FORMAT: **Bold Heading**: One clear, punchy sentence.
+- These MUST be derived from the article's specific content and the target keyword "${keyword}".
+- Do NOT provide generic advice.
 
 FAQ:
 Generate 3-5 frequently asked questions related to "${keyword}". Answers should be 2-3 sentences.
-
----
-
-INTERNAL LINKS:
-Include 1-2 anchor links to CloudSocial service pages using <a> tags naturally:
-- /seo-real-estate
-- /aeo-geo-llms-real-estate
-- /linkedin-real-estate
-- /content-real-estate
-- /ai-agent-real-estate
 
 ---
 
@@ -203,7 +186,7 @@ Return ONLY valid JSON with these exact fields:
   "slug": "string (URL-safe, hyphen-separated)",
   "excerpt": "string (2 sentences, under 160 chars)",
   "author": "${author}",
-  "content": "string (complete HTML body — DO NOT include H1, use <p>, <h2>, <h3>, <ul>, <ol>, <li>, <a>, <strong>, <table>, <thead>, <tbody>, <tr>, <th>, <td> tags)",
+  "content": "string (complete HTML body — DO NOT include H1, use <p>, <h2>, <h3>, <ul>, <ol>, <li>, <a>, <strong> tags. Only use <table> if genuinely needed.)",
   "seo_title": "string",
   "meta_description": "string",
   "og_title": "string",
@@ -301,7 +284,50 @@ export const generateNextPost = action({
                 }
             }
 
-            // 5. Generate featured image — Nano Banana 2 (Gemini 3.1 Flash Image)
+            // 5. Normalize article fields — case-insensitive getter to handle Gemini casing quirks
+            const getField = (obj: any, key: string): any => {
+                if (!obj || typeof obj !== "object") return undefined;
+                // Exact match first
+                if (obj[key] !== undefined) return obj[key];
+                // Case-insensitive fallback
+                const lowerKey = key.toLowerCase();
+                for (const k of Object.keys(obj)) {
+                    if (k.toLowerCase() === lowerKey) return obj[k];
+                }
+                return undefined;
+            };
+
+            // Log parsed keys for debugging
+            console.log("[generate] Parsed article keys:", Object.keys(article));
+            console.log("[generate] title value:", JSON.stringify(getField(article, "title")));
+            console.log("[generate] slug value:", JSON.stringify(getField(article, "slug")));
+            console.log("[generate] content length:", (getField(article, "content") || "").length);
+
+            // Normalize with fallbacks — never allow required fields to be empty
+            const slugify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+            const finalTitle = getField(article, "title") || `Guide to ${keyword}`;
+            const finalSlug = getField(article, "slug") || slugify(finalTitle);
+            const finalContent = getField(article, "content") || "";
+            const finalExcerpt = getField(article, "excerpt") || "";
+            const finalAuthor = getField(article, "author") || author;
+            const finalSeoTitle = getField(article, "seo_title") || getField(article, "seoTitle") || finalTitle;
+            const finalMetaDesc = getField(article, "meta_description") || getField(article, "metaDescription") || finalExcerpt;
+            const finalOgTitle = getField(article, "og_title") || getField(article, "ogTitle") || finalTitle;
+            const finalOgDesc = getField(article, "og_description") || getField(article, "ogDescription") || finalExcerpt;
+            const finalImageAlt = getField(article, "featured_image_alt") || getField(article, "featuredImageAlt") || `Featured image for ${keyword}`;
+            const finalJsonLd = getField(article, "json_ld") || getField(article, "jsonLd") || undefined;
+            const finalKeyTakeaways = getField(article, "key_takeaways") || getField(article, "keyTakeaways") || undefined;
+            const finalFaqs = getField(article, "faqs") || undefined;
+
+            if (!finalContent) {
+                throw new Error(`Gemini returned empty content. Keys found: ${Object.keys(article).join(", ")}. Raw title: ${JSON.stringify(getField(article, "title"))}`);
+            }
+
+            console.log("[generate] Final title:", finalTitle);
+            console.log("[generate] Final slug:", finalSlug);
+
+            // 6. Generate featured image — Nano Banana 2 (Gemini 3.1 Flash Image)
             let featuredImageStorageId: string | undefined;
 
             try {
@@ -348,14 +374,14 @@ export const generateNextPost = action({
                 // Non-fatal — post is created without an image
             }
 
-            // 6. Insert as DRAFT — admin reviews before publishing
+            // 7. Insert as DRAFT — admin reviews before publishing
             const postId: string = await ctx.runMutation(api.posts.create, {
-                title: article.title,
-                slug: article.slug,
-                content: article.content,
-                excerpt: article.excerpt,
+                title: finalTitle,
+                slug: finalSlug,
+                content: finalContent,
+                excerpt: finalExcerpt || undefined,
                 status: "draft",
-                author: article.author || author,
+                author: finalAuthor,
                 funnel_stage: funnelStage,
                 cluster: cluster,
                 pillar: pillar || undefined,
@@ -364,21 +390,21 @@ export const generateNextPost = action({
                 monthly_volume: queueItem.monthly_volume,
                 keyword_difficulty: queueItem.keyword_difficulty,
                 word_count_target: wordCountTarget,
-                seo_title: article.seo_title,
-                meta_description: article.meta_description,
-                og_title: article.og_title,
-                og_description: article.og_description,
+                seo_title: finalSeoTitle || undefined,
+                meta_description: finalMetaDesc || undefined,
+                og_title: finalOgTitle || undefined,
+                og_description: finalOgDesc || undefined,
                 featured_image_storageId: featuredImageStorageId as any,
-                featured_image_alt: article.featured_image_alt,
+                featured_image_alt: finalImageAlt || undefined,
                 featured_image_prompt: imagePrompt,
-                json_ld: article.json_ld,
-                key_takeaways: article.key_takeaways || undefined,
-                faqs: article.faqs || undefined,
+                json_ld: typeof finalJsonLd === "string" ? finalJsonLd : (finalJsonLd ? JSON.stringify(finalJsonLd) : undefined),
+                key_takeaways: Array.isArray(finalKeyTakeaways) ? finalKeyTakeaways : undefined,
+                faqs: Array.isArray(finalFaqs) ? finalFaqs : undefined,
                 ai_generated: true,
                 queueItemId: queueItem._id,
             });
 
-            // 7. Update queue item — mark as generated (not published — admin publishes manually)
+            // 8. Update queue item — mark as generated (not published — admin publishes manually)
             await ctx.runMutation(api.queue.updateQueueItem, {
                 id: queueItem._id,
                 status: "published", // "published" here means "processed" — the post itself is a draft
@@ -386,7 +412,7 @@ export const generateNextPost = action({
                 postId: postId as any,
             });
 
-            return { status: "success", postId, slug: article.slug, title: article.title };
+            return { status: "success", postId, slug: finalSlug, title: finalTitle };
 
         } catch (err) {
             await ctx.runMutation(api.queue.updateQueueItem, {
