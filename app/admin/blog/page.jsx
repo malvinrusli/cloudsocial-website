@@ -142,6 +142,16 @@ export default function AdminBlogPage() {
                                             >
                                                 ↗
                                             </a>
+                                            <button
+                                                onClick={() => togglePublish({ id: post._id })}
+                                                className={`px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest transition-colors ${post.status === "published"
+                                                    ? "bg-stone-50 text-stone-400 hover:text-stone-900"
+                                                    : "bg-emerald-600 text-white hover:bg-emerald-700"
+                                                    }`}
+                                                title={post.status === "published" ? "Set to Draft" : "Go Live Now"}
+                                            >
+                                                {post.status === "published" ? "Draft" : "Publish"}
+                                            </button>
                                             <Link
                                                 href={`/admin/blog/${post._id}`}
                                                 className="px-3 py-1.5 bg-stone-100 text-stone-900 text-[10px] font-bold uppercase tracking-widest rounded-lg hover:bg-stone-200 transition-colors"

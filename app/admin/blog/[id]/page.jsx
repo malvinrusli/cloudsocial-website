@@ -177,14 +177,21 @@ export default function BlogPostEditorPage() {
                     <div className="flex items-center gap-3">
                         {saved && <span className="text-emerald-600 text-sm font-medium animate-pulse">✓ Changes Saved</span>}
                         {!isNew && (
-                            <a
-                                href={`/blogs/${form.slug}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-4 py-2 text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors"
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    const newStatus = form.status === "published" ? "draft" : "published";
+                                    setForm(f => ({ ...f, status: newStatus }));
+                                    // Trigger save automatically with new status
+                                    setTimeout(() => document.getElementById("blog-form").requestSubmit(), 0);
+                                }}
+                                className={`px-5 py-2 rounded-lg text-sm font-bold transition-all shadow-sm ${form.status === "published"
+                                    ? "bg-stone-100 text-stone-600 hover:bg-stone-200"
+                                    : "bg-emerald-600 text-white hover:bg-emerald-700 shadow-emerald-200/50"
+                                    }`}
                             >
-                                Preview Live →
-                            </a>
+                                {form.status === "published" ? "Unpublish" : "Publish Now"}
+                            </button>
                         )}
                         <button
                             form="blog-form"
