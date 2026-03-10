@@ -71,80 +71,106 @@ export default async function BlogPostPage({ params }) {
                 />
             )}
 
-            <article className="max-w-3xl mx-auto px-6 pt-32 pb-24">
+            <article className="max-w-4xl mx-auto px-6 pt-32 pb-24">
                 {/* Breadcrumb */}
-                <nav className="text-sm text-stone-400 mb-8">
-                    <Link href="/blogs" className="hover:text-stone-600 transition-colors">Blog</Link>
-                    <span className="mx-2">/</span>
-                    <span className="text-stone-600">{post.title}</span>
+                <nav className="text-sm text-stone-400 mb-10 flex items-center gap-2">
+                    <Link href="/blogs" className="hover:text-stone-900 transition-colors">Blog</Link>
+                    <span className="text-stone-200">/</span>
+                    <span className="text-stone-600 truncate">{post.title}</span>
                 </nav>
 
-                {/* Title */}
-                <h1 className="text-3xl lg:text-4xl font-bold text-stone-900 leading-tight mb-6">
-                    {post.title}
-                </h1>
+                {/* Title and Metadata */}
+                <div className="mb-12">
+                    <h1 className="text-4xl lg:text-5xl font-bold text-stone-900 leading-[1.15] mb-8 tracking-tight">
+                        {post.title}
+                    </h1>
 
-                {/* Byline */}
-                <div className="flex items-center gap-3 mb-10 pb-8 border-b border-stone-100">
-                    <div className="w-8 h-8 rounded-full bg-stone-200 flex items-center justify-center text-stone-500 text-sm font-medium">
-                        {post.author?.charAt(0) || "C"}
-                    </div>
-                    <div>
-                        <div className="text-sm font-medium text-stone-900">{post.author}</div>
-                        <div className="text-xs text-stone-400">
-                            Author{post.publishedAt
-                                ? ` · ${new Date(post.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}`
-                                : ""}
+                    <div className="flex items-center gap-4 py-6 border-y border-stone-100">
+                        <div className="w-10 h-10 rounded-full bg-stone-900 flex items-center justify-center text-white text-sm font-bold shadow-sm">
+                            {post.author?.charAt(0) || "C"}
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-sm font-bold text-stone-900">{post.author}</span>
+                            <span className="text-[11px] font-bold text-stone-400 uppercase tracking-widest">
+                                {post.publishedAt
+                                    ? new Date(post.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+                                    : "Draft"}
+                            </span>
                         </div>
                     </div>
                 </div>
 
                 {/* Featured image */}
-                <div className="aspect-video bg-stone-100 rounded-xl mb-10 overflow-hidden">
+                <div className="aspect-[21/9] bg-stone-100 rounded-2xl mb-12 overflow-hidden shadow-sm">
                     {post.featured_image_storageId ? (
                         <img
                             src={`/api/image/${post.featured_image_storageId}`}
                             alt={post.featured_image_alt || post.title}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover shadow-inner"
                         />
                     ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-stone-200 via-stone-300 to-stone-400 flex items-end p-8">
-                            <span className="text-stone-600 text-xs font-medium tracking-widest uppercase">CloudSocial</span>
+                        <div className="w-full h-full bg-stone-50 flex items-center justify-center">
+                            <span className="text-stone-200 text-6xl font-black uppercase italic tracking-tighter opacity-10 select-none">CloudSocial</span>
                         </div>
                     )}
                 </div>
 
-                {/* Key Takeaways */}
-                {post.key_takeaways?.length > 0 && (
-                    <div className="bg-stone-50 border border-stone-200 rounded-xl p-6 mb-10">
-                        <h2 className="text-sm font-semibold tracking-widest uppercase text-stone-400 mb-4">Key Takeaways</h2>
-                        <ul className="space-y-2">
-                            {post.key_takeaways.map((item, i) => (
-                                <li key={i} className="flex items-start gap-3 text-stone-700 text-sm leading-relaxed">
-                                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-stone-400 shrink-0" />
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <div className="lg:col-span-8">
+                        {/* Article body with responsive wrapper */}
+                        <div className="overflow-x-visible">
+                            <div
+                                className="prose prose-stone prose-lg max-w-none
+                                    prose-headings:font-bold prose-headings:text-stone-900 prose-headings:tracking-tight
+                                    prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
+                                    prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+                                    prose-p:text-stone-600 prose-p:leading-[1.8] prose-p:mb-6
+                                    prose-a:text-stone-900 prose-a:font-bold prose-a:underline prose-a:decoration-stone-300 hover:prose-a:decoration-stone-900 prose-a:transition-all
+                                    prose-strong:text-stone-900 prose-strong:font-bold
+                                    prose-ul:text-stone-600 prose-ol:text-stone-600 prose-li:my-2
+                                    /* Fixed table layout for responsiveness */
+                                    prose-table:block prose-table:overflow-x-auto prose-table:whitespace-nowrap prose-table:border-stone-200 prose-table:border prose-table:rounded-xl prose-table:my-10 prose-table:shadow-sm
+                                    prose-thead:bg-stone-50/80 prose-thead:border-b prose-thead:border-stone-200
+                                    prose-th:px-6 prose-th:py-4 prose-th:text-xs prose-th:font-bold prose-th:uppercase prose-th:tracking-widest prose-th:text-stone-500
+                                    prose-td:px-6 prose-td:py-4 prose-td:text-sm prose-td:text-stone-600 prose-td:border-b prose-td:border-stone-100"
+                                dangerouslySetInnerHTML={{ __html: post.content.replace(/^<h1[^>]*>.*?<\/h1>\s*/i, "") }}
+                            />
+                        </div>
                     </div>
-                )}
 
-                {/* Article content — strip any H1 Gemini may have included */}
-                <div
-                    className="prose prose-stone prose-lg max-w-none
-                        prose-headings:font-bold prose-headings:text-stone-900
-                        prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
-                        prose-p:text-stone-600 prose-p:leading-relaxed
-                        prose-a:text-stone-900 prose-a:underline hover:prose-a:text-stone-600
-                        prose-strong:text-stone-900
-                        prose-ul:text-stone-600 prose-ol:text-stone-600
-                        prose-li:my-1
-                        prose-table:text-sm prose-table:border-collapse prose-table:my-8
-                        prose-thead:bg-stone-50 prose-thead:border-b prose-thead:border-stone-200
-                        prose-th:px-4 prose-th:py-3 prose-th:text-stone-900 prose-th:font-semibold prose-th:text-left
-                        prose-td:px-4 prose-td:py-3 prose-td:border-b prose-td:border-stone-100 prose-td:text-stone-600"
-                    dangerouslySetInnerHTML={{ __html: post.content.replace(/^<h1[^>]*>.*?<\/h1>\s*/i, "") }}
-                />
+                    <aside className="lg:col-span-4 space-y-10">
+                        {/* Sticky sidebar content */}
+                        <div className="sticky top-24 space-y-10">
+                            {/* Key Takeaways moved to sidebar for better layout focus */}
+                            {post.key_takeaways?.length > 0 && (
+                                <div className="bg-stone-50/50 border border-stone-200 rounded-2xl p-6 shadow-sm">
+                                    <h2 className="text-[10px] font-bold tracking-[0.2em] uppercase text-stone-400 mb-6 flex items-center gap-2">
+                                        <span className="w-1 h-3 bg-stone-900 rounded-full"></span>
+                                        Deep Insights
+                                    </h2>
+                                    <ul className="space-y-4">
+                                        {post.key_takeaways.map((item, i) => (
+                                            <li key={i} className="flex items-start gap-3 group">
+                                                <span className="mt-1.5 w-1 h-1 rounded-full bg-stone-900 group-hover:scale-150 transition-transform shrink-0" />
+                                                <span className="text-stone-600 text-[13px] font-medium leading-relaxed italic">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {/* Tags/Cluster Info */}
+                            <div className="px-2">
+                                <h4 className="text-[10px] font-bold tracking-[0.2em] uppercase text-stone-300 mb-4">Topic Area</h4>
+                                <div className="flex flex-wrap gap-2">
+                                    <span className="px-3 py-1 bg-white border border-stone-200 rounded-full text-[10px] font-bold uppercase tracking-wider text-stone-500 shadow-sm">
+                                        {post.cluster || "Authority Content"}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
 
                 {/* FAQ Section */}
                 {post.faqs?.length > 0 && (

@@ -56,9 +56,22 @@ export default function AdminQueuePage() {
         try {
             const result = await triggerGenerate({});
             if (result.status === "no_pending") {
-                setMessage({ type: "info", text: "No pending keywords in queue." });
+                setMessage({ type: "info", text: "No pending keywords in queue. Please add keywords or run discovery first." });
             } else {
-                setMessage({ type: "success", text: `Published: "${result.title}" → /blogs/${result.slug}` });
+                setMessage({
+                    type: "success",
+                    text: (
+                        <div className="flex items-center justify-between gap-4">
+                            <span>Drafted: <strong>{result.title}</strong></span>
+                            <a
+                                href={`/admin/blog/${result.postId}`}
+                                className="px-3 py-1 bg-emerald-600 text-white rounded text-xs font-bold hover:bg-emerald-700 transition-colors shrink-0"
+                            >
+                                Edit & Publish →
+                            </a>
+                        </div>
+                    )
+                });
             }
         } catch (err) {
             setMessage({ type: "error", text: String(err) });
@@ -72,7 +85,10 @@ export default function AdminQueuePage() {
         setMessage(null);
         try {
             const result = await triggerDiscover({});
-            setMessage({ type: "success", text: `SEMrush discovery complete. Added ${result.added} keywords.${result.errors.length ? ` (${result.errors.length} errors)` : ""}` });
+            setMessage({
+                type: "success",
+                text: `SEMrush discovery complete. Added ${result.added} keywords to queue for drafting.${result.errors.length ? ` (${result.errors.length} errors)` : ""}`
+            });
         } catch (err) {
             setMessage({ type: "error", text: String(err) });
         } finally {
@@ -85,31 +101,38 @@ export default function AdminQueuePage() {
             <AdminNav />
             <div className="max-w-6xl mx-auto px-6 py-10">
                 <div className="flex items-center justify-between mb-8">
-                    <h1 className="text-2xl font-bold text-stone-900">Keyword Queue</h1>
+                    <div>
+                        <h1 className="text-2xl font-bold text-stone-900">Content Discovery & Queue</h1>
+                        <p className="text-sm text-stone-500 mt-1">Research keywords and automate drafting for review.</p>
+                    </div>
                     <div className="flex gap-3">
                         <button
                             onClick={handleDiscover}
                             disabled={discovering}
-                            className="px-4 py-2 bg-stone-800 text-white rounded-lg text-sm font-medium hover:bg-stone-700 disabled:opacity-50 transition-colors"
+                            className="px-4 py-2 bg-stone-100 text-stone-600 rounded-lg text-sm font-bold hover:bg-stone-200 disabled:opacity-50 transition-all border border-stone-200"
                         >
-                            {discovering ? "Discovering..." : "Run SEMrush Discovery"}
+                            {discovering ? "Discovering..." : "Research Keywords (SEMrush)"}
                         </button>
                         <button
                             onClick={handleGenerate}
                             disabled={generating}
-                            className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 disabled:opacity-50 transition-colors"
+                            className="px-4 py-2 bg-stone-900 text-white rounded-lg text-sm font-bold hover:bg-stone-800 disabled:opacity-50 transition-all shadow-sm flex items-center gap-2"
                         >
-                            {generating ? "Generating..." : "Generate Next Article"}
+                            {generating ? (
+                                <>
+                                    <span className="w-3 h-3 border-2 border-stone-400 border-t-white rounded-full animate-spin" />
+                                    Generating Draft...
+                                </>
+                            ) : "Generate Next Draft"}
                         </button>
                     </div>
                 </div>
 
                 {message && (
-                    <div className={`mb-6 px-4 py-3 rounded-lg text-sm ${
-                        message.type === "success" ? "bg-emerald-50 text-emerald-800 border border-emerald-200" :
+                    <div className={`mb-6 px-4 py-3 rounded-lg text-sm ${message.type === "success" ? "bg-emerald-50 text-emerald-800 border border-emerald-200" :
                         message.type === "error" ? "bg-red-50 text-red-800 border border-red-200" :
-                        "bg-blue-50 text-blue-800 border border-blue-200"
-                    }`}>
+                            "bg-blue-50 text-blue-800 border border-blue-200"
+                        }`}>
                         {message.text}
                     </div>
                 )}

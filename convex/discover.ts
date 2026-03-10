@@ -5,18 +5,20 @@ import { api } from "./_generated/api";
 
 const SEED_TOPICS = [
     // TOFU — broad informational
-    "commercial real estate marketing",
-    "commercial real estate SEO",
     "commercial real estate digital marketing",
-    "real estate AI chatbot",
-    "commercial real estate LinkedIn",
-    "commercial real estate video marketing",
+    "real estate AI agent automation",
+    "commercial real estate SEO strategy",
+    "AEO for real estate brokers",
+    "GEO optimization for CRE",
+    "LinkedIn authority for real estate",
     // MOFU — strategy / how-to intent
-    "how to market commercial real estate",
-    "commercial real estate lead generation",
+    "real estate content marketing audit",
+    "CRE lead generation systems",
+    "AI lead scoring for real estate",
     // BOFU — buying intent / agency selection
-    "commercial real estate marketing agency",
-    "commercial real estate SEO company",
+    "best commercial real estate marketing agency",
+    "real estate SEO services for firms",
+    "CRE digital marketing consultant",
 ];
 
 function classifyFunnel(keyword: string): "TOFU" | "MOFU" | "BOFU" {

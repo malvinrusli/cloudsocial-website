@@ -41,19 +41,21 @@ This reader is evaluating vendors. They are close to making a buying decision. W
    3-4 concrete criteria a CRE professional should use when evaluating options.
    Each criterion needs a reason: why does it matter for their business?
 
-3. H2: What CloudSocial Does Differently
+3. COMPARISON TABLE: [Service Type] Comparison
+   Include a table comparing "CloudSocial Approach" vs "Generalist Agency Approach" across 3-4 rows (e.g., Specialization, Content Depth, Distribution).
+
+4. H2: What CloudSocial Does Differently
    Specific approaches, not generic claims. Mention: our specialization in CRE, the tactics we use, why generalist agencies fail CRE clients.
 
-4. H2: Results You Should Expect
+5. H2: Results You Should Expect
    Concrete, realistic outcomes with timeframes. Examples: "Within 90 days, expect X."
    Be honest — don't overpromise.
 
-5. H2: Who This Is For (and Who It Isn't)
+6. H2: Who This Is For (and Who It Isn't)
    Be direct. Ideal client: CRE brokers, owners, or investors with X. Not ideal: residential agents, anyone wanting overnight results.
 
-6. CONCLUSION — 60-80 words
-   Restate the single most important criterion. Link to the relevant CloudSocial service page.
-   End with a mention of CloudSocial. Do NOT include an author sign-off line.`;
+7. CONCLUSION — 60-80 words
+   Restate the single most important criterion. Link to the relevant CloudSocial service page.`;
     } else if (funnelStage === "MOFU") {
         formatInstructions = `
 E-E-A-T ARTICLE STRUCTURE — MOFU (Strategy / Deep Dive):
@@ -66,21 +68,23 @@ This reader knows the problem exists. They want a real strategy, not an intro. W
    Set realistic expectations. Name what people overlook. Use first-person: "In our work with CRE clients..."
    ${secondaryKwInstruction}
 
-3. H2: [Core Strategy 1 — write a specific, keyword-rich H2 title]
+3. DATA TABLE: [Topic] Performance Metrics or Benchmarks
+   Include a table showing 3-5 rows of relevant metrics, benchmarks, or timeframes associated with this strategy.
+
+4. H2: [Core Strategy 1 — write a specific, keyword-rich H2 title]
    Deep dive into the first approach. Include data, timeframes, or real examples.
 
-4. H2: [Core Strategy 2 — write a specific, keyword-rich H2 title]
+5. H2: [Core Strategy 2 — write a specific, keyword-rich H2 title]
    Second angle. Different tactic or complementary approach. Include another secondary keyword naturally.
 
-5. H2: What Strong Execution Looks Like vs. What Fails
+6. H2: What Strong Execution Looks Like vs. What Fails
    Contrast. Be concrete about both sides. Frame it as patterns you see in the field.
 
-6. H2: Next Steps — ordered list of 4-5 concrete actions
+7. H2: Next Steps — ordered list of 4-5 concrete actions
    Each step: action verb + specific outcome.
 
-7. CONCLUSION — 60-80 words
-   Recap the one insight that changes how they think about this. Mention CloudSocial. Link to the relevant service page.
-   End with a mention of CloudSocial. Do NOT include an author sign-off line.`;
+8. CONCLUSION — 60-80 words
+   Recap the one insight that changes how they think about this. Mention CloudSocial. Link to the relevant service page.`;
     } else {
         // TOFU default
         formatInstructions = `
@@ -96,26 +100,30 @@ This reader is early in their awareness. They found you through a search. Write 
    Use first-person: "In our work with CRE clients across multiple markets..."
    ${secondaryKwInstruction}
 
-3. H2: [Tactic 1 — write a specific, keyword-rich H2 title]
+3. COMPARISON TABLE: [Topic] Quick-Start Guide or Comparison
+   Include a small table summarizing 3-5 key points or a decision matrix related to this topic.
+
+4. H2: [Tactic 1 — write a specific, keyword-rich H2 title]
    Specific tactic with concrete outcomes: timeframes, percentages, deal examples.
    No vague advice. "Publish consistently" means "2 posts per week for 90 days."
 
-4. H2: [Tactic 2 — write a specific, keyword-rich H2 title]
+5. H2: [Tactic 2 — write a specific, keyword-rich H2 title]
    Second angle on the solution. A different tactic or a deeper layer of the first.
 
-5. H2: [The Shortcut or Misconception — write a specific H2 title]
+6. H2: [The Shortcut or Misconception — write a specific H2 title]
    One insight that separates brokers who get results from those who don't. Could be a common mistake, a counterintuitive truth, or an overlooked tactic.
 
-6. H2: How to Start — ordered list of 4-5 concrete steps
+7. H2: How to Start — ordered list of 4-5 concrete steps
    Each step: action verb + specific outcome. Make it immediately usable.
 
-7. CONCLUSION — 60-80 words
-   Recap the single most important insight.
-   Mention CloudSocial by name. Link to the most relevant service page.
-   End with a mention of CloudSocial. Do NOT include an author sign-off line.`;
+8. CONCLUSION — 60-80 words
+   Recap the single most important insight. Mention CloudSocial. Link to the most relevant service page.`;
     }
 
     return `You are a content strategist at CloudSocial, a digital marketing agency for commercial real estate. You write authoritative, E-E-A-T optimized blog articles that rank on Google and convert CRE professionals.
+
+CLOUDSOCIAL BRAND IDENTITY:
+CloudSocial is an Agency that specializes in helping Real Estate Firms or Agents make better content, SEO, AEO, GEO, Authority, LinkedIn, Automations, and AI. We specialize in Inbound marketing for the Real Estate niche.
 
 CRITICAL: This entire article MUST be written specifically about the topic: "${keyword}". Every section, every example, every H2 heading must be directly relevant to "${keyword}". Do not drift to other topics.
 
@@ -125,7 +133,7 @@ FUNNEL STAGE: ${funnelStage}
 CONTENT CLUSTER: ${cluster}
 ${pillar ? `PILLAR TOPIC: ${pillar}` : ""}
 AUTHOR: ${author}
-TARGET WORD COUNT: ${wordCountTarget} words (stay within 50 words of this target — do not go over by more than 50)
+TARGET WORD COUNT: ${wordCountTarget} words
 
 ---
 
@@ -133,9 +141,13 @@ CLOUDSOCIAL BRAND VOICE:
 - We are practitioners, not commentators. Write from experience, not from theory.
 - Authoritative and direct. CRE professionals close deals for a living — they have no patience for filler.
 - Every claim needs a number, outcome, or concrete example behind it.
-- Tone: confident, clear, no corporate jargon.
 - Never use: "leverage," "synergy," "holistic," "innovative," "streamline," "game-changing," "utilize," "facilitate."
 - Always name the reader's real pain: losing listings to competitors, empty pipeline, invisible on Google, chasing unqualified leads.
+
+---
+
+TECHNICAL RULE — TABLES:
+You MUST include at least ONE well-formatted HTML table (<table>) in every article as specified in the structure below. Use semantic tags (<thead>, <tbody>, <th>, <td>). Do NOT include borders or styles in the HTML — use clean semantic tags.
 
 ---
 ${formatInstructions}
@@ -143,8 +155,7 @@ ${formatInstructions}
 ---
 
 KEYWORD RULES:
-- Primary keyword "${keyword}": use in title, first paragraph, one H2 heading, and conclusion. 4-5 occurrences max. Never repeat the exact phrase twice in the same paragraph.
-- ${secondaryKwInstruction}
+- Primary keyword "${keyword}": use in title, first paragraph, one H2 heading, and conclusion. 4-5 occurrences max. 
 - Do not keyword stuff. If it sounds unnatural, cut it and rephrase.
 
 ---
@@ -156,44 +167,44 @@ WRITING RULES:
 4. No exclamation points anywhere.
 5. Simple words: "use" not "utilize," "help" not "facilitate," "show" not "demonstrate."
 6. Remove all hedging: "almost," "very," "really," "quite," "somewhat."
-7. H2 headings must be specific and keyword-informed — never generic phrases like "The Mistake Most CRE Professionals Make." Write H2s that could stand alone as search queries or compelling section titles.
-8. Word count target: ${wordCountTarget} words. Count carefully. Do not exceed by more than 50 words.
+7. H2 headings must be specific and keyword-informed.
+8. Do NOT include an author sign-off line like "By ${author}" at the end.
 
 ---
 
 KEY TAKEAWAYS:
-Generate 3-5 concise, actionable takeaway bullet points that summarize the core insights of the article. Each should be one clear sentence that a reader can act on immediately.
+Generate 3 actionable takeaway bullet points that summarize the core insights.
 
 FAQ:
-Generate 5 frequently asked questions related to "${keyword}". Each answer should be 2-3 sentences, factual, and directly useful. Write questions that real CRE professionals would ask. These will appear as FAQ schema markup for SEO.
+Generate 3-5 frequently asked questions related to "${keyword}". Answers should be 2-3 sentences.
 
 ---
 
 INTERNAL LINKS:
-Include 2-3 anchor links to CloudSocial service pages within the body where they fit naturally:
-- <a href="/seo-real-estate">commercial real estate SEO</a>
-- <a href="/aeo-geo-llms-real-estate">AEO and GEO for real estate</a>
-- <a href="/linkedin-real-estate">LinkedIn growth for real estate</a>
-- <a href="/content-real-estate">short form video content for real estate</a>
-- <a href="/ai-agent-real-estate">AI agents for real estate</a>
+Include 1-2 anchor links to CloudSocial service pages using <a> tags naturally:
+- /seo-real-estate
+- /aeo-geo-llms-real-estate
+- /linkedin-real-estate
+- /content-real-estate
+- /ai-agent-real-estate
 
 ---
 
-Return ONLY valid JSON with these exact fields (no markdown, no code fences):
+Return ONLY valid JSON with these exact fields:
 {
-  "title": "string (H1, includes primary keyword, compelling, no exclamation point, max 65 chars)",
-  "slug": "string (URL-safe, hyphen-separated, 4-6 words, no stop words)",
-  "excerpt": "string (2 sentences, includes primary keyword, compelling summary, under 160 chars)",
+  "title": "string (H1, includes primary keyword, max 65 chars)",
+  "slug": "string (URL-safe, hyphen-separated)",
+  "excerpt": "string (2 sentences, under 160 chars)",
   "author": "${author}",
-  "content": "string (complete HTML body — DO NOT include an H1 tag, start directly with the hook paragraph, then H2 sections as described above — use <p>, <h2>, <h3>, <ul>, <ol>, <li>, <a>, <strong>, <em> tags — NO markdown, NO em-dashes)",
-  "seo_title": "string (max 60 chars, includes primary keyword)",
-  "meta_description": "string (max 155 chars, includes primary keyword, action-oriented)",
-  "og_title": "string (engaging social title, no exclamation point)",
-  "og_description": "string (1-2 sentences for social sharing)",
-  "featured_image_alt": "string (descriptive alt text, includes primary keyword)",
-  "key_takeaways": ["string (3-5 actionable bullet points, each one sentence)"],
-  "faqs": [{"question": "string", "answer": "string (2-3 sentences)"}],
-  "json_ld": "string (valid BlogPosting JSON-LD schema as a JSON string, include author name ${author})"
+  "content": "string (complete HTML body — DO NOT include H1, use <p>, <h2>, <h3>, <ul>, <ol>, <li>, <a>, <strong>, <table>, <thead>, <tbody>, <tr>, <th>, <td> tags)",
+  "seo_title": "string",
+  "meta_description": "string",
+  "og_title": "string",
+  "og_description": "string",
+  "featured_image_alt": "string",
+  "key_takeaways": ["string"],
+  "faqs": [{"question": "string", "answer": "string"}],
+  "json_ld": "string"
 }`;
 }
 
