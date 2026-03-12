@@ -90,7 +90,7 @@ const Hero = () => {
                                 <span className="font-sans font-medium text-secondary/30 tracking-tight mr-4">Infrastructure</span>
                                 <span className="font-sans font-medium text-secondary">for</span>
                             </span>
-                            <span className="block h-[1.1em] overflow-hidden mt-2 hero-anim">
+                            <span className="block h-[1.2em] overflow-visible mt-2 hero-anim">
                                 <span className="rotating-word inline-block text-4xl md:text-6xl lg:text-[5.5rem] font-sans font-medium text-secondary">
                                     {rotatingWords[wordIndex]}
                                 </span>
@@ -98,7 +98,9 @@ const Hero = () => {
                         </h1>
                     </div>
 
-                    We build compounding digital authority and lead-generation systems for property developers, architects, and high-ticket service businesses who want to be the default choice — not a second option.
+                    <p className="hero-anim max-w-2xl text-lg md:text-xl font-sans font-light text-textDark/60 leading-relaxed mb-10">
+                        We build compounding digital authority and lead-generation systems for high-ticket service businesses, architects, and property developers who want to be the default choice — not a second option.
+                    </p>
 
                     {/* CTA */}
                     <div className="hero-anim mb-8 flex flex-col sm:flex-row items-start sm:items-center gap-6">

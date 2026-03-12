@@ -57,9 +57,8 @@ const Philosophy = () => {
             <div className="relative z-10 w-full max-w-6xl flex flex-col items-center text-center">
                 <p className="text-textDark/80 font-sans tracking-widest text-sm md:text-base mb-10 font-medium bg-white px-6 py-2 rounded border border-gray-100 shadow-sm">
                     <span className="philosophy-word inline-block mr-1">Most</span>
-                    <span className="philosophy-word inline-block mr-1">commercial</span>
-                    <span className="philosophy-word inline-block mr-1">real</span>
-                    <span className="philosophy-word inline-block mr-1">estate</span>
+                    <span className="philosophy-word inline-block mr-1">premium</span>
+                    <span className="philosophy-word inline-block mr-1">service-led</span>
                     <span className="philosophy-word inline-block mr-1">firms</span>
                     <span className="philosophy-word inline-block mr-1">are</span>
                     <span className="philosophy-word inline-block mr-1">invisible</span>

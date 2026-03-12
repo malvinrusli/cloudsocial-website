@@ -6,10 +6,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const clients = [
-    { num: '01', label: 'Property Developers', tag: 'High-value development authority' },
-    { num: '02', label: 'Real Estate Firms', tag: 'Institutional-grade visibility' },
-    { num: '03', label: 'Architects & Interiors', tag: 'Design-led lead generation' },
-    { num: '04', label: 'Built Environment Professionals', tag: 'Scaling through trust' },
+    { num: '01', label: 'Property Developers', tag: 'Capital-Grade Authority' },
+    { num: '02', label: 'Real Estate Firms', tag: 'Market-Dominant Visibility' },
+    { num: '03', label: 'Architects & Interiors', tag: 'Design-Led Appointment Flow' },
+    { num: '04', label: 'Built Environment', tag: 'Scalable Trust Systems' },
 ];
 
 const WhoWeServe = () => {
