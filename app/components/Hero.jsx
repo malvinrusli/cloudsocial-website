@@ -28,7 +28,8 @@ const Hero = () => {
         "Real Estate",
         "Built Environment",
         "Architects",
-        "Interior Firms"
+        "Interior Firms",
+        "Realtors"
     ];
 
     const [wordIndex, setWordIndex] = useState(0);
@@ -84,10 +85,10 @@ const Hero = () => {
                     <div className="mb-10 lg:mb-14">
                         <h1 className="leading-[1.05] tracking-tight relative">
                             <span className="block text-4xl md:text-6xl lg:text-[5.5rem] font-sans font-medium text-secondary hero-anim">
-                                Inbound Authority
+                                High Quality
                             </span>
                             <span className="block text-4xl md:text-6xl lg:text-[5.5rem] mt-2 hero-anim">
-                                <span className="font-sans font-medium text-secondary/30 tracking-tight mr-4">Infrastructure</span>
+                                <span className="font-sans font-medium text-secondary/30 tracking-tight mr-4">Inbound System</span>
                                 <span className="font-sans font-medium text-secondary">for</span>
                             </span>
                             <span className="block h-[1.2em] overflow-visible mt-2 hero-anim">
@@ -98,7 +99,7 @@ const Hero = () => {
                         </h1>
                     </div>
 
-                    <p className="hero-anim max-w-2xl text-lg md:text-xl font-sans font-light text-textDark/60 leading-relaxed mb-10 mt-8">
+                    <p className="hero-anim max-w-2xl text-lg md:text-xl font-sans font-light text-textDark/60 leading-relaxed mb-10 mt-12">
                         We build compounding digital authority and lead systems for architects, developers, and high-ticket service businesses.
                     </p>
 

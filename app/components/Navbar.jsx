@@ -118,17 +118,18 @@ const Navbar = ({ lang: propLang }) => {
 
                                     <div className="py-2 border-t border-gray-50">
                                         <p className="px-6 py-2 text-[10px] uppercase tracking-[0.2em] text-gray-400 font-bold">{lang === 'id' ? 'Solusi' : 'Solutions'}</p>
-                                        <a href={`/${lang}/web-architecture-real-estate`} className="px-6 py-2.5 hover:bg-gray-50 hover:text-secondary hover:pl-7 transition-all text-[13px] block">Web Architecture</a>
+                                        <a href={`/${lang}/content-real-estate`} className="px-6 py-2.5 hover:bg-gray-50 hover:text-secondary hover:pl-7 transition-all text-[13px] block">Content Architecture</a>
                                         <a href={`/${lang}/seo-real-estate`} className="px-6 py-2.5 hover:bg-gray-50 hover:text-secondary hover:pl-7 transition-all text-[13px] block">Search Authority (SEO)</a>
                                         <a href={`/${lang}/aeo-geo-llms-real-estate`} className="px-6 py-2.5 hover:bg-gray-50 hover:text-secondary hover:pl-7 transition-all text-[13px] block">AI Visibility (GEO)</a>
                                         <a href={`/${lang}/ai-agent-real-estate`} className="px-6 py-2.5 hover:bg-gray-50 hover:text-secondary hover:pl-7 transition-all text-[13px] block">AI Lead Capture</a>
+                                        <a href={`/${lang}/web-architecture-real-estate`} className="px-6 py-2.5 hover:bg-gray-50 hover:text-secondary hover:pl-7 transition-all text-[13px] block">Web Architecture</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <NavLink href={`/${lang}#how`}>{lang === 'id' ? 'Strategi' : 'Philosophy'}</NavLink>
-                        <NavLink href={`/${lang}/case-studies`}>{lang === 'id' ? 'Hasil' : 'Outcomes'}</NavLink>
+                        <NavLink href={`/${lang}#how`}>{lang === 'id' ? 'Strategi' : 'Roadmap'}</NavLink>
+                        <NavLink href={`/${lang}/case-studies`}>{lang === 'id' ? 'Hasil' : 'Case Studies'}</NavLink>
                         <NavLink href={`/${lang}/pricing`}>{dict.nav.pricing}</NavLink>
                         <NavLink href={`/${lang}/blogs`}>{dict.nav.blogs}</NavLink>
                     </div>
@@ -169,7 +170,7 @@ const Navbar = ({ lang: propLang }) => {
                             </a>
                             <a href={`/${lang}/case-studies`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-serif font-bold text-secondary flex items-baseline gap-4 group">
                                 <span className="text-xs font-sans text-gray-300 group-hover:text-primary transition-colors">03</span>
-                                {lang === 'id' ? 'Hasil' : 'Outcomes'}
+                                {lang === 'id' ? 'Hasil' : 'Case Studies'}
                             </a>
                             <a href={`/${lang}/pricing`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-serif font-bold text-secondary flex items-baseline gap-4 group">
                                 <span className="text-xs font-sans text-gray-300 group-hover:text-primary transition-colors">04</span>
