@@ -98,8 +98,8 @@ const Hero = () => {
                         </h1>
                     </div>
 
-                    <p className="hero-anim max-w-2xl text-lg md:text-xl font-sans font-light text-textDark/60 leading-relaxed mb-10">
-                        We build compounding digital authority and lead-generation systems for high-ticket service businesses, architects, and property developers who want to be the default choice — not a second option.
+                    <p className="hero-anim max-w-2xl text-lg md:text-xl font-sans font-light text-textDark/60 leading-relaxed mb-10 mt-8">
+                        We build compounding digital authority and lead systems for architects, developers, and high-ticket service businesses.
                     </p>
 
                     {/* CTA */}

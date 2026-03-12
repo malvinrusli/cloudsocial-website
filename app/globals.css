@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Aeonik Arabic';
+    font-family: 'Aeonik';
     src: url('/fonts/Aeonik/Aeonik-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;

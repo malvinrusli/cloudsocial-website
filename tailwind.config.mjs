@@ -14,7 +14,7 @@ export default {
                 textDark: '#55555A',
             },
             fontFamily: {
-                sans: ['"Aeonik Arabic"', 'sans-serif'],
+                sans: ['"Aeonik"', 'sans-serif'],
                 serif: ['Playfair Display', 'serif'],
                 mono: ['JetBrains Mono', 'monospace'],
             },
