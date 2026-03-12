@@ -89,15 +89,17 @@ const Hero = () => {
 
                     {/* Core Headline */}
                     <div className="mb-10 lg:mb-14 max-w-5xl">
-                        <h1 className="leading-[1.05] tracking-tight relative">
+                        <h1 className="leading-tight tracking-tight relative">
                             <span className="block text-5xl md:text-7xl lg:text-[6.5rem] font-sans font-medium text-secondary hero-anim uppercase">
                                 High Quality
                             </span>
-                            <span className="block text-5xl md:text-7xl lg:text-[6.5rem] mt-4 hero-anim uppercase">
-                                <span className="font-sans font-medium text-secondary/30 tracking-tight mr-4">Inbound System</span>
-                                <span className="font-sans font-medium text-secondary">for</span>
+                            <span className="block text-5xl md:text-7xl lg:text-[6.5rem] mt-8 hero-anim uppercase font-sans font-medium text-secondary/30 tracking-tight">
+                                Inbound System
                             </span>
-                            <span className="block h-[1.2em] overflow-visible mt-4 hero-anim">
+                            <span className="block text-5xl md:text-7xl lg:text-[6.5rem] mt-8 hero-anim uppercase font-sans font-medium text-secondary">
+                                for
+                            </span>
+                            <span className="block h-[1.2em] overflow-visible mt-8 hero-anim">
                                 <span className="rotating-word inline-block text-5xl md:text-7xl lg:text-[6.5rem] font-sans font-medium text-secondary uppercase italic">
                                     {rotatingWords[wordIndex]}
                                 </span>
@@ -105,8 +107,8 @@ const Hero = () => {
                         </h1>
                     </div>
 
-                    <p className="hero-anim max-w-2xl text-lg md:text-xl font-sans font-light text-textDark/60 leading-relaxed mb-12 mt-4 mx-auto">
-                        We build compounding digital authority and lead systems for architects, developers, and high-ticket service businesses.
+                    <p className="hero-anim max-w-xl text-lg md:text-xl font-sans font-normal text-textDark/70 leading-relaxed mb-12 mt-24 mx-auto">
+                        We build digital authority systems that position your firm as the default choice in your market.
                     </p>
 
                     {/* CTA */}
