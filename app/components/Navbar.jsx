@@ -11,13 +11,13 @@ const NavLink = ({ href, children }) => (
         <div className="relative h-[20px] overflow-hidden">
             {/* Primary Text */}
             <div className="transition-transform duration-[0.6s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full">
-                <span className="block h-[20px] leading-tight font-medium text-secondary/80 group-hover:text-primary">
+                <span className="block h-[20px] leading-tight font-medium text-secondary/80 group-hover:text-secondary">
                     {children}
                 </span>
             </div>
             {/* Scroll-in Text */}
             <div className="absolute top-full left-0 w-full transition-transform duration-[0.6s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full">
-                <span className="block h-[20px] leading-tight font-medium text-primary">
+                <span className="block h-[20px] leading-tight font-medium text-secondary">
                     {children}
                 </span>
             </div>
@@ -26,7 +26,7 @@ const NavLink = ({ href, children }) => (
 );
 
 const NavButton = ({ children }) => (
-    <span className="hover:text-primary transition-all duration-300 relative cursor-pointer">
+    <span className="transition-all duration-300 relative cursor-pointer">
         {children}
     </span>
 );
@@ -172,24 +172,24 @@ const Navbar = ({ lang: propLang }) => {
                     <div className="flex flex-col h-full pt-32 px-8 overflow-y-auto">
                         <div className="space-y-4 mb-12">
                             <p className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-6">{lang === 'id' ? 'Menu Utama' : 'Main Menu'}</p>
-                            <a href={`/${lang}`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group">
-                                <span className="text-xs font-sans text-gray-300 group-hover:text-primary transition-colors">01</span>
+                            <a href={`/${lang}`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group hover:opacity-70 transition-opacity">
+                                <span className="text-xs font-sans text-stone-400">01</span>
                                 {lang === 'id' ? 'Beranda' : 'Home'}
                             </a>
-                            <a href={`/${lang}/services`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group">
-                                <span className="text-xs font-sans text-gray-300 group-hover:text-primary transition-colors">02</span>
+                            <a href={`/${lang}/services`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group hover:opacity-70 transition-opacity">
+                                <span className="text-xs font-sans text-stone-400">02</span>
                                 {dict.nav.services}
                             </a>
-                            <a href={`/${lang}/case-studies`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group">
-                                <span className="text-xs font-sans text-gray-300 group-hover:text-primary transition-colors">03</span>
+                            <a href={`/${lang}/case-studies`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group hover:opacity-70 transition-opacity">
+                                <span className="text-xs font-sans text-stone-400">03</span>
                                 {lang === 'id' ? 'Hasil' : 'Case Studies'}
                             </a>
-                            <a href={`/${lang}/pricing`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group">
-                                <span className="text-xs font-sans text-gray-300 group-hover:text-primary transition-colors">04</span>
+                            <a href={`/${lang}/pricing`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group hover:opacity-70 transition-opacity">
+                                <span className="text-xs font-sans text-stone-400">04</span>
                                 {dict.nav.pricing}
                             </a>
-                            <a href={`/${lang}/blogs`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group">
-                                <span className="text-xs font-sans text-gray-300 group-hover:text-primary transition-colors">05</span>
+                            <a href={`/${lang}/blogs`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group hover:opacity-70 transition-opacity">
+                                <span className="text-xs font-sans text-stone-400">05</span>
                                 {dict.nav.blogs}
                             </a>
                         </div>
