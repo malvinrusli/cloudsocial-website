@@ -29,7 +29,7 @@ const PageHero = ({
         <>
         <section
             ref={containerRef}
-            className="relative w-full min-h-[70dvh] bg-white flex flex-col pt-32 pb-16"
+            className="relative w-full min-h-[70dvh] bg-background flex flex-col pt-32 pb-16"
         >
             <div className="w-full max-w-7xl mx-auto px-6 relative z-10 flex-1 flex flex-col lg:flex-row items-center gap-16">
 

@@ -116,11 +116,11 @@ export default function AdminCaseStudiesPage() {
                             {f("slug", "Slug *", { placeholder: "meridian-cre-organic-leads" })}
                             {f("client_name", "Client Name", { placeholder: "Meridian CRE Group" })}
                             {f("industry", "Industry", { placeholder: "Commercial Real Estate Brokerage" })}
-                            {f("services", "Services (comma-separated)", { full: true, placeholder: "SEO, Content Marketing, LinkedIn Growth" })}
+                            {f("services", "Services (comma-separated)", { full: true, placeholder: "SEO, Content Architecture, Lead Automations" })}
                             {f("content", "Content (HTML)", { full: true, textarea: true, rows: 15, placeholder: "<h2>The Challenge</h2><p>...</p>" })}
                             {f("featured_image_alt", "Featured Image Alt", { full: true, placeholder: "Meridian CRE team in their Houston office" })}
-                            {f("seo_title", "SEO Title", { full: true, placeholder: "Meridian CRE: 340% Lead Growth Case Study | CloudSocial" })}
-                            {f("meta_description", "Meta Description", { full: true, textarea: true, rows: 2, placeholder: "See how CloudSocial helped Meridian CRE grow organic leads by 340% in 6 months." })}
+                            {f("seo_title", "SEO Title", { full: true, placeholder: "Meridian CRE: 340% Lead Growth Case Study | Promperty" })}
+                            {f("meta_description", "Meta Description", { full: true, textarea: true, rows: 2, placeholder: "See how Promperty helped Meridian CRE grow organic leads by 340% in 6 months." })}
                             {f("json_ld", "JSON-LD", { full: true, textarea: true, rows: 4, placeholder: '{"@type":"Article",...}' })}
                         </div>
                         <div className="flex gap-3 mt-4">
@@ -161,9 +161,8 @@ export default function AdminCaseStudiesPage() {
                                     <td className="px-4 py-3 text-stone-500 max-w-[120px] truncate">{item.industry ?? "—"}</td>
                                     <td className="px-4 py-3 text-stone-500 max-w-[160px] truncate">{(item.services || []).join(", ") || "—"}</td>
                                     <td className="px-4 py-3">
-                                        <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
-                                            item.status === "published" ? "bg-emerald-100 text-emerald-700" : "bg-stone-100 text-stone-600"
-                                        }`}>
+                                        <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${item.status === "published" ? "bg-emerald-100 text-emerald-700" : "bg-stone-100 text-stone-600"
+                                            }`}>
                                             {item.status}
                                         </span>
                                     </td>

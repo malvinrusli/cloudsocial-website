@@ -49,6 +49,36 @@ export const listMedia = query({
     },
 });
 
+// Get videos only — matches category:"video" OR contentType starting with "video/"
+export const listVideos = query({
+    args: {},
+    handler: async (ctx) => {
+        const all = await ctx.db.query("media").order("desc").collect();
+        const files = all.filter(
+            (f) => f.category === "video" || f.contentType?.startsWith("video/")
+        );
+        return await Promise.all(
+            files.map(async (file) => ({
+                ...file,
+                url: await ctx.storage.getUrl(file.storageId),
+            }))
+        );
+    },
+});
+
+// Fetch URLs for a batch of storage IDs directly
+export const getVideosBatch = query({
+    args: { storageIds: v.array(v.string()) },
+    handler: async (ctx, { storageIds }) => {
+        return await Promise.all(
+            storageIds.map(async (id) => ({
+                _id: id,
+                url: await ctx.storage.getUrl(id as any),
+            }))
+        );
+    },
+});
+
 // Get a single file's URL by storageId
 export const getUrl = query({
     args: { storageId: v.id("_storage") },

@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 
-const SITE_URL = "https://www.cloudsocial.io";
+const SITE_URL = "https://www.promperty.io";
 
 // Parse **bold** markdown syntax in Key Takeaways text
 function parseMarkdownBold(text) {
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }) {
             description: post.og_description || description,
             type: "article",
             url,
-            siteName: "CloudSocial",
+            siteName: "Promperty",
             publishedTime: post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined,
             modifiedTime: post._creationTime ? new Date(post._creationTime).toISOString() : undefined,
             images: [{
@@ -74,7 +74,7 @@ export async function generateStaticParams() {
 const RELATED_RESOURCES = [
     { label: "Commercial Real Estate SEO", href: "/seo-real-estate" },
     { label: "AEO & GEO for Real Estate", href: "/aeo-geo-llms-real-estate" },
-    { label: "LinkedIn Growth for Real Estate", href: "/linkedin-real-estate" },
+    { label: "AI Lead Capture & Automations", href: "/ai-agent-real-estate" },
 ];
 
 export default async function BlogPostPage({ params }) {
@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }) {
     }
 
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-background">
             <Navbar />
 
             {/* Reading progress bar */}
@@ -159,7 +159,7 @@ export default async function BlogPostPage({ params }) {
                         />
                     ) : (
                         <div className="w-full h-full bg-stone-50 flex items-center justify-center">
-                            <span className="text-stone-200 text-6xl font-black uppercase italic tracking-tighter opacity-10 select-none">CloudSocial</span>
+                            <span className="text-stone-200 text-6xl font-black uppercase italic tracking-tighter opacity-10 select-none">Promperty</span>
                         </div>
                     )}
                 </div>
@@ -238,12 +238,12 @@ export default async function BlogPostPage({ params }) {
                     />
                 )}
 
-                {/* CloudSocial CTA Block */}
+                {/* Promperty CTA Block */}
                 <div className="mt-16 rounded-xl bg-stone-900 px-8 py-10 text-white"
                     style={{ borderTop: "3px solid #D4AF37" }}>
                     <h3 className="text-2xl font-bold mb-3">Ready to grow your CRE business online?</h3>
                     <p className="text-stone-300 mb-6 text-sm leading-relaxed">
-                        CloudSocial builds the digital marketing engine for commercial real estate professionals who want more qualified leads without wasting time on tactics that don't work.
+                        Promperty builds the digital marketing engine for commercial real estate professionals who want more qualified leads without wasting time on tactics that don't work.
                     </p>
                     <a
                         href="/#contact"

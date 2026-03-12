@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -53,30 +54,42 @@ const Navbar = () => {
     const navRef = useRef(null);
     const wrapperRef = useRef(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isHidden, setIsHidden] = useState(false);
+    const pathname = usePathname();
+    const lastScrollY = useRef(0);
 
     useEffect(() => {
         let ctx = gsap.context(() => {
-            // Morphing logic: Transparent → Frost White border + shrink padding
             ScrollTrigger.create({
                 start: 'top -50',
                 end: 99999,
-                toggleClass: {
-                    targets: navRef.current,
-                    className: 'scrolled'
-                }
+                toggleClass: { targets: navRef.current, className: 'scrolled' }
             });
             ScrollTrigger.create({
                 start: 'top -50',
                 end: 99999,
-                toggleClass: {
-                    targets: wrapperRef.current,
-                    className: 'scrolled-wrapper'
-                }
+                toggleClass: { targets: wrapperRef.current, className: 'scrolled-wrapper' }
             });
         }, navRef);
 
-        return () => ctx.revert();
-    }, []);
+        // Hide on scroll-down, show on scroll-up — only on /services
+        const handleScroll = () => {
+            if (pathname !== '/services') return;
+            const currentY = window.scrollY;
+            if (currentY > lastScrollY.current + 10 && currentY > 100) {
+                setIsHidden(true);
+            } else if (currentY < lastScrollY.current - 10) {
+                setIsHidden(false);
+            }
+            lastScrollY.current = currentY;
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => {
+            ctx.revert();
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [pathname]);
 
     return (
         <>
@@ -93,7 +106,7 @@ const Navbar = () => {
             {/* Navbar Container */}
             <div
                 ref={wrapperRef}
-                className="fixed top-12 left-0 right-0 z-50 flex justify-center px-4 w-full transition-all duration-500 nav-wrapper"
+                className={`fixed top-12 left-0 right-0 z-50 flex justify-center px-4 w-full transition-all duration-500 nav-wrapper ${isHidden ? 'opacity-0 pointer-events-none -translate-y-4' : 'opacity-100 translate-y-0'}`}
             >
                 <nav
                     ref={navRef}
@@ -125,18 +138,18 @@ const Navbar = () => {
                                 <div className="w-64 bg-white shadow-xl  border border-gray-100 flex flex-col py-2 overflow-hidden text-textDark">
                                     <a href="/services" className="px-5 py-2.5 hover:bg-gray-50 hover:text-secondary hover:pl-6 transition-all text-[13px] font-semibold">Overview</a>
                                     <div className="h-px bg-gray-100 my-1 mx-4"></div>
-                                    <a href="/content-real-estate" className="px-5 py-2 hover:bg-gray-50 hover:text-secondary hover:pl-6 transition-all text-[13px]">Short Form Content</a>
-                                    <a href="/linkedin-real-estate" className="px-5 py-2 hover:bg-gray-50 hover:text-secondary hover:pl-6 transition-all text-[13px]">LinkedIn Growth & Content</a>
-                                    <a href="/seo-real-estate" className="px-5 py-2 hover:bg-gray-50 hover:text-secondary hover:pl-6 transition-all text-[13px]">SEO</a>
+                                    <a href="/content-real-estate" className="px-5 py-2 hover:bg-gray-50 hover:text-secondary hover:pl-6 transition-all text-[13px]">Content Architecture</a>
+                                    <a href="/seo-real-estate" className="px-5 py-2 hover:bg-gray-50 hover:text-secondary hover:pl-6 transition-all text-[13px]">Commercial SEO</a>
                                     <a href="/aeo-geo-llms-real-estate" className="px-5 py-2 hover:bg-gray-50 hover:text-secondary hover:pl-6 transition-all text-[13px]">AEO & GEO</a>
                                     <a href="/web-architecture-real-estate" className="px-5 py-2 hover:bg-gray-50 hover:text-secondary hover:pl-6 transition-all text-[13px]">Web Architecture</a>
-                                    <a href="/ai-agent-real-estate" className="px-5 py-2 hover:bg-gray-50 hover:text-secondary hover:pl-6 transition-all text-[13px]">AI Agents & Automations</a>
+                                    <a href="/ai-agent-real-estate" className="px-5 py-2 hover:bg-gray-50 hover:text-secondary hover:pl-6 transition-all text-[13px]">Lead Automations</a>
                                 </div>
                             </div>
                         </div>
 
                         <NavLink href="#how">How it Works</NavLink>
                         <NavLink href="#case">Case Studies</NavLink>
+                        <NavLink href="/pricing">Pricing</NavLink>
                         <NavLink href="/blogs">Blog</NavLink>
                     </div>
 

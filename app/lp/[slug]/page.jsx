@@ -47,7 +47,7 @@ export default async function BofuLandingPage({ params }) {
     }
 
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-background">
             <Navbar />
 
             {page.json_ld && (

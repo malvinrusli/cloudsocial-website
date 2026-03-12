@@ -6,7 +6,7 @@ import AlternatingSection from '../components/AlternatingSection';
 
 export const metadata = {
     title: "AI Agents for Real Estate Firm",
-    description: "CloudSocial builds real estate AI chatbots for commercial firms. Qualify investors on your website and WhatsApp, book meetings automatically, and sync every lead to your CRM.",
+    description: "Promperty builds real estate AI chatbots for commercial firms. Qualify investors on your website and WhatsApp, book meetings automatically, and sync every lead to your CRM.",
 };
 
 // WhatsApp Chat Mockup
@@ -18,7 +18,7 @@ const WhatsAppMockup = () => (
                 <div className="w-4 h-4 rounded-full bg-white/60"></div>
             </div>
             <div>
-                <p className="text-white text-xs font-semibold">CloudSocial AI Agent</p>
+                <p className="text-white text-xs font-semibold">Promperty AI Agent</p>
                 <p className="text-white/60 text-[10px]">Online · Responds instantly</p>
             </div>
             <div className="ml-auto w-2 h-2 rounded-full bg-emerald-400"></div>
@@ -78,6 +78,7 @@ const CRMSyncMockup = () => (
                         </div>
                         <div>
                             <p className="text-xs font-semibold text-stone-800">{lead.name}</p>
+                            <div className="text-[11px] text-white font-medium">Promperty AI</div>
                             <p className="text-[10px] text-stone-500">{lead.intent}</p>
                         </div>
                     </div>
@@ -115,8 +116,8 @@ export default function AIAgentRealEstatePage() {
         },
         {
             type: 'centered',
-            title: 'How CloudSocial Builds Your AI Agent',
-            text: "CloudSocial doesn't plug in an off-the-shelf chatbot. We train a dedicated AI agent on your firm, your asset classes, your markets, and your qualification criteria. The result: every conversation sounds like your best broker, not a help desk."
+            title: 'How Promperty Builds Your AI Agent',
+            text: "Promperty doesn't plug in an off-the-shelf chatbot. We train a dedicated AI agent on your firm, your asset classes, your markets, and your qualification criteria. The result: every conversation sounds like your best broker, not a help desk."
         },
         {
             type: 'split',
@@ -189,10 +190,10 @@ export default function AIAgentRealEstatePage() {
                     desc: 'Ensure your firm is the answer ChatGPT, Perplexity, and Gemini give when investors ask who the top brokers are in your market.'
                 },
                 {
-                    label: 'B2B Authority',
-                    path: '/linkedin-real-estate',
-                    name: 'LinkedIn Growth & Positioning',
-                    desc: 'Build a LinkedIn presence that positions your firm as the default choice for institutional investors and family offices.'
+                    label: 'Content Strategy',
+                    path: '/content-real-estate',
+                    name: 'Content Architecture',
+                    desc: 'Establish your brand as the default choice with structured deal breakdowns and market intelligence content.'
                 }
             ]
         },
@@ -205,7 +206,7 @@ export default function AIAgentRealEstatePage() {
     ];
 
     return (
-        <main className="min-h-screen bg-white text-secondary">
+        <main className="min-h-screen bg-background text-secondary">
             <Navbar />
 
             <PageHero

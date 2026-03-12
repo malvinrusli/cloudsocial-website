@@ -53,7 +53,7 @@ This reader is evaluating options. They are close to a decision. Write to help t
    Be direct. Ideal reader: CRE brokers, owners, or investors with X. Not ideal: residential agents, anyone wanting overnight results.
 
 6. CLOSING H2: Write a unique, keyword-relevant closing heading (NOT "Conclusion"). Examples: "Your Next Move on [Topic]" or "Making [Topic] Work for Your Portfolio" — 60-80 words
-   Restate the single most important criterion. Include one natural mention of CloudSocial with a link to the most relevant service page.`;
+   Restate the single most important criterion. Include one natural mention of Promperty with a link to the most relevant service page.`;
     } else if (funnelStage === "MOFU") {
         formatInstructions = `
 ARTICLE STRUCTURE — MOFU (Strategy / Deep Dive):
@@ -79,7 +79,7 @@ This reader knows the problem exists. They want a real strategy. Write for someo
    Each step: action verb + specific outcome.
 
 7. CLOSING H2: Write a unique, keyword-relevant closing heading (NOT "Conclusion"). Examples: "Where to Go From Here" or "Putting [Topic] Into Practice" — 60-80 words
-   Recap the one insight that changes how they think about this. Include one natural mention of CloudSocial with a link to the most relevant service page.`;
+   Recap the one insight that changes how they think about this. Include one natural mention of Promperty with a link to the most relevant service page.`;
     } else {
         // TOFU default
         formatInstructions = `
@@ -108,7 +108,7 @@ This reader is early in their awareness. They found you through a search. Write 
    Each step: action verb + specific outcome. Make it immediately usable.
 
 7. CLOSING H2: Write a unique, keyword-relevant closing heading (NOT "Conclusion"). Examples: "Your First Week With [Topic]" or "The One Thing That Changes Everything" — 60-80 words
-   Recap the single most important insight. Include one natural mention of CloudSocial with a link to the most relevant service page.`;
+   Recap the single most important insight. Include one natural mention of Promperty with a link to the most relevant service page.`;
     }
 
     return `You are a senior content strategist writing for the commercial real estate industry. You write authoritative, experience-backed blog articles that rank on Google and genuinely help CRE professionals.
@@ -134,8 +134,8 @@ VOICE & TONE:
 - If you use a technical CRE or marketing term (e.g., "Cap Rate" or "AEO"), follow it with a brief definition in parentheses.
 
 BRANDING RULES:
-- Do NOT mention "CloudSocial" anywhere in the article body.
-- The ONLY place CloudSocial should appear is in the CONCLUSION — one natural sentence with a link to a relevant service page.
+- Do NOT mention "Promperty" anywhere in the article body.
+- The ONLY place Promperty should appear is in the CONCLUSION — one natural sentence with a link to a relevant service page.
 - Include 1-2 anchor links to these pages, woven naturally into the text:
   /seo-real-estate, /aeo-geo-llms-real-estate, /linkedin-real-estate, /content-real-estate, /ai-agent-real-estate
 
@@ -185,7 +185,7 @@ KEYWORD RULES:
 ---
 
 KEY TAKEAWAYS:
-- Generate exactly 3 actionable takeaway bullet points.
+- Generate 4-5 actionable takeaway bullet points.
 - FORMAT: **Bold Heading**: One clear, punchy sentence.
 - These MUST be derived from the article's specific content and the target keyword "${keyword}".
 - Do NOT provide generic advice.
@@ -243,7 +243,7 @@ export const generateNextPost = action({
             const author: string = pickAuthor();
 
             const imagePrompt = queueItem.featured_image_prompt ||
-                `Professional commercial real estate photography. ${keyword}. Modern office building or property exterior. Natural light, architectural photography style. No people. Clean, high-end, editorial quality.`;
+                `Professional cinematic commercial real estate photography. ${keyword}. Modern high-end office building or refined commercial property exterior. Warm sunset glow or crisp professional morning light. Architectural focus, shallow depth of field, premium editorial look. 8k resolution, photorealistic. No people.`;
 
             // 3. Build the intent-aware prompt
             const prompt = buildPrompt(keyword, secondaryKeywords, funnelStage, cluster, pillar, wordCountTarget, author);
@@ -390,6 +390,7 @@ export const generateNextPost = action({
             }
 
             // 7. Insert as DRAFT — admin reviews before publishing
+            const SITE_URL = "https://www.promperty.io";
             const postId: string = await ctx.runMutation(api.posts.create, {
                 title: finalTitle,
                 slug: finalSlug,
@@ -417,7 +418,11 @@ export const generateNextPost = action({
                 faqs: Array.isArray(finalFaqs) ? finalFaqs : undefined,
                 ai_generated: true,
                 queueItemId: queueItem._id,
-            });
+                // New SEO metadata
+                canonical_url: `${SITE_URL}/blogs/${finalSlug}`,
+                og_image_url: featuredImageStorageId ? `${SITE_URL}/api/image/${featuredImageStorageId}` : `${SITE_URL}/og-default.png`,
+                robots_meta: "index, follow",
+            } as any);
 
             // 8. Update queue item — mark as generated (not published — admin publishes manually)
             await ctx.runMutation(api.queue.updateQueueItem, {

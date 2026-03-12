@@ -132,8 +132,8 @@ export default function AdminBofuPage() {
                             {f("hero_title", "Hero Title", { full: true, placeholder: "Commercial Real Estate SEO for Houston Brokers" })}
                             {f("hero_subtitle", "Hero Subtitle", { full: true, placeholder: "We help Houston CRE brokers rank for the keywords that bring in property owners and investors." })}
                             {f("blocks", "Blocks JSON (AlternatingSection)", { full: true, textarea: true, rows: 10, placeholder: '[{"type":"centered","title":"...","text":"..."}]' })}
-                            {f("seo_title", "SEO Title", { full: true, placeholder: "Commercial Real Estate SEO Houston | CloudSocial" })}
-                            {f("meta_description", "Meta Description", { full: true, textarea: true, rows: 2, placeholder: "CloudSocial helps Houston commercial real estate firms rank higher and generate more qualified leads." })}
+                            {f("seo_title", "SEO Title", { full: true, placeholder: "Commercial Real Estate SEO Houston | Promperty" })}
+                            {f("meta_description", "Meta Description", { full: true, textarea: true, rows: 2, placeholder: "Promperty helps Houston commercial real estate firms rank higher and generate more qualified leads." })}
                         </div>
                         <div className="flex gap-3 mt-4">
                             <button type="submit" className="px-5 py-2 bg-stone-900 text-white rounded-lg text-sm font-medium hover:bg-stone-700 transition-colors">
@@ -171,9 +171,8 @@ export default function AdminBofuPage() {
                                     <td className="px-4 py-3 text-stone-500 capitalize">{page.page_type ?? "—"}</td>
                                     <td className="px-4 py-3 text-stone-600 max-w-[160px] truncate">{page.target_keyword ?? "—"}</td>
                                     <td className="px-4 py-3">
-                                        <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
-                                            page.status === "published" ? "bg-emerald-100 text-emerald-700" : "bg-stone-100 text-stone-600"
-                                        }`}>
+                                        <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${page.status === "published" ? "bg-emerald-100 text-emerald-700" : "bg-stone-100 text-stone-600"
+                                            }`}>
                                             {page.status}
                                         </span>
                                     </td>

@@ -3,10 +3,10 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
 import AlternatingSection from '../components/AlternatingSection';
+import VideoShowcase from '../components/VideoShowcase';
 
 export const metadata = {
-    title: "Real Estate Video Production Company for Commercial Firms",
-    description: "CloudSocial is a real estate video production company for commercial firms. We produce high-retention short-form content for LinkedIn, Instagram, and YouTube that builds authority and drives inbound.",
+    description: "Promperty builds structured content architecture for property and field service firms. We produce high-authority case studies, deal breakdowns, and market intelligence that build trust and drive inbound leads.",
 };
 
 // Video Metrics Mockup
@@ -24,7 +24,7 @@ const VideoMetricsMockup = () => (
         {/* Platform breakdown */}
         <div className="p-4 space-y-3">
             {[
-                { platform: 'LinkedIn', views: '84,200', watch: '62%', icon: '💼', color: 'blue' },
+                { platform: 'Twitter / X', views: '84,200', watch: '62%', icon: '𝕏', color: 'black' },
                 { platform: 'Instagram Reels', views: '142,800', watch: '71%', icon: '📱', color: 'pink' },
                 { platform: 'YouTube Shorts', views: '38,400', watch: '58%', icon: '▶', color: 'red' },
             ].map((p, i) => (
@@ -89,7 +89,7 @@ export default function ContentRealEstatePage() {
         {
             type: 'centered',
             title: 'The Attention Economy Has Reached Commercial Real Estate',
-            text: "High-net-worth investors and institutional allocators are consuming short-form video. They're watching market analyses, deal walkthroughs, and founder perspectives on LinkedIn, Instagram, and YouTube. The question isn't whether your firm should be producing video. It's how long you can afford to wait."
+            text: "High-net-worth investors and institutional allocators are consuming structured, authority-led content. They're watching market analyses, deal walkthroughs, and founder perspectives across every major platform. The question isn't whether your firm should be producing content. It's how long you can afford to wait."
         },
         {
             type: 'split',
@@ -106,8 +106,8 @@ export default function ContentRealEstatePage() {
         },
         {
             type: 'centered',
-            title: 'How CloudSocial Produces Content That Performs',
-            text: "CloudSocial isn't a production house. We're a real estate video production company that understands cap rates, deal cycles, and what institutional investors actually want to watch. Every video we produce is built to reach the right people and start real conversations."
+            title: 'How Promperty Builds Content Systems',
+            text: "Promperty isn't a production house. We build structured content architecture that understands cap rates, deal cycles, and what institutional decision-makers actually want to watch. Every asset we produce is built to reach the right people and start real conversations."
         },
         {
             type: 'split',
@@ -133,7 +133,7 @@ export default function ContentRealEstatePage() {
             type: 'split',
             imagePosition: 'left',
             title: '3. Multi-Platform Distribution',
-            text: "A single piece of content becomes four to six different assets across LinkedIn, Instagram Reels, YouTube Shorts, and your website. We handle all formatting, captioning, and platform-specific optimization so you get maximum reach from every hour of your time.",
+            text: "A single piece of content becomes multiple authority assets across Instagram Reels, YouTube Shorts, and your website. We handle all formatting, captioning, and platform-specific optimization so you get maximum reach from every hour of your time.",
             imageSrc: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=2070&auto=format&fit=crop'
         },
         {
@@ -145,16 +145,16 @@ export default function ContentRealEstatePage() {
                     a: 'Both models work depending on your location and preferences. For clients in markets where we operate directly, we coordinate filming sessions at your office or on-site at active assets. For remote clients, we provide a detailed filming guide and brief that allows you to capture high-quality footage on a modern smartphone, which we then edit into professional content. We also produce motion-graphic videos that require no footage at all — these perform exceptionally well for market data content.'
                 },
                 {
-                    q: 'Which platforms perform best for commercial real estate video?',
-                    a: 'LinkedIn is the primary platform for institutional audiences and generates the highest-quality inbound. Instagram Reels delivers the broadest reach and is increasingly used by family offices and HNW individuals. YouTube Shorts provides compounding search discoverability over time. We prioritize LinkedIn and Reels for immediate impact and YouTube for long-term organic growth — and we repurpose each piece of content across all three platforms.'
+                    q: 'Which platforms perform best for property and field service content?',
+                    a: 'Instagram Reels delivers the broadest reach and is increasingly used by family offices and HNW individuals. YouTube Shorts provides compounding search discoverability over time. We prioritize Reels for immediate impact and YouTube for long-term organic growth — and we repurpose each piece of content into authority assets for your email list and website.'
                 },
                 {
                     q: 'How much of my time does video production require?',
                     a: 'After the initial onboarding, most clients commit two to four hours per month. This includes a monthly strategy brief, one or two filming sessions (30 to 60 minutes each), and a quick approval review. We handle everything else — scripting, editing, captioning, thumbnail design, and publishing.'
                 },
                 {
-                    q: 'What makes commercial real estate video different from residential real estate video?',
-                    a: 'The audience, the content, and the goal are entirely different. Residential video is about emotion and lifestyle. Commercial real estate video is about market intelligence, deal competence, and operational credibility. Our content is built for institutional audiences who want data, specificity, and track record proof — not cinematic lifestyle footage. This distinction is why generalist video agencies consistently underperform in CRE.'
+                    q: 'What makes your content architecture different from a video agency?',
+                    a: 'The audience, the content, and the goal are entirely different. Generalist agencies focus on emotion and lifestyle. We focus on market intelligence, deal competence, and operational credibility. Our content is built for decision-makers who want data, specificity, and track record proof — not cinematic lifestyle footage.'
                 },
                 {
                     q: 'Can video content generate actual leads or is it purely a branding play?',
@@ -168,10 +168,10 @@ export default function ContentRealEstatePage() {
             text: 'Video content drives reach and brand recall. Combine it with the channels that convert that awareness into investor meetings and deal flow.',
             links: [
                 {
-                    label: 'Written Authority',
-                    path: '/linkedin-content-real-estate',
-                    name: 'LinkedIn Content Strategy',
-                    desc: 'Pair your video content with market intelligence posts and data carousels that keep institutional investors engaged between publishing cycles.'
+                    label: 'Lead Automations',
+                    path: '/ai-agent-real-estate',
+                    name: 'AI Lead Capture Systems',
+                    desc: 'Pair your content with automated qualification agents that respond to inquiries 24/7 on WhatsApp and Email.'
                 },
                 {
                     label: 'Search Domination',
@@ -196,21 +196,21 @@ export default function ContentRealEstatePage() {
     ];
 
     return (
-        <main className="min-h-screen bg-white text-secondary">
+        <main className="min-h-screen bg-background text-secondary">
             <Navbar />
 
             <PageHero
-                title1="Real Estate Video Production"
-                highlight="Company"
-                title2="for Commercial Firms"
-                subtitle="High-retention short-form video content engineered for commercial real estate. We produce market-moving assets that build institutional authority on LinkedIn, Instagram, and YouTube."
-                badges={["Real Estate Video Production", "Multi-Platform Distribution", "Commercial Real Estate Content"]}
-                buttonText="Get Your Free Content Audit"
+                title1="Content Architecture"
+                highlight="Systems"
+                title2="for Property & Field Services"
+                subtitle="High-authority content systems engineered to move the needle. We produce market-moving deal breakdowns and case studies that build institutional authority across Instagram, YouTube, and Search."
+                badges={["Content Architecture", "Multi-Platform Distribution", "Built Environment Authority"]}
+                buttonText="Start Your Audit"
                 imageSrc="/images/service_content_camera_rig_1772096888670.png"
             />
 
             <AlternatingSection blocks={contentBlocks} />
-
+            <VideoShowcase />
             <Footer />
         </main>
     );

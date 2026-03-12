@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export const metadata = {
-    title: "Blog | CloudSocial — Commercial Real Estate Digital Marketing",
+    title: "Blog | Promperty — Commercial Real Estate Digital Marketing",
     description: "Insights, strategies, and guides for commercial real estate professionals looking to grow their online presence and generate more qualified leads.",
 };
 
@@ -16,7 +16,7 @@ export default async function BlogPage() {
     const rest = posts.slice(1);
 
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-background">
             <Navbar />
             <div className="max-w-6xl mx-auto px-6 pt-32 pb-24">
 

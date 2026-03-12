@@ -4,13 +4,13 @@ import Providers from './components/Providers';
 
 export const metadata = {
     title: {
-        template: '%s | CloudSocial',
-        default: 'CloudSocial | Commercial Real Estate Marketing Team',
+        template: '%s | Promperty',
+        default: 'Promperty | Commercial Real Estate Marketing Team',
     },
-    description: 'CloudSocial builds digital authority systems that position commercial real estate firms as the default choice when investors, tenants, and capital partners search or ask AI.',
+    description: 'Promperty builds digital authority systems that position commercial real estate firms as the default choice when investors, tenants, and capital partners search or ask AI.',
     openGraph: {
-        title: 'CloudSocial | Authority Infrastructure',
-        description: 'CloudSocial builds digital authority systems that position commercial real estate firms as the default choice when investors, tenants, and capital partners search or ask AI.',
+        title: 'Promperty | Authority Infrastructure',
+        description: 'Promperty builds digital authority systems that position commercial real estate firms as the default choice when investors, tenants, and capital partners search or ask AI.',
         type: 'website',
     }
 };

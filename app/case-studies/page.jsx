@@ -5,15 +5,15 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export const metadata = {
-    title: "Case Studies | CloudSocial — Commercial Real Estate Digital Marketing",
-    description: "See how CloudSocial has helped commercial real estate firms grow their online presence, generate qualified leads, and close more deals.",
+    title: "Case Studies | Promperty — Commercial Real Estate Digital Marketing",
+    description: "See how Promperty has helped commercial real estate firms grow their online presence, generate qualified leads, and close more deals.",
 };
 
 export default async function CaseStudiesPage() {
     const items = await fetchQuery(api.caseStudies.listPublished, {}).catch(() => []);
 
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-background">
             <Navbar />
             <div className="max-w-6xl mx-auto px-6 pt-32 pb-24">
                 <div className="mb-12">

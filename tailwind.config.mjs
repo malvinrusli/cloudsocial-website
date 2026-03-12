@@ -7,8 +7,8 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: '#FFFFFF',
-                primary: '#FFFFFF',
+                background: '#fffbf6',
+                primary: '#fffbf6',
                 secondary: '#111111',
                 accent: '#1D1D24', // Use dark button color as accent
                 textDark: '#55555A',

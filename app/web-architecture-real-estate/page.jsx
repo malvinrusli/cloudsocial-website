@@ -6,7 +6,7 @@ import AlternatingSection from '../components/AlternatingSection';
 
 export const metadata = {
     title: "Commercial Real Estate Website Design",
-    description: "CloudSocial builds authoritative commercial real estate websites engineered for institutional credibility, fast performance, and investor-grade conversion. Get a free site audit.",
+    description: "Promperty builds authoritative commercial real estate websites engineered for institutional credibility, fast performance, and investor-grade conversion. Get a free site audit.",
 };
 
 // Website Audit Scoring Mockup
@@ -113,8 +113,8 @@ export default function WebArchitecturePage() {
         },
         {
             type: 'centered',
-            title: 'How CloudSocial Builds CRE Websites',
-            text: "CloudSocial doesn't build template websites. We design commercial real estate sites for one audience: the institutional investors, family offices, and deal partners who are vetting your firm before they pick up the phone. Every site we deliver is built to convert visitors into inquiries, not just look good."
+            title: 'How Promperty Builds CRE Websites',
+            text: "Promperty doesn't build template websites. We design commercial real estate sites for one audience: the institutional investors, family offices, and deal partners who are vetting your firm before they pick up the phone. Every site we deliver is built to convert visitors into inquiries, not just look good."
         },
         {
             type: 'split',
@@ -208,7 +208,7 @@ export default function WebArchitecturePage() {
     ];
 
     return (
-        <main className="min-h-screen bg-white text-secondary">
+        <main className="min-h-screen bg-background text-secondary">
             <Navbar />
 
             <PageHero

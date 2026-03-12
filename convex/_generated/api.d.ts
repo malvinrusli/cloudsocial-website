@@ -12,6 +12,7 @@ import type * as bofuPages from "../bofuPages.js";
 import type * as caseStudies from "../caseStudies.js";
 import type * as crons from "../crons.js";
 import type * as discover from "../discover.js";
+import type * as discoveryLogs from "../discoveryLogs.js";
 import type * as generate from "../generate.js";
 import type * as leads from "../leads.js";
 import type * as media from "../media.js";
@@ -29,6 +30,7 @@ declare const fullApi: ApiFromModules<{
   caseStudies: typeof caseStudies;
   crons: typeof crons;
   discover: typeof discover;
+  discoveryLogs: typeof discoveryLogs;
   generate: typeof generate;
   leads: typeof leads;
   media: typeof media;

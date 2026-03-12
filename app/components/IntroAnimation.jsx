@@ -13,8 +13,8 @@ const IntroAnimation = () => {
     // Only show once per browser session
     useEffect(() => {
         if (typeof window === 'undefined') return;
-        if (!sessionStorage.getItem('cs_intro')) {
-            sessionStorage.setItem('cs_intro', '1');
+        if (!sessionStorage.getItem('promperty_intro')) {
+            sessionStorage.setItem('promperty_intro', '1');
             setShow(true);
         }
     }, []);
@@ -119,7 +119,7 @@ const IntroAnimation = () => {
                     className="font-serif italic text-white font-semibold tracking-tight leading-none"
                     style={{ fontSize: 'clamp(3.5rem, 9vw, 7.5rem)' }}
                 >
-                    CloudSocial
+                    Promperty
                 </h1>
 
                 {/* Tagline */}

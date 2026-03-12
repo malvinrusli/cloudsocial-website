@@ -44,7 +44,7 @@ export default defineSchema({
         content: v.string(), // HTML
         excerpt: v.optional(v.string()),
         status: v.string(), // "draft" | "published"
-        author: v.string(), // e.g. "CloudSocial Team"
+        author: v.string(), // e.g. "Promperty Team"
         funnel_stage: v.optional(v.string()),
         cluster: v.optional(v.string()),
         pillar: v.optional(v.string()),
@@ -65,11 +65,15 @@ export default defineSchema({
         faqs: v.optional(v.array(v.object({ question: v.string(), answer: v.string() }))),
         ai_generated: v.optional(v.boolean()),
         queueItemId: v.optional(v.id("keyword_queue")),
+        // SEO metadata
+        canonical_url: v.optional(v.string()),
+        og_image_url: v.optional(v.string()),
+        robots_meta: v.optional(v.string()), // e.g. "index, follow"
         publishedAt: v.optional(v.number()),
         createdAt: v.number(),
         updatedAt: v.number(),
     }).index("by_slug", ["slug"])
-      .index("by_status", ["status"]),
+        .index("by_status", ["status"]),
 
     bofu_pages: defineTable({
         title: v.string(),
@@ -91,11 +95,15 @@ export default defineSchema({
         og_title: v.optional(v.string()),
         og_description: v.optional(v.string()),
         json_ld: v.optional(v.string()),
+        // SEO metadata
+        canonical_url: v.optional(v.string()),
+        og_image_url: v.optional(v.string()),
+        robots_meta: v.optional(v.string()),
         publishedAt: v.optional(v.number()),
         createdAt: v.number(),
         updatedAt: v.number(),
     }).index("by_slug", ["slug"])
-      .index("by_status", ["status"]),
+        .index("by_status", ["status"]),
 
     case_studies: defineTable({
         title: v.string(),
@@ -114,5 +122,13 @@ export default defineSchema({
         createdAt: v.number(),
         updatedAt: v.number(),
     }).index("by_slug", ["slug"])
-      .index("by_status", ["status"]),
+        .index("by_status", ["status"]),
+
+    discovery_logs: defineTable({
+        source: v.string(), // "competitor" | "manual_seed"
+        identifier: v.string(), // domain name or seed phrase
+        keywords_found: v.number(),
+        type: v.string(), // "semrush_organic" | "semrush_related"
+        lastRunAt: v.number(),
+    }).index("by_identifier", ["identifier"]),
 });

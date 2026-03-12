@@ -1,7 +1,7 @@
 import { fetchQuery } from "convex/nextjs";
 import { api } from "../convex/_generated/api";
 
-const BASE_URL = "https://www.cloudsocial.io";
+const BASE_URL = "https://www.promperty.io";
 
 const STATIC_ROUTES = [
     "/",
@@ -11,8 +11,6 @@ const STATIC_ROUTES = [
     "/seo-real-estate",
     "/aeo-geo-llms-real-estate",
     "/ai-agent-real-estate",
-    "/linkedin-real-estate",
-    "/linkedin-content-real-estate",
     "/content-real-estate",
 ];
 

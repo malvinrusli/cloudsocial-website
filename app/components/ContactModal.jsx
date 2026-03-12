@@ -88,7 +88,7 @@ export default function ContactModal({ isOpen, onClose, source = "website" }) {
                                 value={form.message}
                                 onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
                                 className="w-full border border-gray-200 px-3 py-2.5 text-sm text-secondary focus:outline-none focus:border-secondary transition-colors resize-none bg-white"
-                                placeholder="e.g. Generate more investor inbound from LinkedIn, dominate Google for commercial SEO in Dallas..."
+                                placeholder="e.g. Build an authority content system, dominate Google for commercial SEO in Dallas..."
                             />
                         </div>
 

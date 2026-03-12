@@ -1,66 +1,103 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useQuery } from 'convex/react';
+import { api } from '../../convex/_generated/api';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+const VIDEO_STORAGE_IDS = [
+    'kg2em94p5f7x3p79tvfbe6g6ns82n0s5',
+    'kg25whybpr0q0he0m7fzph54cx82n06h',
+    'kg2aqrcwjfanercz1frx2gmrxn82n5a4',
+];
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SERVICES = [
     {
-        id: 'video', num: '/001', label: 'Short Form Video',
-        category: 'Content Strategy',
-        title: 'Cinematic video that actually converts',
-        desc: 'Most CRE firms post property walkthroughs nobody watches. We produce high-retention short form content engineered for institutional audiences on LinkedIn and Instagram.',
-        points: ['84K+ views on a first property video', '62% watch time vs 8% industry average', '+12 qualified inquiries within 30 days'],
+        id: 'content', num: '/001', label: 'Content Architecture',
+        title: 'Move beyond "Top-of-Funnel" noise',
+        desc: 'Generic content is dead in 2026. We build a high-performance content architecture — TOFU insights, MOFU education, and BOFU deal breakdowns — designed to turn silent observers into active inquiries.',
+        points: ['Case Study & Deal Breakdown focus', 'Strategic sequencing from interest to inquiry', 'Distribution engine across SEO, Social & AI'],
         link: '/content-real-estate',
-        linkLabel: 'Explore Short Form Content',
+        linkLabel: 'Explore Content Systems',
     },
     {
         id: 'seo', num: '/002', label: 'SEO & Search',
-        category: 'Organic Search',
-        title: '#1 rankings for every market you serve',
-        desc: 'Deep keyword architecture and 12 monthly SEO articles that position your firm as the authority for commercial real estate in your territory.',
-        points: ['Target bottom-of-funnel, buyer-intent keywords', 'Technical SEO for E-E-A-T authority signals', 'Clear monthly reporting with deal attribution'],
+        category: 'Organic Dominance',
+        title: '#1 rankings for the high-intent keywords',
+        desc: 'We position your brand as the default choice in your market, capturing the traffic that belongs to you before it reaches the aggregators.',
+        points: ['High-intent buyer & seller keyword mapping', 'E-E-A-T technical authority building', 'Direct deal attribution tracking'],
         link: '/seo-real-estate',
         linkLabel: 'Explore SEO',
     },
     {
         id: 'aeo', num: '/003', label: 'AEO & AI Citations',
-        category: 'AI Search',
-        title: 'Cited by ChatGPT, Perplexity & Gemini',
-        desc: 'When investors ask AI "who are the top CRE brokers in [city]?" — your firm should be the answer. We engineer that outcome across 8 AI platforms.',
-        points: ['Structured data and entity authority building', 'Cited in AI-generated recommendation answers', 'Monthly citation audits and correction reports'],
+        title: 'Be the answer in ChatGPT & Perplexity',
+        desc: 'When clients ask AI "who are the best property developers or architects in [city]?" — your firm should be the answer. We engineer that outcome.',
+        points: ['Generative Engine Optimization (GEO)', 'Entity-based authority building', 'Platform-wide citation audits'],
         link: '/aeo-geo-llms-real-estate',
         linkLabel: 'Explore AEO & GEO',
     },
     {
-        id: 'linkedin', num: '/004', label: 'LinkedIn Authority',
-        category: 'Social Authority',
-        title: 'The voice institutional capital follows',
-        desc: 'We position your principals as thought leaders that LPs, family offices, and tenants actively follow — not just connect with.',
-        points: ['Profile optimisation for decision-maker discovery', 'High-engagement content calendar and writing', 'Network targeting by investor and tenant segment'],
-        link: '/linkedin-real-estate',
-        linkLabel: 'Explore LinkedIn',
+        id: 'website', num: '/004', label: 'Web Architecture',
+        category: 'Digital Moats',
+        title: 'Websites that close, not explain',
+        desc: 'We rebuild your digital home from a brochure into a conversion engine that qualifies visitors and builds authority before the first call.',
+        points: ['Lighthouse performance optimized', 'Authority-led case study layouts', 'CRM & Automation integration'],
+        link: '/web-architecture-real-estate',
+        linkLabel: 'Explore Web Architecture',
     },
     {
-        id: 'website', num: '/005', label: 'Professional Website',
-        category: 'Digital Infrastructure',
-        title: 'Your website should close deals, not explain you',
-        desc: 'Most CRE websites are digital brochures. We rebuild them as authoritative platforms engineered to convert high-value inbound traffic.',
-        points: ['Sub-2s load time with 95+ Lighthouse score', 'Portfolio, case studies, and authority signals', 'Lead capture integrated with CRM routing'],
-        link: '/services',
-        linkLabel: 'Explore Professional Websites',
-    },
-    {
-        id: 'agent', num: '/006', label: 'AI Agent',
-        category: 'Automation',
-        title: 'Leads qualified. Tours booked. 24/7.',
-        desc: 'An AI agent on WhatsApp and email responds to inbound leads in under 5 minutes, qualifies intent, and routes serious buyers directly to your calendar — without your team lifting a finger.',
-        points: ['< 5 min response time across WhatsApp & email', 'Qualifier questions tuned to institutional buyer intent', 'Auto-books tours via Calendly or HubSpot — zero manual work'],
+        id: 'agent', num: '/005', label: 'Lead Automations',
+        category: 'Growth Automation',
+        title: 'Scale your follow-up to infinity',
+        desc: 'Custom-trained AI workflows that scrape high-intent leads, personalize outreach, and qualify inquiries 24/7. Never leave a lead behind.',
+        points: ['Automated Lead Scraping (High Intent)', 'Qualifies intent across WhatsApp & Email', 'Direct CRM & Calendar integration'],
         link: '/ai-agent-real-estate',
-        linkLabel: 'Explore AI Agent',
+        linkLabel: 'Explore Lead Automations',
     },
 ];
+
+// ─── Real Video Panel ─────────────────────────────────────────────────────────
+
+const VideoItem = ({ url }) => {
+    const ref = useRef(null);
+    return (
+        <div
+            className="flex-shrink-0 h-full cursor-pointer"
+            style={{ aspectRatio: '9/16' }}
+            onMouseEnter={() => ref.current?.play()}
+            onMouseLeave={() => { if (ref.current) { ref.current.pause(); ref.current.currentTime = 0; } }}
+        >
+            <div className="relative h-full rounded-lg overflow-hidden bg-[#1A1A1A]">
+                <video ref={ref} src={url} muted loop playsInline preload="metadata" className="w-full h-full object-cover" />
+                <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+            </div>
+        </div>
+    );
+};
+
+const VideoPanel = ({ videos }) => {
+    if (!videos) return (
+        <div className="w-full h-full bg-[#080808] flex items-center justify-center">
+            <span className="text-[10px] text-white/20 font-mono">Loading...</span>
+        </div>
+    );
+    return (
+        <div className="w-full h-full bg-[#080808] flex flex-col p-5 gap-4">
+            <div className="flex items-center gap-2 pb-3 border-b border-white/5">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                <span className="text-[9px] font-semibold text-white/40 uppercase tracking-widest">Real examples — hover to play</span>
+            </div>
+            <div className="flex gap-3 overflow-x-auto flex-1 min-h-0" style={{ scrollbarWidth: 'none' }}>
+                {videos.filter(v => v.url).map((v) => (
+                    <VideoItem key={v._id} url={v.url} />
+                ))}
+            </div>
+        </div>
+    );
+};
 
 // ─── Mockups ──────────────────────────────────────────────────────────────────
 
@@ -102,7 +139,7 @@ const VideoCompareMockup = () => (
         <div className="flex-1 flex flex-col p-5 gap-3">
             <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
-                <span className="text-[9px] font-semibold text-white/60 uppercase tracking-widest">CloudSocial</span>
+                <span className="text-[9px] font-semibold text-white/60 uppercase tracking-widest text-[#00FF00]">Promperty 2026</span>
                 <span className="ml-auto text-[7px] border border-emerald-500/20 text-emerald-400/50 px-1.5 py-0.5">WISTIA</span>
             </div>
             {/* Replace this block with your Wistia embed when video is ready:
@@ -147,7 +184,7 @@ const VideoCompareMockup = () => (
 const SERPMockup = () => (
     <div className="w-full h-full bg-[#080808] p-6 flex flex-col gap-4 overflow-hidden">
         <div className="flex items-center gap-3 border border-white/10 bg-[#111] px-4 py-2.5 max-w-sm">
-            <svg className="w-3.5 h-3.5 text-white/30 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path strokeLinecap="round" d="M21 21l-4.35-4.35"/></svg>
+            <svg className="w-3.5 h-3.5 text-white/30 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8" /><path strokeLinecap="round" d="M21 21l-4.35-4.35" /></svg>
             <span className="text-[11px] text-white/40 font-mono">commercial real estate broker dubai</span>
         </div>
         <div className="space-y-2 flex-1">
@@ -183,7 +220,7 @@ const AICitationMockup = () => (
     <div className="w-full h-full bg-[#080808] p-6 flex flex-col gap-4">
         <div className="flex items-center gap-2 pb-3 border-b border-white/5">
             <div className="w-5 h-5 bg-white/5 border border-white/10 flex items-center justify-center">
-                <svg className="w-3 h-3 text-white/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path strokeLinecap="round" d="M12 8v4l3 3"/></svg>
+                <svg className="w-3 h-3 text-white/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" d="M12 8v4l3 3" /></svg>
             </div>
             <span className="text-[9px] text-white/30 font-mono">Perplexity AI · Real-time web</span>
             <div className="ml-auto flex items-center gap-1.5">
@@ -217,46 +254,7 @@ const AICitationMockup = () => (
     </div>
 );
 
-const LinkedInMockup = () => (
-    <div className="w-full h-full bg-[#080808] p-6 flex flex-col gap-4">
-        <div className="flex items-center gap-3 pb-3 border-b border-white/5">
-            <div className="w-11 h-11 bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-white/30 text-xs font-semibold shrink-0">CF</div>
-            <div className="flex-1">
-                <div className="text-[11px] text-white font-medium">Managing Principal, CRE Firm</div>
-                <div className="text-[9px] text-white/30">Commercial Real Estate · Dubai, UAE</div>
-                <div className="flex items-center gap-3 mt-0.5">
-                    <span className="text-[8px] text-white/20">24,400 followers</span>
-                    <span className="text-[8px] text-emerald-400">+8,200 in 90 days</span>
-                </div>
-            </div>
-            <div className="border border-blue-400/20 px-2 py-1 text-[8px] text-blue-400/50 shrink-0">Following</div>
-        </div>
-        <div className="bg-[#111] border border-white/5 p-4 flex-1 flex flex-col">
-            <div className="text-[10px] text-white/50 leading-relaxed mb-3">
-                The industrial corridor between Al Quoz and JAFZA is being completely repriced. Here's what the absorption data shows — and what it means for yields heading into Q3 2026 🧵
-            </div>
-            <div className="w-full h-16 bg-[#1A1A1A] border border-white/5 mb-3 relative overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=400&auto=format&fit=crop" className="w-full h-full object-cover opacity-30" alt="" />
-            </div>
-            <div className="flex gap-4 pt-3 border-t border-white/5 mt-auto">
-                {[['52,400', 'impressions', 'emerald'], ['847', 'reactions', ''], ['134', 'reposts', '']].map(([v, l, accent]) => (
-                    <div key={l}>
-                        <div className={`text-[10px] font-mono font-semibold ${accent === 'emerald' ? 'text-emerald-400' : 'text-white'}`}>{v}</div>
-                        <div className="text-[8px] text-white/25">{l}</div>
-                    </div>
-                ))}
-            </div>
-        </div>
-        <div className="flex gap-6 pt-1">
-            {[['3.2%', 'Engagement rate'], ['12', 'Inbound DMs / mo'], ['#1', 'Voice in market']].map(([v, l]) => (
-                <div key={l}>
-                    <div className="text-xs text-white font-mono font-semibold">{v}</div>
-                    <div className="text-[8px] text-white/25">{l}</div>
-                </div>
-            ))}
-        </div>
-    </div>
-);
+
 
 const WebsiteMockup = () => (
     <div className="w-full h-full flex bg-[#080808]">
@@ -269,7 +267,7 @@ const WebsiteMockup = () => (
                 <div className="h-5 bg-[#1A1A1A] flex items-center px-2 gap-2">
                     <div className="w-8 h-1.5 bg-white/20 rounded-sm"></div>
                     <div className="flex gap-1.5 ml-auto">
-                        {[1,2,3,4].map(i => <div key={i} className="w-5 h-1 bg-white/10 rounded-sm"></div>)}
+                        {[1, 2, 3, 4].map(i => <div key={i} className="w-5 h-1 bg-white/10 rounded-sm"></div>)}
                     </div>
                 </div>
                 <div className="h-20 bg-[#111] flex flex-col items-center justify-center gap-1.5">
@@ -278,7 +276,7 @@ const WebsiteMockup = () => (
                     <div className="w-16 h-4 bg-white/10 mt-1 rounded-sm"></div>
                 </div>
                 <div className="grid grid-cols-3 gap-1 flex-1">
-                    {[1,2,3].map(i => <div key={i} className="bg-[#111] min-h-[24px]"></div>)}
+                    {[1, 2, 3].map(i => <div key={i} className="bg-[#111] min-h-[24px]"></div>)}
                 </div>
                 <div className="text-[7px] text-red-400/50 font-mono">Perf: 34 · SEO: 51 · Mobile: 62</div>
             </div>
@@ -292,7 +290,7 @@ const WebsiteMockup = () => (
                 <div className="h-5 bg-[#1A1A1A] border border-white/5 flex items-center px-2 gap-2">
                     <div className="w-10 h-1.5 bg-white/40 rounded-sm"></div>
                     <div className="flex gap-1.5 ml-auto">
-                        {[1,2,3].map(i => <div key={i} className="w-5 h-1 bg-white/20 rounded-sm"></div>)}
+                        {[1, 2, 3].map(i => <div key={i} className="w-5 h-1 bg-white/20 rounded-sm"></div>)}
                         <div className="w-10 h-3 bg-white flex items-center justify-center rounded-sm">
                             <div className="w-6 h-0.5 bg-black/70 rounded-sm"></div>
                         </div>
@@ -305,7 +303,13 @@ const WebsiteMockup = () => (
                     <div className="relative mt-1 px-3 py-1 bg-white text-black text-[7px] font-semibold">Book Consultation</div>
                 </div>
                 <div className="grid grid-cols-3 gap-1 flex-1">
-                    {[1,2,3].map(i => <div key={i} className="bg-[#111] border border-white/5 min-h-[24px]"></div>)}
+                    {[['Portfolio', '40+', 'Transactions'], ['Case Studies', '12', 'Published'], ['Insights', '200+', 'Articles']].map(([title, val, label], i) => (
+                        <div key={i} className="bg-[#111] border border-white/5 min-h-[24px] flex flex-col items-center justify-center gap-0.5 p-2">
+                            <div className="text-[6px] text-white/30 uppercase tracking-widest mb-0.5">{title}</div>
+                            <div className="text-[11px] text-white font-mono font-semibold">{val}</div>
+                            <div className="text-[6px] text-white/20">{label}</div>
+                        </div>
+                    ))}
                 </div>
                 <div className="text-[7px] text-emerald-400 font-mono">Perf: 97 · SEO: 98 · Mobile: 100</div>
             </div>
@@ -323,7 +327,7 @@ const AIAgentMockup = () => (
                 </svg>
             </div>
             <div className="flex-1 min-w-0">
-                <div className="text-[11px] text-white font-medium">CloudSocial AI</div>
+                <div className="text-[11px] text-white font-medium">Promperty AI</div>
                 <div className="flex items-center gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
                     <span className="text-[9px] text-emerald-400/70">Online · responds instantly</span>
@@ -365,7 +369,7 @@ const AIAgentMockup = () => (
                     </div>
                     <div className="bg-[#0D1A0D] border border-emerald-500/20 px-3 py-2">
                         <div className="flex items-center gap-2">
-                            <svg className="w-3 h-3 text-emerald-400 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            <svg className="w-3 h-3 text-emerald-400 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
                             <span className="text-[9px] text-emerald-400">Book site tour → calendly.com/cre-firm</span>
                         </div>
                     </div>
@@ -389,7 +393,7 @@ const AIAgentMockup = () => (
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 const Features = () => {
-    const [active, setActive] = useState('video');
+    const [active, setActive] = useState('content');
     const scrollWrapperRef = useRef(null);
     const containerRef = useRef(null);
     const panelRef = useRef(null);
@@ -416,8 +420,9 @@ const Features = () => {
                         if (panelRef.current) {
                             gsap.fromTo(panelRef.current,
                                 { opacity: 0, y: 8 },
-                                { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out',
-                                  onComplete: () => { isAnimatingRef.current = false; }
+                                {
+                                    opacity: 1, y: 0, duration: 0.25, ease: 'power2.out',
+                                    onComplete: () => { isAnimatingRef.current = false; }
                                 }
                             );
                         } else {
@@ -450,8 +455,10 @@ const Features = () => {
             // Header entry animation
             gsap.fromTo('.feat-header',
                 { y: 20, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
-                  scrollTrigger: { trigger: containerRef.current, start: 'top 75%', once: true } }
+                {
+                    y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+                    scrollTrigger: { trigger: containerRef.current, start: 'top 75%', once: true }
+                }
             );
 
             // One ScrollTrigger per tab — fires only on discrete enter/leave, no auto-scroll
@@ -483,12 +490,13 @@ const Features = () => {
         return () => mm.revert();
     }, [changeTab]);
 
+    const videoResults = useQuery(api.media.getVideosBatch, { storageIds: VIDEO_STORAGE_IDS });
+
     const service = SERVICES.find(s => s.id === active);
     const VISUALS = {
-        video: <VideoCompareMockup />,
+        content: <VideoPanel videos={videoResults} />,
         seo: <SERPMockup />,
         aeo: <AICitationMockup />,
-        linkedin: <LinkedInMockup />,
         website: <WebsiteMockup />,
         agent: <AIAgentMockup />,
     };
@@ -507,14 +515,11 @@ const Features = () => {
                     {/* Header */}
                     <div className="feat-header mb-5 shrink-0 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
                         <div>
-                            <span className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-2 block">Our Services</span>
+                            <span className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-2 block">How We Help You</span>
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-tight">
                                 The Digital Authority Ecosystem
                             </h2>
                         </div>
-                        <p className="text-sm lg:text-base text-white/50 lg:max-w-xs leading-relaxed lg:text-right">
-                            See exactly what we do — and the results each service delivers for CRE firms.
-                        </p>
                     </div>
 
                     {/* Tab Bar */}
@@ -523,11 +528,10 @@ const Features = () => {
                             <button
                                 key={s.id}
                                 onClick={() => handleTab(s.id)}
-                                className={`flex flex-col items-start px-5 py-4 shrink-0 border-b-2 transition-all duration-200 text-left ${
-                                    active === s.id
-                                        ? 'border-white text-white'
-                                        : 'border-transparent text-white/50 hover:text-white/80 hover:border-white/30'
-                                }`}
+                                className={`flex flex-col items-start px-5 py-4 shrink-0 border-b-2 transition-all duration-200 text-left ${active === s.id
+                                    ? 'border-white text-white'
+                                    : 'border-transparent text-white/50 hover:text-white/80 hover:border-white/30'
+                                    }`}
                             >
                                 <span className={`text-xs font-mono mb-1 ${active === s.id ? 'text-white/50' : 'text-white/25'}`}>{s.num}</span>
                                 <span className="text-base font-medium whitespace-nowrap">{s.label}</span>
@@ -544,7 +548,6 @@ const Features = () => {
                         {/* Left Info */}
                         <div className="lg:w-[380px] xl:w-[420px] shrink-0 border-b lg:border-b-0 lg:border-r border-white/10 p-7 lg:p-8 xl:p-10 flex flex-col gap-5 bg-[#0D0D0D] overflow-y-auto">
                             <div>
-                                <span className="text-xs font-semibold uppercase tracking-widest text-white/35 mb-2.5 block">{service.category}</span>
                                 <h3 className="text-xl lg:text-2xl font-medium text-white leading-snug">{service.title}</h3>
                             </div>
                             <p className="text-base text-white/50 leading-relaxed flex-1">{service.desc}</p>
@@ -570,10 +573,9 @@ const Features = () => {
                             {VISUALS[active]}
                         </div>
                     </div>
-
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     );
 };
 

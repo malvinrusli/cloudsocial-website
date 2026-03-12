@@ -19,11 +19,9 @@ const Footer = () => {
                                 <path d="M 0 100 A 100 100 0 0 1 56.4 10 L 56.4 27 A 85 85 0 0 0 15 100 Z" />
                             </svg>
                         </div>
-                        <h2 className="font-serif text-2xl font-semibold">CloudSocial</h2>
+                        <h2 className="font-serif text-2xl font-semibold">Promperty</h2>
                     </div>
-                    <p className="text-gray-400 font-sans text-sm leading-relaxed mb-8">
-                        Building digital authority systems that position commercial real estate firms as the default choice.
-                    </p>
+                    Building digital authority systems that position Real Estate and Built Environment Professionals as the default choice.
 
                     {/* Status Indicator */}
                     <div className="inline-flex items-center space-x-3 bg-white/5 border border-white/10 px-4 py-2 g">
@@ -36,12 +34,11 @@ const Footer = () => {
                 <div className="flex gap-16 md:gap-32 font-sans text-sm">
                     <div className="flex flex-col space-y-4">
                         <h4 className="font-sans font-semibold text-white mb-2">Services</h4>
-                        <a href="/content-real-estate" className="text-gray-400 hover:text-white transition-colors">Short Form Content</a>
-                        <a href="/linkedin-real-estate" className="text-gray-400 hover:text-white transition-colors">LinkedIn Growth</a>
+                        <a href="/content-real-estate" className="text-gray-400 hover:text-white transition-colors">Content Architecture</a>
                         <a href="/seo-real-estate" className="text-gray-400 hover:text-white transition-colors">Commercial SEO</a>
                         <a href="/aeo-geo-llms-real-estate" className="text-gray-400 hover:text-white transition-colors">AEO & GEO</a>
                         <a href="/web-architecture-real-estate" className="text-gray-400 hover:text-white transition-colors">Web Architecture</a>
-                        <a href="/ai-agent-real-estate" className="text-gray-400 hover:text-white transition-colors">AI Agents & Automations</a>
+                        <a href="/ai-agent-real-estate" className="text-gray-400 hover:text-white transition-colors">Lead Automations</a>
                     </div>
                     <div className="flex flex-col space-y-4">
                         <h4 className="font-sans font-semibold text-white mb-2">Company</h4>
@@ -53,7 +50,7 @@ const Footer = () => {
             </div>
 
             <div className="max-w-7xl mx-auto pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 font-sans">
-                <p>© {new Date().getFullYear()} CloudSocial. Authority Infrastructure.</p>
+                <p>© {new Date().getFullYear()} Promperty. Authority Infrastructure.</p>
                 <div className="flex space-x-6 mt-4 md:mt-0">
                     <a href="#" className="hover:text-gray-300 transition-colors">Privacy</a>
                     <a href="#" className="hover:text-gray-300 transition-colors">Terms</a>

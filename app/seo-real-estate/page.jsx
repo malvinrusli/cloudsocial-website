@@ -6,7 +6,7 @@ import AlternatingSection from '../components/AlternatingSection';
 
 export const metadata = {
     title: "Commercial Real Estate SEO Company",
-    description: "CloudSocial is a specialist commercial real estate SEO company. We rank CRE firms on Google for high-intent, capital-generating search terms that drive investor inquiries.",
+    description: "Promperty is a specialist commercial real estate SEO company. We rank CRE firms on Google for high-intent, capital-generating search terms that drive investor inquiries.",
 };
 
 // Google SERP Position Tracker Mockup
@@ -96,8 +96,8 @@ export default function SEOPage() {
         },
         {
             type: 'centered',
-            title: 'How CloudSocial Ranks CRE Firms on Google',
-            text: "CloudSocial isn't a generalist agency. We're a commercial real estate SEO company that focuses exclusively on the search terms your investors and buyers actually type into Google. Every campaign is built around CRE keyword data, not frameworks borrowed from e-commerce or SaaS."
+            title: 'How Promperty Ranks CRE Firms on Google',
+            text: "Promperty isn't a generalist agency. We're a commercial real estate SEO company that focuses exclusively on the search terms your investors and buyers actually type into Google. Every campaign is built around CRE keyword data, not frameworks borrowed from e-commerce or SaaS."
         },
         {
             type: 'split',
@@ -135,7 +135,7 @@ export default function SEOPage() {
                     a: 'Most of our clients see measurable ranking movement within 60 to 90 days, with significant traffic gains by month four to six. Commercial real estate is a niche market — keyword difficulty is lower than most industries, which means well-executed SEO moves faster here than in e-commerce or SaaS.'
                 },
                 {
-                    q: 'What makes CloudSocial different from a general SEO agency?',
+                    q: 'What makes Promperty different from a general SEO agency?',
                     a: 'General agencies do not understand CRE. They do not know the difference between a cap rate and a capitalization threshold, or how to target institutional investors versus retail buyers. Our entire strategy is built around the language, intent, and deal cycles specific to commercial real estate transactions.'
                 },
                 {
@@ -155,7 +155,7 @@ export default function SEOPage() {
         {
             type: 'pillar',
             title: 'Build a Complete Digital Authority System',
-            text: 'SEO is one pillar of your market dominance. The firms that win combine organic search with AI visibility, LinkedIn authority, and content that compounds across every channel.',
+            text: 'SEO is one pillar of your market dominance. The firms that win combine organic search with AI visibility, authority infrastructure, and content that compounds across every channel.',
             links: [
                 {
                     label: 'AI Search',
@@ -164,16 +164,16 @@ export default function SEOPage() {
                     desc: 'Ensure ChatGPT, Perplexity, and Gemini recommend your firm when investors ask for the best CRE specialists in your market.'
                 },
                 {
-                    label: 'B2B Authority',
-                    path: '/linkedin-real-estate',
-                    name: 'LinkedIn Growth & Positioning',
-                    desc: 'Convert your LinkedIn profile into an inbound engine that attracts institutional investors and deal flow on autopilot.'
+                    label: 'Lead Automations',
+                    path: '/ai-agent-real-estate',
+                    name: 'AI Lead Capture Systems',
+                    desc: 'Turn your inbound interest into qualified meetings 24/7 with custom WhatsApp and Email agents.'
                 },
                 {
                     label: 'Content Engine',
                     path: '/content-real-estate',
-                    name: 'High-Retention Video Content',
-                    desc: 'Short-form video assets that capture high-net-worth attention and drive organic reach across LinkedIn, Instagram, and YouTube.'
+                    name: 'Content Architecture',
+                    desc: 'Structured deal breakdowns and authority content that capture high-net-worth attention across Instagram, YouTube, and Search.'
                 }
             ]
         },
@@ -186,7 +186,7 @@ export default function SEOPage() {
     ];
 
     return (
-        <main className="min-h-screen bg-white text-secondary">
+        <main className="min-h-screen bg-background text-secondary">
             <Navbar />
 
             <PageHero

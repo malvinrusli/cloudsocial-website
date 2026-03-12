@@ -1,10 +1,10 @@
 ---
-description: How to research, write, and publish a high-authority blog post to CloudSocial.io
+description: How to research, write, and publish a high-authority blog post to Promperty
 ---
 
 # Workflow: Publish Authority Blog
 
-This workflow guides the CloudSocial agent through the end-to-end process of creating and publishing a strategic blog post.
+This workflow guides the Promperty agent through the end-to-end process of creating and publishing a strategic blog post.
 
 ## 1. Research & Strategy
 
@@ -20,7 +20,7 @@ This workflow guides the CloudSocial agent through the end-to-end process of cre
 
 ### 1.2 Competitor Research
 - Analyze the top 3 results for the `target_keyword`.
-- Note what they missed and how CloudSocial can provide a better "compounding authority" perspective.
+- Note what they missed and how Promperty can provide a better "compounding authority" perspective.
 
 ## 2. SEO Content Planning
 
@@ -36,7 +36,7 @@ Fill out all fields required for the [Convex posts table](file:///Users/malvinru
 ### 3.1 Use Copywriting Skill
 - **Strictly adhere** to the [copywriting skill](file:///Users/malvinrusli/AI Projects/cloudsocial_website/SKILLS/copywriting/SKILL.md).
 - **Tone**: Authoritative, expert, confidential, yet accessible.
-- **Brand Infliction**: Integrate CloudSocial's philosophy ("Authority is compounding leverage") naturally. Refer to [BRAND.md](file:///Users/malvinrusli/AI Projects/cloudsocial_website/BRAND.md).
+- **Brand Infliction**: Integrate Promperty's philosophy ("Authority is compounding leverage") naturally. Refer to [BRAND.md](file:///Users/malvinrusli/AI Projects/cloudsocial_website/BRAND.md).
 
 ### 3.2 Structure & Format
 - **Headers**: Use H1 for Title, H2/H3 for subsections.
@@ -64,7 +64,7 @@ Fill out all fields required for the [Convex posts table](file:///Users/malvinru
      "content": "...",
      "excerpt": "...",
      "status": "published",
-     "author": "CloudSocial Team",
+     "author": "Promperty Team",
      "target_keyword": "...",
      "seo_title": "...",
      "meta_description": "...",

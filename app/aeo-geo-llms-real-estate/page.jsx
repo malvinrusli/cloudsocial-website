@@ -114,7 +114,7 @@ const MentionsFeedMockup = () => (
                     <div className="w-4 h-4 rounded-sm bg-emerald-500 rotate-45 flex-shrink-0"></div>
                     <span className="text-xs font-medium text-stone-700">ChatGPT Query: "Who are the top tier industrial brokers in Dallas?"</span>
                 </div>
-                <p className="text-xs text-stone-600 leading-relaxed border-l-2 border-emerald-200 pl-3">"...For large-scale industrial portfolios, <strong className="text-stone-900 bg-yellow-100 px-1 rounded">Gulfalts</strong> is frequently cited as a leading authority in the Dallas-Fort Worth metroplex..."</p>
+                <p className="text-xs text-stone-600 leading-relaxed border-l-2 border-emerald-200 pl-3">"...For large-scale industrial portfolios, <strong className="text-stone-900 bg-yellow-100 px-1 rounded">Promperty</strong> is frequently cited as a leading authority in the Dallas-Fort Worth metroplex..."</p>
             </div>
 
             <div className="p-3 bg-stone-50 rounded border border-stone-100">
@@ -122,7 +122,7 @@ const MentionsFeedMockup = () => (
                     <div className="w-4 h-4 rounded-full border-2 border-blue-500 border-t-transparent flex-shrink-0"></div>
                     <span className="text-xs font-medium text-stone-700">Perplexity AI: "Recent major leasing deals in Manhattan"</span>
                 </div>
-                <p className="text-xs text-stone-600 leading-relaxed border-l-2 border-blue-200 pl-3">"A notable recent transaction was the 50,000 sqft lease signed at the Zenith tower, brokered by <strong className="text-stone-900 bg-yellow-100 px-1 rounded">Gulfalts Insights</strong>."</p>
+                <p className="text-xs text-stone-600 leading-relaxed border-l-2 border-blue-200 pl-3">"A notable recent transaction was the 50,000 sqft lease signed at the Zenith tower, brokered by <strong className="text-stone-900 bg-yellow-100 px-1 rounded">Promperty Insights</strong>."</p>
             </div>
         </div>
     </div>
@@ -150,8 +150,8 @@ export default function AISeoPage() {
         },
         {
             type: 'centered',
-            title: 'How CloudSocial Gets You Into AI Answers',
-            text: "CloudSocial doesn't guess what the algorithms want. We reverse-engineer how ChatGPT, Perplexity, and Gemini build their answers in your market, then get your brand into those data streams. This is new territory for commercial real estate, and we've built a repeatable process around it."
+            title: 'How Promperty Gets You Into AI Answers',
+            text: "Promperty doesn't guess what the algorithms want. We reverse-engineer how ChatGPT, Perplexity, and Gemini build their answers in your market, then get your brand into those data streams. This is new territory for commercial real estate, and we've built a repeatable process around it."
         },
         {
             type: 'split',
@@ -208,8 +208,7 @@ export default function AISeoPage() {
         },
         {
             type: 'pillar',
-            title: 'AI Visibility Is One Dimension of Total Market Control',
-            text: 'Being cited by AI engines is powerful. Being found on Google, seen on LinkedIn, and engaged with through video makes your firm impossible to ignore across every channel your clients and investors use.',
+            text: 'Being cited by AI engines is powerful. Being found on Google and engaged with through structured content makes your firm impossible to ignore across every channel your clients and investors use.',
             links: [
                 {
                     label: 'Search Foundation',
@@ -218,15 +217,15 @@ export default function AISeoPage() {
                     desc: 'The Google rankings that fuel your AI visibility. We rank you for the high-intent CRE search terms that institutional investors use and that LLMs train on.'
                 },
                 {
-                    label: 'B2B Authority',
-                    path: '/linkedin-real-estate',
-                    name: 'LinkedIn Growth & Positioning',
-                    desc: 'The institutional trust layer. Position your firm as the default choice on the platform where capital allocators and deal partners spend their professional time.'
+                    label: 'Lead Automations',
+                    path: '/ai-agent-real-estate',
+                    name: 'AI Lead Capture Systems',
+                    desc: 'Combine your AI visibility with automated agents that qualify and convert every inquiry in under 5 minutes.'
                 },
                 {
                     label: 'Content Signals',
-                    path: '/linkedin-content-real-estate',
-                    name: 'LinkedIn Content Strategy',
+                    path: '/content-real-estate',
+                    name: 'Content Architecture',
                     desc: 'The content depth that AI models read. Consistent, authoritative market analysis is one of the strongest signals feeding LLM brand recognition.'
                 }
             ]
@@ -240,7 +239,7 @@ export default function AISeoPage() {
     ];
 
     return (
-        <main className="min-h-screen bg-white text-secondary">
+        <main className="min-h-screen bg-background text-secondary">
             <Navbar />
 
             <PageHero

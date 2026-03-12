@@ -33,7 +33,7 @@ export default async function CaseStudyPage({ params }) {
     }
 
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-background">
             <Navbar />
 
             {item.json_ld && (

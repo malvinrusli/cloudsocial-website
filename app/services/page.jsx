@@ -22,12 +22,12 @@ export default function ServicesHubPage() {
 
     const categories = [
         {
-            title: "Authority Positioning",
-            desc: "Establish your firm and founders as unquestionable industry leaders.",
+            title: "Authority Infrastructure",
+            desc: "Establish your firm as the unquestionable industry leader through compounding systems.",
             links: [
-                { name: "LinkedIn Growth", path: "/linkedin-real-estate" },
-                { name: "LinkedIn Content Strategy", path: "/linkedin-content-real-estate" },
-                { name: "Executive Branding", path: "/linkedin-real-estate" }
+                { name: "Content Architecture", path: "/content-real-estate" },
+                { name: "Executive Positioning", path: "/content-real-estate" },
+                { name: "Authority Audits", path: "/content-real-estate" }
             ]
         },
         {
@@ -40,12 +40,12 @@ export default function ServicesHubPage() {
             ]
         },
         {
-            title: "Content & Assets",
+            title: "Authority Systems",
             desc: "High-retention media assets that capture attention and build trust.",
             links: [
-                { name: "Short Form Content", path: "/content-real-estate" },
-                { name: "Cinematic Property Tours", path: "/content-real-estate" },
-                { name: "Market Data Videos", path: "/content-real-estate" }
+                { name: "Content Architecture", path: "/content-real-estate" },
+                { name: "Deal Breakdowns (BOFU)", path: "/content-real-estate" },
+                { name: "Market Intelligence Systems", path: "/content-real-estate" }
             ]
         },
         {
@@ -145,7 +145,7 @@ export default function ServicesHubPage() {
                         },
                         {
                             q: "Do you work with residential real estate?",
-                            a: "No. Our entire framework—from our linguistic models to our web architecture—is engineered exclusively for the high-ticket, long-sales-cycle environment of commercial real estate and investment firms."
+                            a: "No. Our entire framework—from our linguistic models to our web architecture—is engineered exclusively for the high-ticket, long-sales-cycle environment of property developers, field service firms, and real estate professionals."
                         }
                     ].map((faq, idx) => {
                         const [isOpen, setIsOpen] = useState(false);
