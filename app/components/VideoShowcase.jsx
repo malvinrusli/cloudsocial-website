@@ -1,57 +1,30 @@
 "use client";
-import React, { useRef } from 'react';
-import { useQuery } from 'convex/react';
-import { api } from '../../convex/_generated/api';
+import { useEffect } from 'react';
 
-const STORAGE_IDS = [
-    'kg25azhxx8zz2ckvqbht0gr13s82n47r',
-    'kg2em94p5f7x3p79tvfbe6g6ns82n0s5',
-    'kg25whybpr0q0he0m7fzph54cx82n06h',
-    'kg2aqrcwjfanercz1frx2gmrxn82n5a4',
-];
+const WISTIA_IDS = ['uix5xvrenc', '00dzekol35', '4sayn9fmcp'];
 
-const VideoCard = ({ video }) => {
-    const videoRef = useRef(null);
-
-    const handleMouseEnter = () => {
-        if (videoRef.current) videoRef.current.play();
-    };
-
-    const handleMouseLeave = () => {
-        if (videoRef.current) {
-            videoRef.current.pause();
-            videoRef.current.currentTime = 0;
-        }
-    };
-
-    if (!video.url) return null;
-
-    return (
-        <div
-            className="flex-shrink-0 w-[200px] md:w-[220px] group cursor-pointer"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-        >
-            <div className="relative w-full rounded-xl overflow-hidden bg-gray-900" style={{ aspectRatio: '9/16' }}>
-                <video
-                    ref={videoRef}
-                    src={video.url}
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-            </div>
+const WistiaCard = ({ mediaId }) => (
+    <div className="flex-shrink-0 w-[200px] md:w-[220px]">
+        <div className="relative w-full rounded-xl overflow-hidden bg-gray-900" style={{ aspectRatio: '9/16' }}>
+            {/* eslint-disable-next-line */}
+            <wistia-player media-id={mediaId} aspect="0.5625" style={{ width: '100%', height: '100%' }} />
         </div>
-    );
-};
+    </div>
+);
 
 const VideoShowcase = () => {
-    const videos = useQuery(api.media.getVideosBatch, { storageIds: STORAGE_IDS });
-
-    if (!videos) return null;
+    useEffect(() => {
+        const addScript = (src, type) => {
+            if (document.querySelector(`script[src="${src}"]`)) return;
+            const s = document.createElement('script');
+            s.src = src;
+            s.async = true;
+            if (type) s.type = type;
+            document.head.appendChild(s);
+        };
+        addScript('https://fast.wistia.com/player.js');
+        WISTIA_IDS.forEach(id => addScript(`https://fast.wistia.com/embed/${id}.js`, 'module'));
+    }, []);
 
     return (
         <section className="w-full bg-background py-20 md:py-28 border-t border-gray-100 overflow-hidden">
@@ -62,13 +35,12 @@ const VideoShowcase = () => {
                     <span className="font-sans italic text-textDark">in the wild</span>
                 </h2>
             </div>
-
             <div
                 className="flex gap-4 px-6 md:px-12 overflow-x-auto pb-4"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-                {videos.map((video) => (
-                    <VideoCard key={video._id} video={video} />
+                {WISTIA_IDS.map(id => (
+                    <WistiaCard key={id} mediaId={id} />
                 ))}
             </div>
         </section>
