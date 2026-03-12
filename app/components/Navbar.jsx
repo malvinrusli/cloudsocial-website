@@ -6,13 +6,22 @@ import { getDictionary } from '@/app/lib/dictionaries';
 const NavLink = ({ href, children }) => (
     <a
         href={href}
-        className="hover:text-primary transition-colors duration-300 relative group py-2"
-        style={{ perspective: '1000px' }}
+        className="relative group block overflow-hidden py-1 px-1 transition-colors duration-300"
     >
-        <div className="relative transition-transform duration-500 transform-gpu group-hover:[transform:rotateX(360deg)] text-center">
-            {children}
+        <div className="relative h-[20px] overflow-hidden">
+            {/* Primary Text */}
+            <div className="transition-transform duration-[0.6s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full">
+                <span className="block h-[20px] leading-tight font-medium text-secondary/80 group-hover:text-primary">
+                    {children}
+                </span>
+            </div>
+            {/* Scroll-in Text */}
+            <div className="absolute top-full left-0 w-full transition-transform duration-[0.6s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full">
+                <span className="block h-[20px] leading-tight font-medium text-primary">
+                    {children}
+                </span>
+            </div>
         </div>
-        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
     </a>
 );
 

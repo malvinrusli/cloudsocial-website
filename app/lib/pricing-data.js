@@ -5,10 +5,10 @@ export const pricingData = {
         suffix: '/month',
         tiers: [
             {
-                name: "Scale Foundation",
-                price: "1,149",
+                name: "Minimum Package",
+                price: "1,600",
                 setup: "One-time setup fee: $1,500",
-                description: "The essential digital infrastructure for search and AI visibility.",
+                description: "The essential digital infrastructure for search and AI visibility. Full marketing growth for your company.",
                 features: [
                     "High-Performance Web Architecture",
                     "SEO-Optimized Infrastructure",
@@ -19,9 +19,9 @@ export const pricingData = {
             },
             {
                 name: "Authority Infrastructure",
-                price: "2,249",
+                price: "3,900",
                 setup: "One-time setup fee: $2,500",
-                description: "A complete content & automation engine built for market dominance in 2026.",
+                description: "A complete content & automation engine built for market dominance. Full marketing growth for your company.",
                 features: [
                     "All Scale Foundation features",
                     "AI Visibility Positioning (LLM Optimization)",
@@ -33,9 +33,9 @@ export const pricingData = {
             },
             {
                 name: "Full Growth Engine",
-                price: "3,349",
+                price: "5,400",
                 setup: "Custom onboarding plan",
-                description: "The ultimate 24/7 sales & authority flywheel for high-volume firms.",
+                description: "The ultimate 24/7 sales & authority flywheel for high-volume firms. Full marketing growth for your company.",
                 features: [
                     "All Authority Infrastructure features",
                     "Content-Led Growth Flywheel",
@@ -53,10 +53,10 @@ export const pricingData = {
         suffix: '/bln',
         tiers: [
             {
-                name: "Skala Fondasi",
-                price: "18.250.000",
+                name: "Paket Minimum",
+                price: "25.250.000",
                 setup: "Biaya setup satu kali: Rp 24.000.000",
-                description: "Infrastruktur digital esensial untuk visibilitas pencarian dan AI.",
+                description: "Infrastruktur digital esensial untuk visibilitas pencarian dan AI. Pertumbuhan pemasaran penuh untuk perusahaan Anda.",
                 features: [
                     "Arsitektur Web Performa Tinggi",
                     "Infrastruktur SEO Teroptimasi",
@@ -67,11 +67,11 @@ export const pricingData = {
             },
             {
                 name: "Infrastruktur Otoritas",
-                price: "35.750.000",
+                price: "61.500.000",
                 setup: "Biaya setup satu kali: Rp 40.000.000",
-                description: "Mesin konten & otomasi lengkap yang dibangun untuk dominasi pasar di 2026.",
+                description: "Mesin konten & otomasi lengkap yang dibangun untuk dominasi pasar. Pertumbuhan pemasaran penuh untuk perusahaan Anda.",
                 features: [
-                    "Semua fitur Skala Fondasi",
+                    "Semua fitur Paket Minimum",
                     "Positioning Visibilitas AI (Optimasi LLM)",
                     "8 Blog Otoritas Tinggi/bulan",
                     "Strategi Konten Otoritas Milik Sendiri",
@@ -81,9 +81,9 @@ export const pricingData = {
             },
             {
                 name: "Mesin Pertumbuhan Penuh",
-                price: "53.250.000",
+                price: "85.000.000",
                 setup: "Rencana onboarding kustom",
-                description: "Flywheel penjualan & otoritas 24/7 utama untuk perusahaan bervolume tinggi.",
+                description: "Flywheel penjualan & otoritas 24/7 utama untuk perusahaan bervolume tinggi. Pertumbuhan pemasaran penuh untuk perusahaan Anda.",
                 features: [
                     "Semua fitur Infrastruktur Otoritas",
                     "Flywheel Pertumbuhan Berbasis Konten",
