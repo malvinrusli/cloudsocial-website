@@ -63,7 +63,7 @@ const Hero = () => {
         <>
             <section
                 ref={containerRef}
-                className="relative w-full min-h-[90dvh] flex flex-col pt-32 pb-40 overflow-hidden"
+                className="relative w-full min-h-[85dvh] flex flex-col pt-32 pb-24 overflow-hidden"
             >
                 {/* Vibrant Background Gradient */}
                 <div className="absolute inset-0 z-0 bg-background">
@@ -78,11 +78,11 @@ const Hero = () => {
                     <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
                         <span className="hero-anim text-[10px] font-bold uppercase tracking-[0.3em] text-secondary/40 mr-2">Built for:</span>
                         {badges.map((badge, idx) => (
-                            <div key={idx} className="hero-anim group flex items-center bg-white/40 backdrop-blur-sm px-5 py-2.5 rounded-full border border-gray-200/50 hover:bg-white/60 transition-all duration-300 shadow-sm hover:shadow-md cursor-default">
-                                <div className="w-3.5 h-3.5 rounded-full bg-secondary flex items-center justify-center mr-2.5 group-hover:scale-110 transition-transform">
-                                    <svg className="w-2.5 h-2.5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                            <div key={idx} className="hero-anim group flex items-center bg-white border border-gray-100 px-4 py-2 rounded-md transition-all duration-300 shadow-sm hover:border-gray-200 cursor-default">
+                                <div className="w-2.5 h-2.5 rounded-full bg-secondary flex items-center justify-center mr-2.5 group-hover:scale-110 transition-transform">
+                                    <svg className="w-1.5 h-1.5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                                 </div>
-                                <span className="font-sans text-[13px] font-semibold text-secondary/90 tracking-tight">{badge}</span>
+                                <span className="font-sans text-[12px] font-semibold text-secondary/80 tracking-tight">{badge}</span>
                             </div>
                         ))}
                     </div>
@@ -113,10 +113,10 @@ const Hero = () => {
                     <div className="hero-anim mb-20 flex flex-col sm:flex-row items-center justify-center gap-8">
                         <button
                             onClick={() => setModalOpen(true)}
-                            className="group relative px-10 py-5 bg-secondary text-primary font-sans font-bold text-sm uppercase tracking-widest rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl flex-shrink-0"
+                            className="group relative px-10 py-5 bg-secondary text-primary font-sans font-bold text-sm uppercase tracking-widest rounded-md overflow-hidden transition-all duration-300 hover:shadow-lg flex-shrink-0"
                         >
-                            <span className="relative z-10">Book Free Audit</span>
-                            <span className="absolute inset-0 bg-textDark translate-y-full transition-transform duration-300 group-hover:translate-y-0 rounded-full"></span>
+                            <span className="relative z-10 transition-colors duration-300">Book Free Audit</span>
+                            <span className="absolute inset-0 bg-textDark translate-y-full transition-transform duration-300 group-hover:translate-y-0 rounded-md"></span>
                         </button>
                         <a href="#how" className="text-xs font-bold uppercase tracking-widest text-textDark/40 hover:text-secondary transition-colors flex items-center gap-3 group">
                             <span className="w-8 h-[1px] bg-textDark/20 group-hover:w-12 group-hover:bg-secondary transition-all"></span>
@@ -128,7 +128,7 @@ const Hero = () => {
 
                 {/* Hero Image - More Premium Layout */}
                 <div className="w-full max-w-7xl mx-auto px-4 md:px-8 mt-12 hero-anim">
-                    <div className="w-full h-[70vh] rounded-2xl overflow-hidden relative shadow-2xl border border-gray-100">
+                    <div className="w-full h-[70vh] rounded-md overflow-hidden relative shadow-sm border border-gray-100">
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10 pointer-events-none"></div>
                         <img
                             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"

@@ -33,7 +33,7 @@ const WhoWeServe = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="w-full bg-background py-16 border-t border-gray-100">
+        <section ref={containerRef} className="w-full bg-background py-16">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
                 <div className="mb-12">
                     <p className="text-[11px] font-semibold uppercase tracking-widest text-textDark/30 mb-4">Our Clients</p>

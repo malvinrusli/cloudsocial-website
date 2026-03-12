@@ -7,8 +7,11 @@ const NavLink = ({ href, children }) => (
     <a
         href={href}
         className="hover:text-primary transition-colors duration-300 relative group py-2"
+        style={{ perspective: '1000px' }}
     >
-        {children}
+        <div className="relative transition-transform duration-500 transform-gpu group-hover:[transform:rotateX(360deg)] text-center">
+            {children}
+        </div>
         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
     </a>
 );
@@ -140,7 +143,7 @@ const Navbar = ({ lang: propLang }) => {
                             onClick={() => window.location.href = `/${lang}/pricing`}
                         >
                             <span className="relative z-10 transition-colors duration-300 group-hover:text-primary">{lang === 'id' ? 'Konsultasi Gratis' : 'Book Free Audit'}</span>
-                            <span className="absolute inset-0 bg-textDark translate-y-full transition-transform duration-300 group-hover:translate-y-0 z-0 rounded-md"></span>
+                            <span className="absolute inset-0 bg-textDark translate-y-full transition-transform duration-300 group-hover:translate-y-0 z-0"></span>
                         </button>
 
                         {/* Mobile Menu Toggle */}
@@ -196,11 +199,9 @@ const Navbar = ({ lang: propLang }) => {
 
                 <style>{`
                     .scrolled.nav-container {
-                        background-color: rgba(255, 255, 255, 0.9);
-                        backdrop-filter: blur(20px);
-                        -webkit-backdrop-filter: blur(20px);
-                        border-color: rgba(0, 0, 0, 0.08);
-                        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+                        background-color: white;
+                        border-color: rgba(0, 0, 0, 0.05);
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.03);
                         padding-top: 0.75rem;
                         padding-bottom: 0.75rem;
                         max-width: 64rem;
