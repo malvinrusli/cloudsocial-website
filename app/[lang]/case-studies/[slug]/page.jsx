@@ -31,7 +31,7 @@ export async function generateStaticParams() {
 }
 
 export default async function CaseStudyPage({ params }) {
-    const { slug } = await params;
+    const { slug, lang } = await params;
     const item = await fetchQuery(api.caseStudies.getBySlug, { slug });
 
     if (!item || item.status !== "published") {

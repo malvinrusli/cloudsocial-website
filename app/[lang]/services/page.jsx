@@ -6,6 +6,35 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 import ContactModal from '@/app/components/ContactModal';
 
+const FAQItem = ({ faq }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+        <div
+            className="border border-gray-200 rounded-md bg-white overflow-hidden transition-all duration-300 hover:border-gray-300"
+        >
+            <button
+                className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                <span className="font-sans font-semibold text-secondary text-lg">{faq.q}</span>
+                <svg
+                    className={`w-5 h-5 text-gray-400 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+            <div
+                className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-48 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
+            >
+                <p className="text-textDark/80 leading-relaxed font-sans">{faq.a}</p>
+            </div>
+        </div>
+    );
+};
+
 export default function ServicesHubPage({ params }) {
     const { lang } = use(params);
     const containerRef = useRef(null);
@@ -66,6 +95,25 @@ export default function ServicesHubPage({ params }) {
                 { name: "Automated Lead Qualification", path: "/ai-agent-real-estate" },
                 { name: "Instant CRM Sync", path: "/ai-agent-real-estate" }
             ]
+        }
+    ];
+
+    const faqs = [
+        {
+            q: "Is this just traditional SEO?",
+            a: "No. Traditional search rankings are only one pillar. We optimize for Generative Engines (GEO) and AI platforms (AEO) to ensure you become the default referenced authority when institutional investors ask AI for recommendations."
+        },
+        {
+            q: "How long until I see real traction?",
+            a: "We build compounding infrastructure, not overnight ad campaigns. You’ll see verifiable movement in 30-60 days, but the exponential compounding of digital authority typically hits its stride between months 4 and 6."
+        },
+        {
+            q: "Do I need to manage the AI agents or content generation?",
+            a: "No. We handle the entire ecosystem end-to-end. Our systems operate autonomously—qualifying leads 24/7 and publishing high-retention content—while you focus entirely on closing deals and managing your properties."
+        },
+        {
+            q: "Do you work with residential real estate?",
+            a: "No. Our entire framework—from our linguistic models to our web architecture—is engineered exclusively for the high-ticket, long-sales-cycle environment of property developers, field service firms, and real estate professionals."
         }
     ];
 
@@ -131,54 +179,12 @@ export default function ServicesHubPage({ params }) {
                 </div>
 
                 <div className="space-y-4">
-                    {[
-                        {
-                            q: "Is this just traditional SEO?",
-                            a: "No. Traditional search rankings are only one pillar. We optimize for Generative Engines (GEO) and AI platforms (AEO) to ensure you become the default referenced authority when institutional investors ask AI for recommendations."
-                        },
-                        {
-                            q: "How long until I see real traction?",
-                            a: "We build compounding infrastructure, not overnight ad campaigns. You’ll see verifiable movement in 30-60 days, but the exponential compounding of digital authority typically hits its stride between months 4 and 6."
-                        },
-                        {
-                            q: "Do I need to manage the AI agents or content generation?",
-                            a: "No. We handle the entire ecosystem end-to-end. Our systems operate autonomously—qualifying leads 24/7 and publishing high-retention content—while you focus entirely on closing deals and managing your properties."
-                        },
-                        {
-                            q: "Do you work with residential real estate?",
-                            a: "No. Our entire framework—from our linguistic models to our web architecture—is engineered exclusively for the high-ticket, long-sales-cycle environment of property developers, field service firms, and real estate professionals."
-                        }
-                    ].map((faq, idx) => {
-                        const [isOpen, setIsOpen] = useState(false);
-                        return (
-                            <div
-                                key={idx}
-                                className="border border-gray-200 rounded-md bg-white overflow-hidden transition-all duration-300 hover:border-gray-300"
-                            >
-                                <button
-                                    className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
-                                    onClick={() => setIsOpen(!isOpen)}
-                                >
-                                    <span className="font-sans font-semibold text-secondary text-lg">{faq.q}</span>
-                                    <svg
-                                        className={`w-5 h-5 text-gray-400 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </button>
-                                <div
-                                    className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-48 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
-                                >
-                                    <p className="text-textDark/80 leading-relaxed font-sans">{faq.a}</p>
-                                </div>
-                            </div>
-                        );
-                    })}
+                    {faqs.map((faq, idx) => (
+                        <FAQItem key={idx} faq={faq} />
+                    ))}
                 </div>
             </section>
+
 
             {/* Bottom CTA Section */}
             <section className="py-24 px-8 bg-secondary text-white border-t border-white/5 text-center relative overflow-hidden z-10 hub-anim">

@@ -18,11 +18,11 @@ export default async function Home({ params }) {
     return (
         <main className="min-h-screen bg-white">
             <Navbar lang={lang} />
-            <Hero />
-            <WhoWeServe />
-            <Features />
-            <Protocol />
-            <SocialProof />
+            <Hero lang={lang} />
+            <WhoWeServe lang={lang} />
+            <Features lang={lang} />
+            <Protocol lang={lang} />
+            <SocialProof lang={lang} />
             <Footer lang={lang} />
         </main>
     )

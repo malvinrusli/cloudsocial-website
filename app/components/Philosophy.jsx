@@ -1,11 +1,12 @@
-"use client";
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useParams } from 'next/navigation';
+import { getDictionary } from '@/app/lib/dictionaries';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Philosophy = () => {
+const Philosophy = ({ lang: propLang }) => {
+    const params = useParams();
+    const lang = propLang || params?.lang || 'en';
+    const dict = getDictionary(lang);
     const containerRef = useRef(null);
 
     useEffect(() => {
@@ -56,27 +57,21 @@ const Philosophy = () => {
 
             <div className="relative z-10 w-full max-w-6xl flex flex-col items-center text-center">
                 <p className="text-textDark/80 font-sans tracking-widest text-sm md:text-base mb-10 font-medium bg-white px-6 py-2 rounded border border-gray-100 shadow-sm">
-                    <span className="philosophy-word inline-block mr-1">Most</span>
-                    <span className="philosophy-word inline-block mr-1">premium</span>
-                    <span className="philosophy-word inline-block mr-1">service-led</span>
-                    <span className="philosophy-word inline-block mr-1">firms</span>
-                    <span className="philosophy-word inline-block mr-1">are</span>
-                    <span className="philosophy-word inline-block mr-1">invisible</span>
-                    <span className="philosophy-word inline-block">where it matters.</span>
+                    {dict.philosophy.badge_words.map((word, i) => (
+                        <span key={i} className="philosophy-word inline-block mr-1">{word}</span>
+                    ))}
                 </p>
 
                 <h2 className="text-4xl md:text-6xl lg:text-[5.5rem] leading-[1.1] text-secondary font-sans">
                     <span className="block mb-2 text-gray-400">
-                        <span className="philosophy-word inline-block mr-3">Authority</span>
-                        <span className="philosophy-word inline-block mr-3">is</span>
-                        <span className="philosophy-word inline-block mr-3">not</span>
-                        <span className="philosophy-word inline-block mr-3">optional.</span>
+                        {dict.philosophy.title_line1.map((word, i) => (
+                            <span key={i} className="philosophy-word inline-block mr-3">{word}</span>
+                        ))}
                     </span>
                     <span className="block text-secondary tracking-tight">
-                        <span className="philosophy-word inline-block mr-3">It</span>
-                        <span className="philosophy-word inline-block mr-3">is</span>
-                        <span className="philosophy-word inline-block mr-3 italic text-textDark">compounding</span>
-                        <span className="philosophy-word inline-block">leverage.</span>
+                        {dict.philosophy.title_line2.map((word, i) => (
+                            <span key={i} className={`philosophy-word inline-block mr-3 ${word === 'compounding' || word === 'daya' ? 'italic text-textDark' : ''}`}>{word}</span>
+                        ))}
                     </span>
                 </h2>
             </div>

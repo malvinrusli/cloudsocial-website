@@ -392,7 +392,7 @@ const AIAgentMockup = () => (
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-const Features = () => {
+const Features = ({ lang = 'en' }) => {
     const [active, setActive] = useState('content');
     const scrollWrapperRef = useRef(null);
     const containerRef = useRef(null);
@@ -515,9 +515,9 @@ const Features = () => {
                     {/* Header */}
                     <div className="feat-header mb-5 shrink-0 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
                         <div>
-                            <span className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-2 block">How We Help You</span>
+                            <span className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-2 block">{lang === 'id' ? 'Bagaimana Kami Membantu Anda' : 'How We Help You'}</span>
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-tight">
-                                The Digital Authority Ecosystem
+                                {lang === 'id' ? 'Ekosistem Otoritas Digital' : 'The Digital Authority Ecosystem'}
                             </h2>
                         </div>
                     </div>
@@ -560,7 +560,7 @@ const Features = () => {
                                 ))}
                             </ul>
                             <a
-                                href={service.link}
+                                href={`/${lang}${service.link}`}
                                 className="flex items-center gap-2 text-sm font-semibold text-white/50 hover:text-white transition-colors group mt-auto"
                             >
                                 {service.linkLabel}

@@ -85,7 +85,7 @@ const getRelatedResources = (lang) => [
 ];
 
 export default async function BlogPostPage({ params }) {
-    const { slug } = await params;
+    const { slug, lang } = await params;
     const post = await fetchQuery(api.posts.getBySlug, { slug });
 
     if (!post || post.status !== "published") {

@@ -1,18 +1,12 @@
-"use client";
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useParams } from 'next/navigation';
+import { getDictionary } from '@/app/lib/dictionaries';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const clients = [
-    { num: '01', label: 'Property Developers', tag: 'Capital-Grade Authority' },
-    { num: '02', label: 'Real Estate Firms', tag: 'Market-Dominant Visibility' },
-    { num: '03', label: 'Architects & Interiors', tag: 'Design-Led Appointment Flow' },
-    { num: '04', label: 'Built Environment', tag: 'Scalable Trust Systems' },
-];
-
-const WhoWeServe = () => {
+const WhoWeServe = ({ lang: propLang }) => {
+    const params = useParams();
+    const lang = propLang || params?.lang || 'en';
+    const dict = getDictionary(lang);
     const containerRef = useRef(null);
 
     useEffect(() => {
@@ -36,14 +30,14 @@ const WhoWeServe = () => {
         <section ref={containerRef} className="w-full bg-background py-16">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
                 <div className="mb-12">
-                    <p className="text-[11px] font-semibold uppercase tracking-widest text-textDark/30 mb-4">Our Clients</p>
+                    <p className="text-[11px] font-semibold uppercase tracking-widest text-textDark/30 mb-4">{dict.wws.badge}</p>
                     <h2 className="text-4xl md:text-6xl font-sans font-medium text-secondary tracking-tight leading-[1.05]">
-                        Who We<br />
-                        <span className="font-sans italic text-textDark">Work With</span>
+                        {dict.wws.title_line1}<br />
+                        <span className="font-sans italic text-textDark">{dict.wws.title_line2}</span>
                     </h2>
                 </div>
                 <div className="border-t border-gray-200">
-                    {clients.map((client) => (
+                    {dict.wws.clients.map((client) => (
                         <div
                             key={client.num}
                             className="wws-row border-b border-gray-200 flex items-center justify-between py-6 md:py-8 gap-6"

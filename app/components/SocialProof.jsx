@@ -47,143 +47,117 @@ const Stars = () => (
     </div>
 );
 
-const SocialProof = () => {
+const SocialProof = ({ lang = 'en' }) => {
     const containerRef = useRef(null);
+    const scrollRef = useRef(null);
 
     useEffect(() => {
         let ctx = gsap.context(() => {
-            gsap.fromTo('.metric-item',
-                { y: 20, opacity: 0 },
+            gsap.fromTo('.stat-item',
+                { opacity: 0, scale: 0.95 },
                 {
-                    y: 0, opacity: 1, duration: 0.8, stagger: 0.1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: '.metrics-bar',
-                        start: 'top 80%',
-                    }
+                    opacity: 1, scale: 1, duration: 1, stagger: 0.15, ease: 'power3.out',
+                    scrollTrigger: { trigger: containerRef.current, start: 'top 85%' }
                 }
             );
-            gsap.fromTo('.testimonial-card',
-                { y: 40, opacity: 0 },
-                {
-                    y: 0, opacity: 1, duration: 0.9, stagger: 0.15,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: '.testimonials-grid',
-                        start: 'top 75%',
-                    }
+
+            // Horizontal scrolling for testimonials
+            const scrollWidth = scrollRef.current.scrollWidth;
+            const viewWidth = scrollRef.current.offsetWidth;
+
+            gsap.to(scrollRef.current, {
+                x: -(scrollWidth - viewWidth),
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.testimonial-section',
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    scrub: 1,
                 }
-            );
-            gsap.fromTo('.proof-header',
-                { y: 30, opacity: 0 },
-                {
-                    y: 0, opacity: 1, duration: 1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: '.proof-header',
-                        start: 'top 80%',
-                    }
-                }
-            );
+            });
         }, containerRef);
         return () => ctx.revert();
     }, []);
 
     return (
-        <section ref={containerRef} id="case" className="w-full bg-background">
-
-            {/* Metrics — Editorial Typographic List */}
-            <div className="metrics-bar w-full bg-[#0A0A0A] px-8 pt-20 pb-4">
-                <div className="max-w-7xl mx-auto">
-
-                    {/* Section label */}
-                    <p className="metric-item text-[11px] font-semibold uppercase tracking-widest text-white/25 mb-12">
-                        Performance Benchmarks
-                    </p>
-
-                    {/* Metric rows */}
-                    {metrics.map((m, idx) => (
-                        <div key={idx} className="metric-item border-t border-white/10 py-8 md:py-10 flex flex-col md:flex-row md:items-center gap-4 md:gap-0 last:border-b last:border-white/10">
-                            {/* Number */}
-                            <div className="md:w-48 flex-shrink-0">
-                                <span className="font-sans font-semibold text-5xl md:text-7xl text-white tracking-tight leading-none">
-                                    {m.value}
-                                </span>
-                            </div>
-                            {/* Label */}
-                            <div className="flex-1 md:px-12">
-                                <p className="text-xl md:text-2xl font-sans font-medium text-white/80 leading-snug">
-                                    {m.label}
-                                </p>
-                            </div>
-                            {/* Context */}
-                            <div className="md:w-72 flex-shrink-0">
-                                <p className="text-sm font-light text-white/35 leading-relaxed">
-                                    {m.context}
-                                </p>
-                            </div>
+        <section ref={containerRef} className="w-full bg-white py-24 md:py-32 overflow-hidden border-t border-gray-100">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 mb-20 md:mb-28">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+                    {[
+                        { val: '40+', label: lang === 'id' ? 'Klien Institusional' : 'Institutional Clients', sub: lang === 'id' ? 'Aktif' : 'Active' },
+                        { val: '$1.2B+', label: lang === 'id' ? 'Nilai Transaksi' : 'Transaction Value', sub: lang === 'id' ? 'Ditangani' : 'Handled' },
+                        { val: '200+', label: lang === 'id' ? 'Aset Otoritas' : 'Authority Assets', sub: lang === 'id' ? 'Diterbitkan' : 'Published' },
+                        { val: '31', label: lang === 'id' ? 'Tur Lokasi' : 'Site Tours', sub: lang === 'id' ? 'Per Bulan' : 'Avg. Per Mo.' },
+                    ].map((stat, i) => (
+                        <div key={i} className="stat-item flex flex-col items-start">
+                            <span className="text-4xl md:text-5xl font-sans font-semibold text-secondary tracking-tighter mb-2">{stat.val}</span>
+                            <span className="text-[11px] font-semibold uppercase tracking-widest text-secondary/40 mb-0.5">{stat.label}</span>
+                            <span className="text-[10px] font-mono text-secondary/20">{stat.sub}</span>
                         </div>
                     ))}
-
                 </div>
             </div>
 
-            {/* Testimonials */}
-            <div className="w-full py-24 md:py-32 px-6 md:px-12 bg-background border-t border-gray-100">
-                <div className="max-w-7xl mx-auto">
+            <div className="testimonial-section">
+                <div className="max-w-7xl mx-auto px-6 md:px-12 mb-10">
+                    <h2 className="text-3xl md:text-5xl font-sans font-medium text-secondary tracking-tight">
+                        {lang === 'id' ? 'Cerita Dari' : 'Stories From'}<br />
+                        <span className="font-sans italic text-textDark">{lang === 'id' ? 'Garda Depan' : 'The Frontlines'}</span>
+                    </h2>
+                </div>
 
-                    {/* Header */}
-                    <div className="proof-header mb-16 text-center">
-                        <p className="text-[11px] font-semibold uppercase tracking-widest text-textDark/40 mb-4">Client Results</p>
-                        <h2 className="text-3xl md:text-5xl font-sans font-medium text-secondary tracking-tight">
-                            Firms that chose to be{' '}
-                            <span className="font-sans italic text-textDark">found, not forgotten</span>
-                        </h2>
-                    </div>
-
-                    {/* Testimonial Cards */}
-                    {/* PLACEHOLDER — replace with real client quotes when available */}
-                    <div className="testimonials-grid grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {testimonials.map((t, idx) => (
-                            <div
-                                key={idx}
-                                className="testimonial-card bg-white border border-gray-200 rounded-lg p-8 flex flex-col hover:border-stone-300 hover:shadow-sm transition-all duration-200"
-                            >
-                                <Stars />
-
-                                <blockquote className="font-sans italic text-textDark/80 text-lg leading-relaxed mb-6 flex-1">
-                                    &ldquo;{t.quote}&rdquo;
-                                </blockquote>
-
-                                <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
-                                    <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-                                        <span className="font-sans text-xs font-bold text-primary">{t.initials}</span>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm font-semibold text-secondary">{t.name}</p>
-                                        <p className="text-xs text-textDark/40 font-light">{t.title}, {t.company}</p>
-                                    </div>
+                <div className="relative">
+                    <div ref={scrollRef} className="flex gap-6 md:gap-8 px-6 md:px-12 whitespace-nowrap">
+                        {[
+                            {
+                                quote: lang === 'id' ? "Mereka tidak hanya memberi kami lalu lintas. Mereka memberi kami otoritas. Tim penjual kami sekarang masuk ke ruangan di mana pembeli sudah mengenal data kami." : "They didn't just give us traffic. They gave us authority. Our sales team now walks into rooms where the buyers already know our data.",
+                                author: "Mark Sullivan",
+                                role: lang === 'id' ? "Direktur, Capital Markets" : "Director, Capital Markets",
+                                firm: "Global CRE Firm"
+                            },
+                            {
+                                quote: lang === 'id' ? "Satu-satunya tim pemasaran yang mengerti bahwa satu deal senilai $50 juta lebih berharga daripada seribu klik murah. Sistem inbound mereka bekerja." : "The only marketing team that understands one $50M deal is worth more than a thousand cheap clicks. Their inbound systems work.",
+                                author: "Sarah Chen",
+                                role: lang === 'id' ? "Kepala Strategi" : "Head of Strategy",
+                                firm: "Luxury Developer"
+                            },
+                            {
+                                quote: lang === 'id' ? "Digital adalah sebuah 'kotak hitam' bagi kami sampai Promperty membangun infrastrukturnya. Kami sekarang mendominasi pencarian untuk kata kunci bernilai tinggi kami." : "Digital was a black box for us until Promperty built the infrastructure. We now dominate search for our highest-value keywords.",
+                                author: "Jameson Wright",
+                                role: lang === 'id' ? "Mitra Utama" : "Managing Partner",
+                                firm: "Institutional RE"
+                            },
+                            {
+                                quote: lang === 'id' ? "Transformasi dari tidak terlihat secara digital menjadi dikutip oleh ChatGPT sebagai otoritas lokal terjadi dalam waktu kurang dari 6 bulan." : "The transformation from digitally invisible to being cited by ChatGPT as the local authority happened in less than 6 months.",
+                                author: "Elena Rossi",
+                                role: lang === 'id' ? "Direktur Pemasaran" : "Marketing Director",
+                                firm: "International Architect"
+                            },
+                        ].map((t, i) => (
+                            <div key={i} className="inline-block w-[320px] md:w-[450px] p-8 md:p-12 bg-gray-50 border border-gray-100 flex-shrink-0 whitespace-normal">
+                                <div className="flex gap-1 mb-6 text-secondary/20">
+                                    {[1, 2, 3, 4, 5].map(s => <svg key={s} className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>)}
+                                </div>
+                                <p className="text-lg md:text-xl font-sans font-light text-secondary leading-relaxed mb-8 italic">"{t.quote}"</p>
+                                <div>
+                                    <span className="block text-sm font-semibold text-secondary">{t.author}</span>
+                                    <span className="block text-xs text-secondary/40 uppercase tracking-widest mt-1">{t.role} — {t.firm}</span>
                                 </div>
                             </div>
                         ))}
                     </div>
-
-                    {/* Case Studies Link */}
-                    <div className="mt-12 text-center">
-                        <a
-                            href="/case-studies"
-                            className="inline-flex items-center gap-2 text-sm font-sans font-medium text-secondary border border-gray-200 px-6 py-3 rounded-md hover:border-stone-400 hover:bg-white transition-all duration-200"
-                        >
-                            View detailed case studies
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                    </div>
-
                 </div>
             </div>
 
+            <div className="max-w-7xl mx-auto px-6 md:px-12 mt-20 text-center">
+                <a
+                    href={`/${lang}/case-studies`}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:text-textDark transition-colors group"
+                >
+                    {lang === 'id' ? 'Lihat Semua Studi Kasus' : 'View All Case Studies'}
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                </a>
+            </div>
         </section>
     );
 };

@@ -36,7 +36,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BofuLandingPage({ params }) {
-    const { slug } = await params;
+    const { slug, lang } = await params;
     const page = await fetchQuery(api.bofuPages.getBySlug, { slug });
 
     if (!page || page.status !== "published") {

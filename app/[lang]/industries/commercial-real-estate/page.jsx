@@ -24,6 +24,7 @@ export default async function CommercialRealEstatePage({ params }) {
             />
 
             <Philosophy
+                lang={lang}
                 title="The CRE Trust Gap"
                 description="Traditional CRE marketing is too focused on vanity metrics. We focus on Authority Infrastructure—the digital assets that actually close institutional deals."
             />

@@ -1,10 +1,11 @@
-"use client";
-import { useState } from "react";
-import { useMutation } from "convex/react";
-import { api } from "../../convex/_generated/api";
-import { X } from "lucide-react";
+import { useParams } from 'next/navigation';
+import { getDictionary } from '@/app/lib/dictionaries';
 
-export default function ContactModal({ isOpen, onClose, source = "website" }) {
+export default function ContactModal({ isOpen, onClose, source = "website", lang: propLang }) {
+    const params = useParams();
+    const lang = propLang || params?.lang || 'en';
+    const dict = getDictionary(lang);
+
     const submitLead = useMutation(api.leads.submit);
     const [form, setForm] = useState({ name: "", email: "", company: "", phone: "", message: "" });
     const [status, setStatus] = useState("idle"); // idle | submitting | success | error
@@ -39,6 +40,8 @@ export default function ContactModal({ isOpen, onClose, source = "website" }) {
         </div>
     );
 
+    const cDist = dict.contact;
+
     return (
         <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
@@ -48,8 +51,8 @@ export default function ContactModal({ isOpen, onClose, source = "website" }) {
                 {/* Header */}
                 <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
                     <div>
-                        <h2 className="text-lg font-semibold text-secondary">Request a Free Strategy Audit</h2>
-                        <p className="text-xs text-textDark/60 mt-0.5">We will respond within one business day.</p>
+                        <h2 className="text-lg font-semibold text-secondary">{cDist.title}</h2>
+                        <p className="text-xs text-textDark/60 mt-0.5">{cDist.subtitle}</p>
                     </div>
                     <button onClick={onClose} className="text-gray-400 hover:text-secondary transition-colors">
                         <X size={18} />
@@ -63,37 +66,37 @@ export default function ContactModal({ isOpen, onClose, source = "website" }) {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                         </div>
-                        <p className="text-sm font-semibold text-secondary">Submission received.</p>
-                        <p className="text-xs text-textDark/60 mt-1">Our strategy team will be in touch within one business day.</p>
+                        <p className="text-sm font-semibold text-secondary">{cDist.success_title}</p>
+                        <p className="text-xs text-textDark/60 mt-1">{cDist.success_desc}</p>
                         <button onClick={onClose} className="mt-6 text-xs font-semibold text-secondary underline underline-offset-4 decoration-gray-300">
-                            Close
+                            {cDist.close}
                         </button>
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} className="px-6 py-5 space-y-4">
                         <div className="grid grid-cols-2 gap-4">
-                            {field("name", "Full Name", "text", true)}
-                            {field("email", "Work Email", "email", true)}
+                            {field("name", cDist.name, "text", true)}
+                            {field("email", cDist.email, "email", true)}
                         </div>
                         <div className="grid grid-cols-2 gap-4">
-                            {field("company", "Company")}
-                            {field("phone", "Phone", "tel")}
+                            {field("company", cDist.company)}
+                            {field("phone", cDist.phone, "tel")}
                         </div>
                         <div>
                             <label className="block text-xs font-semibold text-secondary mb-1.5">
-                                What are you looking to achieve?
+                                {cDist.message_label}
                             </label>
                             <textarea
                                 rows={3}
                                 value={form.message}
                                 onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
                                 className="w-full border border-gray-200 px-3 py-2.5 text-sm text-secondary focus:outline-none focus:border-secondary transition-colors resize-none bg-white"
-                                placeholder="e.g. Build an authority content system, dominate Google for commercial SEO in Dallas..."
+                                placeholder={cDist.message_placeholder}
                             />
                         </div>
 
                         {status === "error" && (
-                            <p className="text-xs text-red-500">Something went wrong. Please try again.</p>
+                            <p className="text-xs text-red-500">{cDist.error}</p>
                         )}
 
                         <button
@@ -101,11 +104,11 @@ export default function ContactModal({ isOpen, onClose, source = "website" }) {
                             disabled={status === "submitting"}
                             className="w-full py-3 bg-secondary text-white text-sm font-semibold hover:bg-secondary/90 transition-colors disabled:opacity-60"
                         >
-                            {status === "submitting" ? "Sending..." : "Submit — Get Your Free Audit"}
+                            {status === "submitting" ? cDist.sending : cDist.submit}
                         </button>
 
                         <p className="text-[10px] text-textDark/40 text-center">
-                            No spam. No pressure. Strategy first.
+                            {cDist.disclaimer}
                         </p>
                     </form>
                 )}

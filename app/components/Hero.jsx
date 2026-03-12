@@ -1,9 +1,10 @@
-"use client";
-import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import ContactModal from './ContactModal';
+import { useParams } from 'next/navigation';
+import { getDictionary } from '@/app/lib/dictionaries';
 
-const Hero = () => {
+const Hero = ({ lang: propLang }) => {
+    const params = useParams();
+    const lang = propLang || params?.lang || 'en';
+    const dict = getDictionary(lang);
     const containerRef = useRef(null);
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -24,13 +25,7 @@ const Hero = () => {
         return () => ctx.revert();
     }, []);
 
-    const rotatingWords = [
-        "Real Estate",
-        "Built Environment",
-        "Architects",
-        "Interior Firms",
-        "Realtors"
-    ];
+    const rotatingWords = dict.hero.rotating_words;
 
     const [wordIndex, setWordIndex] = useState(0);
 
@@ -52,12 +47,7 @@ const Hero = () => {
         return () => clearInterval(interval);
     }, []);
 
-    const badges = [
-        "Property Developers",
-        "Real Estate Firms",
-        "Architects & Interiors",
-        "High-Ticket Home Services"
-    ];
+    const badges = dict.hero.badges;
 
     return (
         <>
@@ -76,7 +66,7 @@ const Hero = () => {
 
                     {/* ICP Qualifier Badges - Glassmorphism */}
                     <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-                        <span className="hero-anim text-[10px] font-bold uppercase tracking-[0.3em] text-secondary/40 mr-2">Built for:</span>
+                        <span className="hero-anim text-[10px] font-bold uppercase tracking-[0.3em] text-secondary/40 mr-2">{dict.hero.built_for}</span>
                         {badges.map((badge, idx) => (
                             <div key={idx} className="hero-anim group flex items-center bg-white border border-gray-100 px-4 py-2 rounded-md transition-all duration-300 shadow-sm hover:border-gray-200 cursor-default">
                                 <div className="w-2.5 h-2.5 rounded-full bg-secondary flex items-center justify-center mr-2.5 group-hover:scale-110 transition-transform">
@@ -90,15 +80,11 @@ const Hero = () => {
                     {/* Core Headline */}
                     <div className="mb-10 lg:mb-14 max-w-5xl">
                         <h1 className="leading-tight tracking-tight relative">
-                            <span className="block text-5xl md:text-7xl lg:text-[6.5rem] font-sans font-medium text-secondary hero-anim uppercase">
-                                High Quality
-                            </span>
-                            <span className="block text-5xl md:text-7xl lg:text-[6.5rem] mt-8 hero-anim uppercase font-sans font-medium text-secondary/30 tracking-tight">
-                                Inbound System
-                            </span>
-                            <span className="block text-5xl md:text-7xl lg:text-[6.5rem] mt-8 hero-anim uppercase font-sans font-medium text-secondary">
-                                for
-                            </span>
+                            {dict.hero.tagline.split(' ').map((word, i) => (
+                                <span key={i} className={`block text-5xl md:text-7xl lg:text-[6.5rem] font-sans font-medium hero-anim uppercase ${i % 2 === 1 && i !== 0 ? 'text-secondary/30 tracking-tight mt-8' : 'text-secondary mt-8 first:mt-0'}`}>
+                                    {word}
+                                </span>
+                            ))}
                             <span className="block h-[1.2em] overflow-visible mt-8 hero-anim">
                                 <span className="rotating-word inline-block text-5xl md:text-7xl lg:text-[6.5rem] font-sans font-medium text-secondary uppercase italic">
                                     {rotatingWords[wordIndex]}
@@ -108,7 +94,7 @@ const Hero = () => {
                     </div>
 
                     <p className="hero-anim max-w-xl text-lg md:text-xl font-sans font-normal text-textDark/70 leading-relaxed mb-12 mt-24 mx-auto">
-                        We build digital authority systems that position your firm as the default choice in your market.
+                        {dict.hero.description}
                     </p>
 
                     {/* CTA */}
@@ -117,12 +103,12 @@ const Hero = () => {
                             onClick={() => setModalOpen(true)}
                             className="group relative px-10 py-5 bg-secondary text-primary font-sans font-bold text-sm uppercase tracking-widest rounded-md overflow-hidden transition-all duration-300 hover:shadow-lg flex-shrink-0"
                         >
-                            <span className="relative z-10 transition-colors duration-300">Book Free Audit</span>
+                            <span className="relative z-10 transition-colors duration-300">{dict.hero.cta_button}</span>
                             <span className="absolute inset-0 bg-textDark translate-y-full transition-transform duration-300 group-hover:translate-y-0 rounded-md"></span>
                         </button>
                         <a href="#how" className="text-xs font-bold uppercase tracking-widest text-textDark/40 hover:text-secondary transition-colors flex items-center gap-3 group">
                             <span className="w-8 h-[1px] bg-textDark/20 group-hover:w-12 group-hover:bg-secondary transition-all"></span>
-                            See how it works
+                            {dict.hero.cta_link}
                         </a>
                     </div>
 

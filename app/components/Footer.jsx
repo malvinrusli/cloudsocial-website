@@ -33,19 +33,19 @@ const Footer = ({ lang: propLang }) => {
                         </div>
 
                         <p className="font-sans text-lg text-gray-400 leading-relaxed mb-10 max-w-sm">
-                            {dict.footer.tagline || "We build compounding digital authority and lead systems for the built environment."}
+                            {dict.footer.tagline}
                         </p>
 
                         <div className="flex flex-col gap-6">
                             <div className="flex items-center gap-4">
-                                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500">Contact</span>
+                                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500">{dict.footer.contact_label}</span>
                                 <a href="mailto:hello@promperty.io" className="text-sm font-medium hover:text-primary transition-colors">hello@promperty.io</a>
                             </div>
 
                             {/* Status Indicator */}
                             <div className="inline-flex items-center space-x-3 bg-white/[0.03] border border-white/[0.08] px-4 py-2 self-start rounded-sm">
                                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                                <span className="font-sans font-medium text-[10px] text-gray-400 uppercase tracking-widest leading-none">System Operational</span>
+                                <span className="font-sans font-medium text-[10px] text-gray-400 uppercase tracking-widest leading-none">{dict.footer.status_operational}</span>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@ const Footer = ({ lang: propLang }) => {
                     {/* Navigation Columns */}
                     <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-12">
                         <div className="flex flex-col space-y-6">
-                            <h4 className="text-[11px] font-bold text-white uppercase tracking-[0.2em]">{dict.footer.expertise || "Expertise"}</h4>
+                            <h4 className="text-[11px] font-bold text-white uppercase tracking-[0.2em]">{dict.footer.expertise}</h4>
                             <nav className="flex flex-col space-y-4 text-[13px]">
                                 <a href={`/${lang}/web-architecture-real-estate`} className="text-gray-400 hover:text-white transition-colors duration-300">Web Architecture</a>
                                 <a href={`/${lang}/seo-real-estate`} className="text-gray-400 hover:text-white transition-colors duration-300">Search Authority</a>
@@ -63,7 +63,7 @@ const Footer = ({ lang: propLang }) => {
                         </div>
 
                         <div className="flex flex-col space-y-6">
-                            <h4 className="text-[11px] font-bold text-white uppercase tracking-[0.2em]">{dict.footer.company || "Company"}</h4>
+                            <h4 className="text-[11px] font-bold text-white uppercase tracking-[0.2em]">{dict.footer.company}</h4>
                             <nav className="flex flex-col space-y-4 text-[13px]">
                                 <a href={`/${lang}#how`} className="text-gray-400 hover:text-white transition-colors duration-300">{lang === 'id' ? 'Peta Jalan' : 'Roadmap'}</a>
                                 <a href={`/${lang}#case`} className="text-gray-400 hover:text-white transition-colors duration-300">{lang === 'id' ? 'Studi Kasus' : 'Case Studies'}</a>
@@ -73,7 +73,7 @@ const Footer = ({ lang: propLang }) => {
                         </div>
 
                         <div className="flex flex-col space-y-6 col-span-2 md:col-span-1">
-                            <h4 className="text-[11px] font-bold text-white uppercase tracking-[0.2em]">Connect</h4>
+                            <h4 className="text-[11px] font-bold text-white uppercase tracking-[0.2em]">{dict.footer.connect}</h4>
                             <nav className="flex flex-col space-y-4 text-[13px]">
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">LinkedIn</a>
                                 <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Instagram</a>
@@ -87,17 +87,17 @@ const Footer = ({ lang: propLang }) => {
                 <div className="pt-12 border-t border-white/[0.05] flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
                         <p className="text-[10px] text-gray-600 uppercase tracking-widest font-medium italic">
-                            © {new Date().getFullYear()} Promperty. All Rights Reserved.
+                            © {new Date().getFullYear()} Promperty. {dict.footer.all_rights}
                         </p>
                         <span className="hidden md:block w-1.5 h-1.5 bg-white/[0.05] rounded-full"></span>
                         <p className="text-[10px] text-gray-600 uppercase tracking-widest font-medium">
-                            Authority Infrastructure for the Built Environment.
+                            {dict.footer.tagline}
                         </p>
                     </div>
 
                     <div className="flex items-center gap-12">
-                        <a href="#" className="text-[10px] text-gray-500 hover:text-white uppercase tracking-widest font-bold transition-colors">Privacy Policy</a>
-                        <a href="#" className="text-[10px] text-gray-500 hover:text-white uppercase tracking-widest font-bold transition-colors">Terms of Service</a>
+                        <a href="#" className="text-[10px] text-gray-500 hover:text-white uppercase tracking-widest font-bold transition-colors">{dict.footer.privacy}</a>
+                        <a href="#" className="text-[10px] text-gray-500 hover:text-white uppercase tracking-widest font-bold transition-colors">{dict.footer.terms}</a>
                     </div>
                 </div>
             </div>

@@ -1,81 +1,14 @@
-"use client";
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useParams } from 'next/navigation';
+import { getDictionary } from '@/app/lib/dictionaries';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const steps = [
-    {
-        month: 'Month 1',
-        phase: 'Discovery & Foundation',
-        deliverables: [
-            'Full digital authority audit — search visibility, content gaps, competitor positioning',
-            'Keyword architecture mapped to buyer intent (TOFU → MOFU → BOFU)',
-            'Technical SEO foundation: site speed, schema, crawlability, canonical structure',
-            'Content calendar designed around your market segments',
-        ],
-        outcome: 'You receive a complete 90-day authority roadmap with clear attribution targets.',
-    },
-    {
-        month: 'Month 2',
-        phase: 'Content Engine & Profile Authority',
-        deliverables: [
-            'First 4 short-form video assets produced and published',
-            'Authority presence fully optimised for discovery across search and social',
-            'First 3 SEO articles published with proper structure and internal links',
-            'AI citation seeding begins — structured data and entity signals submitted',
-        ],
-        outcome: 'Content is live. Profiles are positioned. The engine is running.',
-    },
-    {
-        month: 'Month 3',
-        phase: 'Search Signal Building',
-        deliverables: [
-            '3 more SEO articles published — topical cluster forming (6 total)',
-            'Structured data and schema markup fully implemented',
-            'AI knowledge graph entity building — Google, Bing, Apple, Wikidata',
-            'Video performance reviewed — top-performing formats doubled down on',
-        ],
-        outcome: 'First ranking signals appear. Citation tracking report delivered.',
-    },
-    {
-        month: 'Month 4',
-        phase: 'Authority Compounding Begins',
-        deliverables: [
-            '9 total SEO articles published — first pages begin ranking',
-            'Authority content driving measurable engagement and interest',
-            'AI platforms (ChatGPT, Perplexity, Gemini) beginning to cite your firm',
-            'First inbound inquiries attributed to digital channels documented',
-        ],
-        outcome: 'First attributed inbound leads. The compound interest is starting to pay.',
-    },
-    {
-        month: 'Month 5',
-        phase: 'Optimisation & Scale',
-        deliverables: [
-            'Top-performing video formats scaled — 8+ assets now live',
-            'SEO articles on page 1 positions for low-competition target keywords',
-            'Content systems generating inbound interest from decision-makers',
-            'Full AI citation audit — brand mentions across 8 AI platforms tracked',
-        ],
-        outcome: 'Full analytics dashboard delivered. Optimisation report with year-2 projections.',
-    },
-    {
-        month: 'Month 6',
-        phase: 'Compounding Authority Established',
-        deliverables: [
-            '12 SEO articles published — full topical authority across your market segments',
-            'Organic search traffic showing meaningful, month-on-month growth',
-            'AI platforms recommending your firm by name in relevant queries',
-            'Authority infrastructure driving consistent deal flow conversations from qualified parties',
-        ],
-        outcome: 'Complete 6-month authority report + Year 2 strategy delivered.',
-    },
-];
-
-const Protocol = () => {
+const Protocol = ({ lang: propLang }) => {
+    const params = useParams();
+    const lang = propLang || params?.lang || 'en';
+    const dict = getDictionary(lang);
     const containerRef = useRef(null);
+    const steps = dict.protocol.steps;
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -104,14 +37,14 @@ const Protocol = () => {
                 {/* Header */}
                 <div className="protocol-header flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
                     <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-widest text-textDark/30 mb-4">How It Works</p>
+                        <p className="text-[11px] font-semibold uppercase tracking-widest text-textDark/30 mb-4">{dict.protocol.badge}</p>
                         <h2 className="text-4xl md:text-6xl font-sans font-medium text-secondary tracking-tight leading-[1.05]">
-                            The 6-Month<br />
-                            <span className="font-sans italic text-textDark">Authority Roadmap</span>
+                            {dict.protocol.title_line1}<br />
+                            <span className="font-sans italic text-textDark">{dict.protocol.title_line2}</span>
                         </h2>
                     </div>
                     <p className="text-base text-textDark/50 font-light max-w-sm leading-relaxed md:text-right">
-                        Every month has a specific goal, specific deliverables, and a measurable outcome. No vague retainers. No mystery.
+                        {dict.protocol.description}
                     </p>
                 </div>
 
