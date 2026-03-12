@@ -1,5 +1,9 @@
+"use client";
+import { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import { useParams } from 'next/navigation';
 import { getDictionary } from '@/app/lib/dictionaries';
+import ContactModal from '@/app/components/ContactModal';
 
 const Hero = ({ lang: propLang }) => {
     const params = useParams();
