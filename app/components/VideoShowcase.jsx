@@ -59,7 +59,7 @@ const VideoShowcase = () => {
                 <p className="text-[11px] font-semibold uppercase tracking-widest text-textDark/30 mb-4">Content We Produce</p>
                 <h2 className="text-4xl md:text-5xl font-sans font-medium text-secondary tracking-tight leading-[1.05]">
                     Short-form<br />
-                    <span className="font-serif italic text-textDark">in the wild</span>
+                    <span className="font-sans italic text-textDark">in the wild</span>
                 </h2>
             </div>
 

@@ -137,7 +137,7 @@ const SocialProof = () => {
                         <p className="text-[11px] font-semibold uppercase tracking-widest text-textDark/40 mb-4">Client Results</p>
                         <h2 className="text-3xl md:text-5xl font-sans font-medium text-secondary tracking-tight">
                             Firms that chose to be{' '}
-                            <span className="font-serif italic text-textDark">found, not forgotten</span>
+                            <span className="font-sans italic text-textDark">found, not forgotten</span>
                         </h2>
                     </div>
 
@@ -151,7 +151,7 @@ const SocialProof = () => {
                             >
                                 <Stars />
 
-                                <blockquote className="font-serif italic text-textDark/80 text-lg leading-relaxed mb-6 flex-1">
+                                <blockquote className="font-sans italic text-textDark/80 text-lg leading-relaxed mb-6 flex-1">
                                     &ldquo;{t.quote}&rdquo;
                                 </blockquote>
 

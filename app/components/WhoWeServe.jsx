@@ -39,7 +39,7 @@ const WhoWeServe = () => {
                     <p className="text-[11px] font-semibold uppercase tracking-widest text-textDark/30 mb-4">Our Clients</p>
                     <h2 className="text-4xl md:text-6xl font-sans font-medium text-secondary tracking-tight leading-[1.05]">
                         Who We<br />
-                        <span className="font-serif italic text-textDark">Work With</span>
+                        <span className="font-sans italic text-textDark">Work With</span>
                     </h2>
                 </div>
                 <div className="border-t border-gray-200">

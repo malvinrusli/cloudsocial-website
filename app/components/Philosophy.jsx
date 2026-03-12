@@ -65,7 +65,7 @@ const Philosophy = () => {
                     <span className="philosophy-word inline-block">where it matters.</span>
                 </p>
 
-                <h2 className="text-4xl md:text-6xl lg:text-[5.5rem] leading-[1.1] text-secondary font-serif">
+                <h2 className="text-4xl md:text-6xl lg:text-[5.5rem] leading-[1.1] text-secondary font-sans">
                     <span className="block mb-2 text-gray-400">
                         <span className="philosophy-word inline-block mr-3">Authority</span>
                         <span className="philosophy-word inline-block mr-3">is</span>

@@ -107,7 +107,7 @@ const Protocol = () => {
                         <p className="text-[11px] font-semibold uppercase tracking-widest text-textDark/30 mb-4">How It Works</p>
                         <h2 className="text-4xl md:text-6xl font-sans font-medium text-secondary tracking-tight leading-[1.05]">
                             The 6-Month<br />
-                            <span className="font-serif italic text-textDark">Authority Roadmap</span>
+                            <span className="font-sans italic text-textDark">Authority Roadmap</span>
                         </h2>
                     </div>
                     <p className="text-base text-textDark/50 font-light max-w-sm leading-relaxed md:text-right">
@@ -147,7 +147,7 @@ const Protocol = () => {
                                     ))}
                                 </ul>
 
-                                <p className="font-serif italic text-textDark/50 text-sm md:text-base leading-relaxed border-l-2 border-gray-200 pl-4">
+                                <p className="font-sans italic text-textDark/50 text-sm md:text-base leading-relaxed border-l-2 border-gray-200 pl-4">
                                     {step.outcome}
                                 </p>
                             </div>

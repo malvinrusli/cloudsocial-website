@@ -14,8 +14,8 @@ export default {
                 textDark: '#55555A',
             },
             fontFamily: {
-                sans: ['"Aeonik"', 'sans-serif'],
-                serif: ['Playfair Display', 'serif'],
+                sans: ['var(--font-aeonik)', 'sans-serif'],
+                serif: ['var(--font-aeonik)', 'sans-serif'],
                 mono: ['JetBrains Mono', 'monospace'],
             },
             borderRadius: {

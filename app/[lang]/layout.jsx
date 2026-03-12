@@ -1,6 +1,13 @@
 import '@/app/globals.css';
 import IntroAnimation from '@/app/components/IntroAnimation';
 import Providers from '@/app/components/Providers';
+import localFont from 'next/font/local';
+
+const aeonik = localFont({
+    src: '../../public/fonts/Aeonik/Aeonik-Regular.woff',
+    variable: '--font-aeonik',
+    display: 'swap',
+});
 
 export const metadata = {
     title: {
@@ -14,7 +21,7 @@ export default async function RootLayout({ children, params }) {
     const { lang } = await params;
 
     return (
-        <html lang={lang || "en"}>
+        <html lang={lang || "en"} className={`${aeonik.variable}`}>
             <body className="font-sans antialiased text-secondary bg-white selection:bg-primary selection:text-secondary">
                 <Providers>
                     <IntroAnimation />

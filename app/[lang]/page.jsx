@@ -19,6 +19,7 @@ export default async function Home({ params }) {
         <main className="min-h-screen bg-white">
             <Navbar lang={lang} />
             <Hero />
+            <div className="h-24 md:h-40"></div>
             <WhoWeServe />
             <Features />
             <Protocol />

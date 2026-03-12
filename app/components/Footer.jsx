@@ -25,7 +25,7 @@ const Footer = ({ lang: propLang }) => {
                                 <path d="M 0 100 A 100 100 0 0 1 56.4 10 L 56.4 27 A 85 85 0 0 0 15 100 Z" />
                             </svg>
                         </div>
-                        <h2 className="font-serif text-2xl font-semibold">Promperty</h2>
+                        <h2 className="font-sans text-2xl font-semibold">Promperty</h2>
                     </div>
                     {dict.footer.tagline}
 

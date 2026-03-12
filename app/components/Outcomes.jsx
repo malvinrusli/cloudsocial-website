@@ -69,7 +69,7 @@ const Outcomes = () => {
                         {/* Headline */}
                         <h3 className="text-4xl md:text-5xl lg:text-6xl font-sans font-medium text-white mb-6 leading-[1.15] max-w-3xl mx-auto tracking-tight">
                             Start with a free{' '}
-                            <span className="font-serif italic text-white/90">30-minute</span>
+                            <span className="font-sans italic text-white/90">30-minute</span>
                             {' '}Authority Audit
                         </h3>
 

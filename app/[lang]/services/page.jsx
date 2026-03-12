@@ -79,7 +79,7 @@ export default function ServicesHubPage({ params }) {
                     <span className="text-xs font-semibold text-secondary">Our Ecosystem</span>
                 </div>
                 <h1 className="text-4xl md:text-6xl font-sans font-medium text-secondary tracking-tight mb-8 hub-anim max-w-4xl mx-auto">
-                    Compounding digital <span className="font-serif italic text-textDark">infrastructure</span> for commercial real estate.
+                    Compounding digital <span className="font-sans italic text-textDark">infrastructure</span> for commercial real estate.
                 </h1>
                 <p className="text-xl text-textDark/70 font-medium max-w-2xl mx-auto hub-anim leading-relaxed">
                     We do not run ad campaigns. We build, manage, and scale the core pillars of digital authority necessary to dominate your market.
@@ -112,7 +112,7 @@ export default function ServicesHubPage({ params }) {
 
                     {/* Placeholder card to make it an even 6 in the grid for balance */}
                     <div className="hub-anim bg-gray-50 rounded-md p-8 border border-gray-200 border-dashed flex flex-col items-center justify-center text-center transition-colors duration-500 hover:bg-gray-100 hover:border-gray-300">
-                        <h2 className="text-xl font-serif text-secondary mb-2">Bespoke Solutions</h2>
+                        <h2 className="text-xl font-sans text-secondary mb-2">Bespoke Solutions</h2>
                         <p className="text-sm text-textDark/60 max-w-[200px]">Looking for something custom? Let's discuss your unique requirements.</p>
                         <a href="#contact" className="mt-6 text-sm font-semibold text-secondary underline underline-offset-4 decoration-gray-300 hover:decoration-secondary transition-colors">Contact Strategy Team</a>
                     </div>
@@ -185,7 +185,7 @@ export default function ServicesHubPage({ params }) {
 
                 <div className="max-w-3xl mx-auto relative z-20">
                     <h2 className="text-3xl md:text-5xl font-sans font-medium text-white mb-8 tracking-tight">
-                        We make you the <span className="font-serif text-gray-300">default choice</span> in your market.
+                        We make you the <span className="font-sans text-gray-300">default choice</span> in your market.
                     </h2>
 
                     <button

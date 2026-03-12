@@ -116,7 +116,7 @@ const IntroAnimation = () => {
                 {/* Brand Name */}
                 <h1
                     ref={textRef}
-                    className="font-serif italic text-white font-semibold tracking-tight leading-none"
+                    className="font-sans italic text-white font-semibold tracking-tight leading-none"
                     style={{ fontSize: 'clamp(3.5rem, 9vw, 7.5rem)' }}
                 >
                     Promperty

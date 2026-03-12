@@ -43,7 +43,7 @@ const CinematicVideo = () => {
 
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-5xl font-sans font-medium text-secondary mb-4 tracking-tight">
-                        Cinematic Content For <span className="font-serif italic text-textDark">CRE</span>
+                        Cinematic Content For <span className="font-sans italic text-textDark">CRE</span>
                     </h2>
                     <p className="text-textDark/80 max-w-2xl font-sans">
                         High-fidelity storytelling that builds institutional credibility and compounding deal flow.

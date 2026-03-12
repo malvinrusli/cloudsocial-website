@@ -82,7 +82,7 @@ const Navbar = ({ lang: propLang }) => {
                     ref={navRef}
                     className="flex items-center justify-between w-[95%] max-w-7xl px-8 py-4 transition-all duration-1000 ease-in-out bg-transparent border border-transparent nav-container text-secondary mx-auto"
                 >
-                    <a href={`/${lang}`} className="font-serif font-semibold tracking-wider text-2xl flex items-center hover:opacity-80 transition-opacity">
+                    <a href={`/${lang}`} className="font-sans font-semibold tracking-wider text-2xl flex items-center hover:opacity-80 transition-opacity">
                         <div
                             className="relative w-7 h-7 mr-3 flex-shrink-0 transition-transform duration-300 group-hover:scale-110 text-secondary"
                             style={{ transform: 'scaleX(-1)' }}
@@ -160,23 +160,23 @@ const Navbar = ({ lang: propLang }) => {
                     <div className="flex flex-col h-full pt-32 px-8 overflow-y-auto">
                         <div className="space-y-4 mb-12">
                             <p className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-6">{lang === 'id' ? 'Menu Utama' : 'Main Menu'}</p>
-                            <a href={`/${lang}`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-serif font-bold text-secondary flex items-baseline gap-4 group">
+                            <a href={`/${lang}`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group">
                                 <span className="text-xs font-sans text-gray-300 group-hover:text-primary transition-colors">01</span>
                                 {lang === 'id' ? 'Beranda' : 'Home'}
                             </a>
-                            <a href={`/${lang}/services`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-serif font-bold text-secondary flex items-baseline gap-4 group">
+                            <a href={`/${lang}/services`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group">
                                 <span className="text-xs font-sans text-gray-300 group-hover:text-primary transition-colors">02</span>
                                 {dict.nav.services}
                             </a>
-                            <a href={`/${lang}/case-studies`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-serif font-bold text-secondary flex items-baseline gap-4 group">
+                            <a href={`/${lang}/case-studies`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group">
                                 <span className="text-xs font-sans text-gray-300 group-hover:text-primary transition-colors">03</span>
                                 {lang === 'id' ? 'Hasil' : 'Case Studies'}
                             </a>
-                            <a href={`/${lang}/pricing`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-serif font-bold text-secondary flex items-baseline gap-4 group">
+                            <a href={`/${lang}/pricing`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group">
                                 <span className="text-xs font-sans text-gray-300 group-hover:text-primary transition-colors">04</span>
                                 {dict.nav.pricing}
                             </a>
-                            <a href={`/${lang}/blogs`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-serif font-bold text-secondary flex items-baseline gap-4 group">
+                            <a href={`/${lang}/blogs`} onClick={() => setIsMobileMenuOpen(false)} className="text-4xl font-sans font-bold text-secondary flex items-baseline gap-4 group">
                                 <span className="text-xs font-sans text-gray-300 group-hover:text-primary transition-colors">05</span>
                                 {dict.nav.blogs}
                             </a>
