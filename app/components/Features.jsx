@@ -98,6 +98,7 @@ const VideoPanel = ({ videos }) => {
 const WistiaVideoPanel = () => {
     const scrollRef = useRef(null);
     const [progress, setProgress] = useState(0);
+    const [videoHeight, setVideoHeight] = useState(400);
 
     useEffect(() => {
         const addScript = (src, type) => {
@@ -112,6 +113,16 @@ const WistiaVideoPanel = () => {
         WISTIA_VIDEO_IDS.forEach(id => addScript(`https://fast.wistia.com/embed/${id}.js`, 'module'));
     }, []);
 
+    // Measure the scroll container's real pixel height so videos fill it exactly
+    useEffect(() => {
+        if (!scrollRef.current) return;
+        const observer = new ResizeObserver(([entry]) => {
+            setVideoHeight(entry.contentRect.height);
+        });
+        observer.observe(scrollRef.current);
+        return () => observer.disconnect();
+    }, []);
+
     const handleScroll = () => {
         const el = scrollRef.current;
         if (!el) return;
@@ -121,7 +132,7 @@ const WistiaVideoPanel = () => {
 
     return (
         <div className="w-full h-full bg-[#080808] flex flex-col p-5 gap-3">
-            <div className="flex items-center gap-2 pb-3 border-b border-white/5">
+            <div className="flex items-center gap-2 pb-3 border-b border-white/5 flex-shrink-0">
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
                 <span className="text-[9px] font-semibold text-white/40 uppercase tracking-widest">Real examples — tap to play</span>
             </div>
@@ -132,8 +143,12 @@ const WistiaVideoPanel = () => {
                 style={{ scrollbarWidth: 'none' }}
             >
                 {WISTIA_VIDEO_IDS.map(id => (
-                    <div key={id} className="flex-shrink-0 h-full" style={{ aspectRatio: '9/16' }}>
-                        <div className="relative h-full rounded-lg overflow-hidden bg-[#1A1A1A]">
+                    <div
+                        key={id}
+                        className="flex-shrink-0"
+                        style={{ height: `${videoHeight}px`, width: `${Math.round(videoHeight * 9 / 16)}px` }}
+                    >
+                        <div className="relative w-full h-full rounded-lg overflow-hidden bg-[#1A1A1A]">
                             {/* eslint-disable-next-line */}
                             <wistia-player media-id={id} aspect="0.5625" style={{ width: '100%', height: '100%' }} />
                         </div>
@@ -141,9 +156,9 @@ const WistiaVideoPanel = () => {
                 ))}
             </div>
             {/* Scroll progress bar */}
-            <div className="h-px bg-white/10 relative flex-shrink-0 mx-1">
+            <div className="h-[3px] bg-white/15 relative flex-shrink-0 mx-1 rounded-full">
                 <div
-                    className="absolute top-0 left-0 h-full bg-white/50"
+                    className="absolute top-0 left-0 h-full bg-white/70 rounded-full"
                     style={{ width: `${progress * 100}%`, transition: 'none' }}
                 />
             </div>
