@@ -117,8 +117,8 @@ const WistiaVideoPanel = () => {
             </div>
             <div className="flex gap-3 overflow-x-auto flex-1 min-h-0" style={{ scrollbarWidth: 'none' }}>
                 {WISTIA_VIDEO_IDS.map(id => (
-                    <div key={id} className="flex-shrink-0" style={{ height: '340px', width: 'calc(340px * 9 / 16)' }}>
-                        <div className="relative rounded-lg overflow-hidden bg-[#1A1A1A]" style={{ height: '340px', width: '100%' }}>
+                    <div key={id} className="flex-shrink-0 h-full" style={{ aspectRatio: '9/16' }}>
+                        <div className="relative h-full rounded-lg overflow-hidden bg-[#1A1A1A]">
                             {/* eslint-disable-next-line */}
                             <wistia-player media-id={id} aspect="0.5625" style={{ width: '100%', height: '100%' }} />
                         </div>

@@ -48,10 +48,11 @@ export const getDictionary = (lang) => {
                 title_line1: "Who We",
                 title_line2: "Work With",
                 clients: [
-                    { num: '01', label: 'Realtors & Real Estate', tag: 'High-Intent Inbound Flow' },
-                    { num: '02', label: 'Architect Firms', tag: 'Design-Led Authority' },
-                    { num: '03', label: 'Furniture & Interior Brands', tag: 'Visual Commerce Presence' },
-                    { num: '04', label: 'Property Developers', tag: 'Capital-Grade Visibility' },
+                    { num: '01', label: 'Realtors', tag: 'High-Intent Buyer & Seller Inbound' },
+                    { num: '02', label: 'Real Estate Firms & Developers', tag: 'Capital-Grade Digital Visibility' },
+                    { num: '03', label: 'Architect & Contractor Firms', tag: 'Design-Led Project Pipeline' },
+                    { num: '04', label: 'Furniture Brands', tag: 'Visual Commerce & Discovery' },
+                    { num: '05', label: 'Interior Design Agencies', tag: 'Consultation & Client Flow' },
                 ]
             },
             hero: {
@@ -190,10 +191,11 @@ export const getDictionary = (lang) => {
                 title_line1: "Kami Kerja",
                 title_line2: "Sama Siapa?",
                 clients: [
-                    { num: '01', label: 'Agen & Firma Properti', tag: 'Klien Inbound Berkualitas' },
-                    { num: '02', label: 'Firma Arsitek', tag: 'Otoritas Lewat Desain' },
-                    { num: '03', label: 'Brand Furnitur & Interior', tag: 'Hadir di Tempat yang Tepat' },
-                    { num: '04', label: 'Developer Properti', tag: 'Visibilitas Sekelas Modal Besar' },
+                    { num: '01', label: 'Agen Properti', tag: 'Klien Pembeli & Penjual Berkualitas' },
+                    { num: '02', label: 'Firma & Developer Properti', tag: 'Visibilitas Digital Sekelas Modal Besar' },
+                    { num: '03', label: 'Firma Arsitek & Kontraktor', tag: 'Pipeline Proyek Lewat Otoritas' },
+                    { num: '04', label: 'Brand Furnitur', tag: 'Penemuan & Visual Commerce' },
+                    { num: '05', label: 'Agen Desain Interior', tag: 'Konsultasi & Alur Klien' },
                 ]
             },
             hero: {
