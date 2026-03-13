@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+const WISTIA_VIDEO_IDS = ['uix5xvrenc', '00dzekol35', '4sayn9fmcp', 'xw9cpkxhcc'];
+
 gsap.registerPlugin(ScrollTrigger);
 
 const SERVICES = [
@@ -85,6 +87,42 @@ const VideoPanel = ({ videos }) => {
             <div className="flex gap-3 overflow-x-auto flex-1 min-h-0" style={{ scrollbarWidth: 'none' }}>
                 {videos.filter(v => v.url).map((v) => (
                     <VideoItem key={v._id} url={v.url} />
+                ))}
+            </div>
+        </div>
+    );
+};
+
+// ─── Wistia Video Panel ───────────────────────────────────────────────────────
+
+const WistiaVideoPanel = () => {
+    useEffect(() => {
+        const addScript = (src, type) => {
+            if (document.querySelector(`script[src="${src}"]`)) return;
+            const s = document.createElement('script');
+            s.src = src;
+            s.async = true;
+            if (type) s.type = type;
+            document.head.appendChild(s);
+        };
+        addScript('https://fast.wistia.com/player.js');
+        WISTIA_VIDEO_IDS.forEach(id => addScript(`https://fast.wistia.com/embed/${id}.js`, 'module'));
+    }, []);
+
+    return (
+        <div className="w-full h-full bg-[#080808] flex flex-col p-5 gap-4">
+            <div className="flex items-center gap-2 pb-3 border-b border-white/5">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                <span className="text-[9px] font-semibold text-white/40 uppercase tracking-widest">Real examples — tap to play</span>
+            </div>
+            <div className="flex gap-3 overflow-x-auto flex-1 min-h-0" style={{ scrollbarWidth: 'none' }}>
+                {WISTIA_VIDEO_IDS.map(id => (
+                    <div key={id} className="flex-shrink-0 h-full" style={{ aspectRatio: '9/16' }}>
+                        <div className="relative h-full rounded-lg overflow-hidden bg-[#1A1A1A]">
+                            {/* eslint-disable-next-line */}
+                            <wistia-player media-id={id} aspect="0.5625" style={{ width: '100%', height: '100%' }} />
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>
@@ -484,7 +522,7 @@ const Features = ({ lang = 'en' }) => {
 
     const service = SERVICES.find(s => s.id === active);
     const VISUALS = {
-        content: <VideoCompareMockup />,
+        content: <WistiaVideoPanel />,
         seo: <SERPMockup />,
         aeo: <AICitationMockup />,
         website: <WebsiteMockup />,

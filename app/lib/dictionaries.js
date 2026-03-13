@@ -63,15 +63,15 @@ export const getDictionary = (lang) => {
                     "Architects & Interiors",
                     "High-Ticket Home Services"
                 ],
-                tagline: "High Quality Inbound System for",
+                tagline: "We build awesome Digital Presence for",
                 rotating_words: [
-                    "Real Estate",
-                    "Built Environment",
-                    "Architects",
+                    "Realtors",
+                    "Architect Firms",
+                    "Furniture Stores",
                     "Interior Firms",
-                    "Realtors"
+                    "Developers"
                 ],
-                description: "We build digital authority systems that position your firm as the default choice in your market.",
+                description: "From SEO and AI citations to short-form content — we build the digital engine that brings high-value clients directly to you.",
                 cta_button: "Book Free Audit",
                 cta_link: "See how it works",
             },
@@ -213,15 +213,15 @@ export const getDictionary = (lang) => {
                     "Arsitek & Interior",
                     "Layanan Rumah Mewah"
                 ],
-                tagline: "Sistem Inbound Berkualitas Tinggi untuk",
+                tagline: "Kami membangun Digital Presence luar biasa untuk",
                 rotating_words: [
-                    "Real Estat",
-                    "Sektor Pembangunan",
-                    "Arsitek",
+                    "Agen Properti",
+                    "Firma Arsitek",
+                    "Toko Furniture",
                     "Firma Interior",
-                    "Agen Properti"
+                    "Developer"
                 ],
-                description: "Kami membangun sistem otoritas digital yang memposisikan firma Anda sebagai pilihan utama di pasar Anda.",
+                description: "Dari SEO dan kutipan AI hingga konten video — kami membangun mesin digital yang membawa klien berkualitas langsung kepada Anda.",
                 cta_button: "Audit Gratis",
                 cta_link: "Lihat cara kerjanya",
             },

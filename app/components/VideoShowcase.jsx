@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from 'react';
 
-const WISTIA_IDS = ['uix5xvrenc', '00dzekol35', '4sayn9fmcp'];
+const WISTIA_IDS = ['uix5xvrenc', '00dzekol35', '4sayn9fmcp', 'xw9cpkxhcc'];
 
 const WistiaCard = ({ mediaId }) => (
     <div className="flex-shrink-0 w-[200px] md:w-[220px]">
