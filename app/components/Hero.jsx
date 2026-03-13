@@ -51,8 +51,6 @@ const Hero = ({ lang: propLang }) => {
         return () => clearInterval(interval);
     }, []);
 
-    const badges = dict.hero.badges;
-
     return (
         <>
             <section
@@ -68,27 +66,14 @@ const Hero = ({ lang: propLang }) => {
                 {/* Heavy Text Area */}
                 <div className="w-full max-w-7xl mx-auto px-8 relative z-10 flex flex-col items-center text-center">
 
-                    {/* ICP Qualifier Badges - Glassmorphism */}
-                    <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-                        <span className="hero-anim text-[10px] font-bold uppercase tracking-[0.3em] text-secondary/40 mr-2">{dict.hero.built_for}</span>
-                        {badges.map((badge, idx) => (
-                            <div key={idx} className="hero-anim group flex items-center bg-white border border-gray-100 px-4 py-2 rounded-md transition-all duration-300 shadow-sm hover:border-gray-200 cursor-default">
-                                <div className="w-2.5 h-2.5 rounded-full bg-secondary flex items-center justify-center mr-2.5 group-hover:scale-110 transition-transform">
-                                    <svg className="w-1.5 h-1.5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                                </div>
-                                <span className="font-sans text-[12px] font-semibold text-secondary/80 tracking-tight">{badge}</span>
-                            </div>
-                        ))}
-                    </div>
-
                     {/* Core Headline */}
                     <div className="mb-10 lg:mb-14 max-w-5xl w-full">
-                        <h1 className="leading-[1.15] tracking-tight">
-                            <span className="hero-anim block text-4xl md:text-5xl lg:text-5xl font-sans font-medium uppercase text-secondary whitespace-nowrap">
+                        <h1 className="leading-[1.05] tracking-tight">
+                            <span className="hero-anim block text-5xl md:text-7xl lg:text-8xl font-sans font-medium uppercase text-secondary">
                                 {dict.hero.tagline}
                             </span>
                             <span className="hero-anim block mt-1">
-                                <span className="rotating-word inline-block text-4xl md:text-5xl lg:text-5xl font-sans font-medium text-secondary uppercase italic">
+                                <span className="rotating-word inline-block text-5xl md:text-7xl lg:text-8xl font-sans font-medium text-secondary uppercase italic">
                                     {rotatingWords[wordIndex]}
                                 </span>
                             </span>

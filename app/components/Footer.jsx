@@ -42,11 +42,6 @@ const Footer = ({ lang: propLang }) => {
                                 <a href="mailto:hello@promperty.co" className="text-sm font-medium hover:text-primary transition-colors">hello@promperty.co</a>
                             </div>
 
-                            {/* Status Indicator */}
-                            <div className="inline-flex items-center space-x-3 bg-white/[0.03] border border-white/[0.08] px-4 py-2 self-start rounded-sm">
-                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                                <span className="font-sans font-medium text-[10px] text-gray-400 uppercase tracking-widest leading-none">{dict.footer.status_operational}</span>
-                            </div>
                         </div>
                     </div>
 
