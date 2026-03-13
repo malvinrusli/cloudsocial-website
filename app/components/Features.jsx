@@ -95,17 +95,22 @@ const VideoPanel = ({ videos }) => {
 
 // ─── Wistia Video Panel ───────────────────────────────────────────────────────
 
-const WistiaVideoPanel = () => {
-    const scrollRef = useRef(null);
-    const [progress, setProgress] = useState(0);
-    const [videoHeight, setVideoHeight] = useState(400);
+const VIDEOS_PER_PAGE = 2;
 
+const WistiaVideoPanel = () => {
+    const [page, setPage] = useState(0);
+    const containerRef = useRef(null);
+    const [dims, setDims] = useState({ w: 800, h: 500 });
+
+    const totalPages = Math.ceil(WISTIA_VIDEO_IDS.length / VIDEOS_PER_PAGE);
+    const visibleIds = WISTIA_VIDEO_IDS.slice(page * VIDEOS_PER_PAGE, (page + 1) * VIDEOS_PER_PAGE);
+
+    // Load Wistia scripts once
     useEffect(() => {
         const addScript = (src, type) => {
             if (document.querySelector(`script[src="${src}"]`)) return;
             const s = document.createElement('script');
-            s.src = src;
-            s.async = true;
+            s.src = src; s.async = true;
             if (type) s.type = type;
             document.head.appendChild(s);
         };
@@ -113,54 +118,77 @@ const WistiaVideoPanel = () => {
         WISTIA_VIDEO_IDS.forEach(id => addScript(`https://fast.wistia.com/embed/${id}.js`, 'module'));
     }, []);
 
-    // Measure the scroll container's real pixel height so videos fill it exactly
+    // Measure real container dimensions
     useEffect(() => {
-        if (!scrollRef.current) return;
+        if (!containerRef.current) return;
         const observer = new ResizeObserver(([entry]) => {
-            setVideoHeight(entry.contentRect.height);
+            setDims({ w: entry.contentRect.width, h: entry.contentRect.height });
         });
-        observer.observe(scrollRef.current);
+        observer.observe(containerRef.current);
         return () => observer.disconnect();
     }, []);
 
-    const handleScroll = () => {
-        const el = scrollRef.current;
-        if (!el) return;
-        const max = el.scrollWidth - el.clientWidth;
-        setProgress(max > 0 ? el.scrollLeft / max : 0);
-    };
+    // Portrait 9:16 — constrain by whichever axis is tighter
+    const GAP = 12;
+    const maxWFromWidth = Math.floor((dims.w - GAP) / VIDEOS_PER_PAGE);
+    const maxWFromHeight = Math.round(dims.h * 9 / 16);
+    const videoW = Math.min(maxWFromWidth, maxWFromHeight);
+    const videoH = Math.round(videoW * 16 / 9);
 
     return (
         <div className="w-full h-full bg-[#080808] flex flex-col p-5 gap-3">
+            {/* Header + navigation arrows */}
             <div className="flex items-center gap-2 pb-3 border-b border-white/5 flex-shrink-0">
-                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 <span className="text-[9px] font-semibold text-white/40 uppercase tracking-widest">Real examples — tap to play</span>
+                <div className="ml-auto flex items-center gap-1.5">
+                    <button
+                        onClick={() => setPage(p => Math.max(0, p - 1))}
+                        disabled={page === 0}
+                        className="w-6 h-6 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 disabled:opacity-20 transition-all"
+                        aria-label="Previous"
+                    >
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <span className="text-[9px] text-white/25 font-mono w-7 text-center">{page + 1}/{totalPages}</span>
+                    <button
+                        onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+                        disabled={page === totalPages - 1}
+                        className="w-6 h-6 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 disabled:opacity-20 transition-all"
+                        aria-label="Next"
+                    >
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                </div>
             </div>
+
+            {/* Video pair */}
             <div
-                ref={scrollRef}
-                onScroll={handleScroll}
-                className="flex gap-3 overflow-x-auto flex-1 min-h-0"
-                style={{ scrollbarWidth: 'none' }}
+                ref={containerRef}
+                className="flex-1 min-h-0 flex items-center justify-center gap-3"
             >
-                {WISTIA_VIDEO_IDS.map(id => (
+                {visibleIds.map(id => (
                     <div
                         key={id}
-                        className="flex-shrink-0"
-                        style={{ height: `${videoHeight}px`, width: `${Math.round(videoHeight * 9 / 16)}px` }}
+                        className="flex-shrink-0 rounded-lg overflow-hidden bg-[#1A1A1A]"
+                        style={{ width: `${videoW}px`, height: `${videoH}px` }}
                     >
-                        <div className="relative w-full h-full rounded-lg overflow-hidden bg-[#1A1A1A]">
-                            {/* eslint-disable-next-line */}
-                            <wistia-player media-id={id} aspect="0.5625" style={{ width: '100%', height: '100%' }} />
-                        </div>
+                        {/* eslint-disable-next-line */}
+                        <wistia-player media-id={id} aspect="0.5625" style={{ width: '100%', height: '100%' }} />
                     </div>
                 ))}
             </div>
-            {/* Scroll progress bar */}
-            <div className="h-[3px] bg-white/15 relative flex-shrink-0 mx-1 rounded-full">
-                <div
-                    className="absolute top-0 left-0 h-full bg-white/70 rounded-full"
-                    style={{ width: `${progress * 100}%`, transition: 'none' }}
-                />
+
+            {/* Dot pagination */}
+            <div className="flex justify-center gap-2 flex-shrink-0">
+                {Array.from({ length: totalPages }).map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => setPage(i)}
+                        aria-label={`Page ${i + 1}`}
+                        className={`w-1.5 h-1.5 rounded-full transition-colors ${i === page ? 'bg-white/60' : 'bg-white/15 hover:bg-white/30'}`}
+                    />
+                ))}
             </div>
         </div>
     );
