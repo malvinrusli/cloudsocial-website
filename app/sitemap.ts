@@ -1,4 +1,4 @@
-const BASE_URL = "https://www.promperty.io";
+const BASE_URL = "https://www.promperty.co";
 
 const STATIC_ROUTES = [
     "/",

@@ -83,21 +83,19 @@ const Hero = ({ lang: propLang }) => {
 
                     {/* Core Headline */}
                     <div className="mb-10 lg:mb-14 max-w-5xl">
-                        <h1 className="leading-tight tracking-tight relative">
-                            {dict.hero.tagline.split(' ').map((word, i) => (
-                                <span key={i} className={`block text-5xl md:text-7xl lg:text-[6.5rem] font-sans font-medium hero-anim uppercase ${i % 2 === 1 && i !== 0 ? 'text-secondary/30 tracking-tight mt-8' : 'text-secondary mt-8 first:mt-0'}`}>
-                                    {word}
-                                </span>
-                            ))}
-                            <span className="block h-[1.2em] overflow-visible mt-8 hero-anim">
-                                <span className="rotating-word inline-block text-5xl md:text-7xl lg:text-[6.5rem] font-sans font-medium text-secondary uppercase italic">
+                        <h1 className="leading-[1.1] tracking-tight">
+                            <span className="hero-anim block text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-sans font-medium uppercase text-secondary">
+                                {dict.hero.tagline}
+                            </span>
+                            <span className="hero-anim block h-[1.15em] overflow-hidden mt-1">
+                                <span className="rotating-word inline-block text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-sans font-medium text-secondary uppercase italic">
                                     {rotatingWords[wordIndex]}
                                 </span>
                             </span>
                         </h1>
                     </div>
 
-                    <p className="hero-anim max-w-xl text-lg md:text-xl font-sans font-normal text-textDark/70 leading-relaxed mb-12 mt-24 mx-auto">
+                    <p className="hero-anim max-w-xl text-lg md:text-xl font-sans font-normal text-textDark/70 leading-relaxed mb-12 mt-10 mx-auto">
                         {dict.hero.description}
                     </p>
 

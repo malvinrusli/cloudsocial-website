@@ -43,6 +43,8 @@ const Navbar = ({ lang: propLang }) => {
     const wrapperRef = useRef(null);
     const navRef = useRef(null);
     const lastScrollY = useRef(0);
+    const hideTriggerY = useRef(0);
+    const lastDirection = useRef('up');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -59,10 +61,19 @@ const Navbar = ({ lang: propLang }) => {
                 wrapperRef.current?.classList.remove('scrolled-wrapper');
             }
 
-            // Handle hide on scroll down, show on scroll up
-            if (currentScrollY > lastScrollY.current && currentScrollY > 200) {
-                setIsHidden(true);
+            const scrollingDown = currentScrollY > lastScrollY.current;
+
+            if (scrollingDown) {
+                if (lastDirection.current === 'up') {
+                    hideTriggerY.current = currentScrollY;
+                    lastDirection.current = 'down';
+                }
+                // Only hide after scrolling down 120px continuously, past 500px from top
+                if (currentScrollY > 500 && currentScrollY - hideTriggerY.current > 120) {
+                    setIsHidden(true);
+                }
             } else {
+                lastDirection.current = 'up';
                 setIsHidden(false);
             }
 
@@ -197,7 +208,7 @@ const Navbar = ({ lang: propLang }) => {
                         <div className="grid grid-cols-1 gap-8 mt-auto pb-12 border-t border-gray-100 pt-8">
                             <div>
                                 <p className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-4">{lang === 'id' ? 'Hubungi Kami' : 'Contact'}</p>
-                                <p className="text-sm font-medium text-secondary">hello@promperty.io</p>
+                                <p className="text-sm font-medium text-secondary">hello@promperty.co</p>
                             </div>
                             <button className="w-full py-4 rounded-md font-sans text-sm font-semibold tracking-wide bg-secondary text-primary shadow-xl">
                                 {lang === 'id' ? 'Mulai Audit' : 'Start Free Audit'}

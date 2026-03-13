@@ -39,7 +39,7 @@ const Footer = ({ lang: propLang }) => {
                         <div className="flex flex-col gap-6">
                             <div className="flex items-center gap-4">
                                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500">{dict.footer.contact_label}</span>
-                                <a href="mailto:hello@promperty.io" className="text-sm font-medium hover:text-primary transition-colors">hello@promperty.io</a>
+                                <a href="mailto:hello@promperty.co" className="text-sm font-medium hover:text-primary transition-colors">hello@promperty.co</a>
                             </div>
 
                             {/* Status Indicator */}

@@ -4,6 +4,7 @@ import WhoWeServe from '@/app/components/WhoWeServe'
 import Features from '@/app/components/Features'
 import Protocol from '@/app/components/Protocol'
 import SocialProof from '@/app/components/SocialProof'
+import Outcomes from '@/app/components/Outcomes'
 import Footer from '@/app/components/Footer'
 
 export const metadata = {
@@ -23,6 +24,7 @@ export default async function Home({ params }) {
             <Features lang={lang} />
             <Protocol lang={lang} />
             <SocialProof lang={lang} />
+            <Outcomes />
             <Footer lang={lang} />
         </main>
     )
