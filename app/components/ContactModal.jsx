@@ -1,7 +1,5 @@
 "use client";
 import { useState } from 'react';
-import { useMutation } from 'convex/react';
-import { api } from '@/convex/_generated/api';
 import { X } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { getDictionary } from '@/app/lib/dictionaries';
@@ -11,7 +9,6 @@ export default function ContactModal({ isOpen, onClose, source = "website", lang
     const lang = propLang || params?.lang || 'en';
     const dict = getDictionary(lang);
 
-    const submitLead = useMutation(api.leads.submit);
     const [form, setForm] = useState({ name: "", email: "", company: "", phone: "", message: "" });
     const [status, setStatus] = useState("idle"); // idle | submitting | success | error
 
@@ -22,7 +19,12 @@ export default function ContactModal({ isOpen, onClose, source = "website", lang
         if (!form.name || !form.email) return;
         setStatus("submitting");
         try {
-            await submitLead({ ...form, source });
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...form, source }),
+            });
+            if (!res.ok) throw new Error('Failed');
             setStatus("success");
         } catch {
             setStatus("error");

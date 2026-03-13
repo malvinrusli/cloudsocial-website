@@ -1,15 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useQuery } from 'convex/react';
-import { api } from '../../convex/_generated/api';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-const VIDEO_STORAGE_IDS = [
-    'kg2em94p5f7x3p79tvfbe6g6ns82n0s5',
-    'kg25whybpr0q0he0m7fzph54cx82n06h',
-    'kg2aqrcwjfanercz1frx2gmrxn82n5a4',
-];
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -490,11 +482,9 @@ const Features = ({ lang = 'en' }) => {
         return () => mm.revert();
     }, [changeTab]);
 
-    const videoResults = useQuery(api.media.getVideosBatch, { storageIds: VIDEO_STORAGE_IDS });
-
     const service = SERVICES.find(s => s.id === active);
     const VISUALS = {
-        content: <VideoPanel videos={videoResults} />,
+        content: <VideoCompareMockup />,
         seo: <SERPMockup />,
         aeo: <AICitationMockup />,
         website: <WebsiteMockup />,
