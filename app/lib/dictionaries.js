@@ -56,10 +56,10 @@ export const getDictionary = (lang) => {
                 ]
             },
             hero: {
-                tagline: "We build awesome Digital Presence for",
-                tagline_line1: "We build",
-                tagline_line2: "awesome Digital",
-                tagline_prefix: "Presence for",
+                tagline: "We grow Digital Presence for",
+                tagline_line1: "We grow",
+                tagline_line2: "Digital Presence",
+                tagline_prefix: "for",
                 rotating_words: [
                     "Realtors",
                     "Architect Firms",
@@ -202,10 +202,10 @@ export const getDictionary = (lang) => {
                 ]
             },
             hero: {
-                tagline: "Kami bangun Digital Presence keren buat",
-                tagline_line1: "Kami bangun",
+                tagline: "Kami kembangkan Digital Presence untuk",
+                tagline_line1: "Kami kembangkan",
                 tagline_line2: "Digital Presence",
-                tagline_prefix: "keren buat",
+                tagline_prefix: "untuk",
                 rotating_words: [
                     "Agen Properti",
                     "Firma Arsitek",
