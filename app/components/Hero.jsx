@@ -82,13 +82,13 @@ const Hero = ({ lang: propLang }) => {
                     </div>
 
                     {/* Core Headline */}
-                    <div className="mb-10 lg:mb-14 max-w-5xl">
-                        <h1 className="leading-[1.1] tracking-tight">
-                            <span className="hero-anim block text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-sans font-medium uppercase text-secondary">
+                    <div className="mb-10 lg:mb-14 max-w-5xl w-full">
+                        <h1 className="leading-[1.15] tracking-tight">
+                            <span className="hero-anim block text-3xl md:text-4xl lg:text-5xl font-sans font-medium uppercase text-secondary whitespace-nowrap">
                                 {dict.hero.tagline}
                             </span>
-                            <span className="hero-anim block h-[1.15em] overflow-hidden mt-1">
-                                <span className="rotating-word inline-block text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-sans font-medium text-secondary uppercase italic">
+                            <span className="hero-anim block mt-1">
+                                <span className="rotating-word inline-block text-4xl md:text-5xl lg:text-6xl font-sans font-medium text-secondary uppercase italic">
                                     {rotatingWords[wordIndex]}
                                 </span>
                             </span>
